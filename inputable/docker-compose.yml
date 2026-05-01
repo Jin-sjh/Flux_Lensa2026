@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lensa-backend
+    ports:
+      - "7860:7860"
+    volumes:
+      - ./app.db:/app/app.db
+      - ./images:/app/images
+      - ./anki:/app/anki
+      - ./data:/app/data
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: lensa-frontend
+    ports:
+      - "7861:7861"
+    environment:
+      - API_BASE=http://backend:7860
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+networks:
+  default:
+    name: lensa-net
