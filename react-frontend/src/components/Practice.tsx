@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import type { OutputTask } from '../services/api';
 
 interface PracticeProps {
-  task: string;
+  task: OutputTask | null;   // ← 改成对象
   feedback: string;
   onSubmit: (answer: string) => void;
   disabled: boolean;
@@ -28,7 +29,7 @@ export default function Practice({ task, feedback, onSubmit, disabled }: Practic
     <div className="practice-section">
       <div className="practice-task">
         {task ? (
-          <p className="practice-task-text">{task}</p>
+          <p className="practice-task-text">{task.prompt}</p>   // ← task.prompt 显示题目
         ) : (
           <p className="practice-task-placeholder">生成学习内容后将出现练习题...</p>
         )}
