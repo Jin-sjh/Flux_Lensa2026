@@ -24,8 +24,7 @@ export default function GalleryCardItem({ card, onClick, index }: GalleryCardPro
     return date.toLocaleDateString();
   };
 
-  const mainWord = card.annotations[0]?.object || '';
-  const mainLabel = card.annotations[0]?.label || '';
+  const displayCaption = card.caption || card.annotations[0]?.object || '';
 
   return (
     <article
@@ -34,7 +33,7 @@ export default function GalleryCardItem({ card, onClick, index }: GalleryCardPro
       style={{ animationDelay: `${index * 0.05}s` }}
     >
       <div className="gallery-card-image">
-        <img src={card.imageUrl} alt={card.caption} loading="lazy" />
+        <img src={card.imageUrl} alt={card.caption || '学习卡片'} loading="lazy" />
         {card.isCompleted && (
           <div className="gallery-card-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
@@ -44,8 +43,7 @@ export default function GalleryCardItem({ card, onClick, index }: GalleryCardPro
         )}
       </div>
       <div className="gallery-card-overlay">
-        <span className="gallery-card-word">{mainWord}</span>
-        <span className="gallery-card-label">{mainLabel}</span>
+        <span className="gallery-card-word">{displayCaption}</span>
       </div>
       <div className="gallery-card-meta">
         <span className="gallery-card-time">{formatTime(card.createdAt)}</span>

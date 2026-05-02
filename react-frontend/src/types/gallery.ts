@@ -6,7 +6,7 @@ export interface GalleryCard {
   originalImageUrl?: string;
   annotations: Annotation[];
   caption: string;
-  task: OutputTask;
+  task: OutputTask | null;
   sessionId: string;
   createdAt: string;
   isCompleted: boolean;

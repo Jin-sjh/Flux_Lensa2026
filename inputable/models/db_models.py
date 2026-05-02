@@ -42,6 +42,7 @@ class LearningSession(Base):
     output_task = Column(JSON, nullable=True)
     user_output = Column(Text, nullable=True)
     feedback = Column(JSON, nullable=True)
+    completed = Column(Boolean, default=False)
     created_at = Column(DateTime, default=datetime.utcnow)
 
 

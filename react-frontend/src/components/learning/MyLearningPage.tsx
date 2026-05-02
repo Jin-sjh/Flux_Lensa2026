@@ -1,19 +1,9 @@
+import { forwardRef } from 'react';
 import ImageUploader from '../common/ImageUploader';
 import WelcomeSection from '../dashboard/WelcomeSection';
 import ResultCard from '../ResultCard';
 import Practice from '../Practice';
-import type { OutputTask } from '../../services/api';
-
-interface Annotation {
-  object: string;
-  label: string;
-  new_words: Array<{
-    word: string;
-    translation_zh: string;
-    translation_en: string;
-    id?: string;
-  }>;
-}
+import type { OutputTask, Annotation } from '../../services/api';
 
 interface MyLearningPageProps {
   onImageSelect?: (file: File) => void;
@@ -23,10 +13,14 @@ interface MyLearningPageProps {
   task?: OutputTask | null;
   feedback?: string;
   onSubmitAnswer?: (answer: string) => void;
+  onCompleteSession?: () => void;
   disabled?: boolean;
+  phase?: 'upload' | 'practice' | 'completed';
+  status?: string;
+  caption?: string;
 }
 
-export default function MyLearningPage({
+const MyLearningPage = forwardRef<HTMLDivElement, MyLearningPageProps>(({
   onImageSelect,
   resultImageUrl,
   isRendering,
@@ -34,25 +28,40 @@ export default function MyLearningPage({
   task,
   feedback,
   onSubmitAnswer,
+  onCompleteSession,
   disabled,
-}: MyLearningPageProps) {
-
+  phase = 'upload',
+  status,
+  caption,
+}, ref) => {
   return (
     <div className="learning-page">
       <WelcomeSection variant="lite" />
 
-      <ImageUploader
-        onImageSelect={onImageSelect}
-        onGenerate={onImageSelect}
-        showGenerateButton={true}
-        disabled={disabled}
-        variant="default"
-      />
+      <div ref={ref}>
+        <ImageUploader
+          onImageSelect={onImageSelect}
+          onGenerate={onImageSelect}
+          showGenerateButton={true}
+          disabled={disabled}
+          variant="default"
+        />
+      </div>
+
+      {status && phase !== 'upload' && (
+        <p className="status-text">{status}</p>
+      )}
 
       <ResultCard
         imageUrl={resultImageUrl ?? null}
         isRendering={isRendering ?? false}
       />
+
+      {caption && phase === 'practice' && (
+        <div className="caption-section">
+          <p className="caption-text">{caption}</p>
+        </div>
+      )}
 
       {annotations && annotations.length > 0 && (
         <div className="annotations-section">
@@ -78,8 +87,11 @@ export default function MyLearningPage({
         task={task ?? null}
         feedback={feedback ?? ''}
         onSubmit={onSubmitAnswer ?? (() => {})}
+        onComplete={onCompleteSession ?? (() => {})}
         disabled={disabled ?? false}
       />
     </div>
   );
-}
+});
+
+export default MyLearningPage;

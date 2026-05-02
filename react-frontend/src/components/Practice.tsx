@@ -1,26 +1,38 @@
 import { useState } from 'react';
 import type { OutputTask } from '../services/api';
+import { useUI } from '../stores/uiStore';
 
 interface PracticeProps {
   task: OutputTask | null;
   feedback: string;
   onSubmit: (answer: string) => void;
+  onComplete: () => void;
   disabled: boolean;
 }
 
-export default function Practice({ task, feedback, onSubmit, disabled }: PracticeProps) {
-  const [answer, setAnswer] = useState('');
+export default function Practice({ task, feedback, onSubmit, onComplete, disabled }: PracticeProps) {
+  const { practiceAnswer: persistedAnswer, setPracticeAnswer, hasSubmittedAnswer: persistedSubmitted, setHasSubmittedAnswer } = useUI();
+  const [answer, setAnswer] = useState(persistedAnswer);
   const [isFocused, setIsFocused] = useState(false);
+  const [hasSubmitted, setHasSubmitted] = useState(persistedSubmitted);
 
   const handleSubmit = () => {
     if (answer.trim()) {
       onSubmit(answer.trim());
       setAnswer('');
+      setPracticeAnswer('');
+      setHasSubmitted(true);
+      setHasSubmittedAnswer(true);
     }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !disabled) handleSubmit();
+  };
+
+  const handleAnswerChange = (value: string) => {
+    setAnswer(value);
+    setPracticeAnswer(value);
   };
 
   const isCorrect = feedback.startsWith('✅') || feedback.startsWith('非常') || feedback.startsWith('太棒') || feedback.startsWith('正确') || feedback.startsWith('很好');
@@ -77,7 +89,7 @@ export default function Practice({ task, feedback, onSubmit, disabled }: Practic
               className="practice-answer-input"
               placeholder="在这里输入印尼语..."
               value={answer}
-              onChange={(e) => setAnswer(e.target.value)}
+              onChange={(e) => handleAnswerChange(e.target.value)}
               onKeyDown={handleKeyDown}
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
@@ -114,6 +126,22 @@ export default function Practice({ task, feedback, onSubmit, disabled }: Practic
               )}
             </div>
             <span className="feedback-text">{feedback}</span>
+          </div>
+        )}
+
+        {hasSubmitted && feedback && (
+          <div className="practice-complete-section">
+            <button
+              className="complete-task-btn"
+              onClick={onComplete}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <span>完成任务</span>
+            </button>
+            <p className="complete-hint">点击完成后可开始下一个学习流程</p>
           </div>
         )}
       </div>

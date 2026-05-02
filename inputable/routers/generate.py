@@ -8,6 +8,7 @@ from models.schemas import GenerateRequest, GenerateResponse, Annotation, NewWor
 from models.db_models import LearningSession
 from services.sonnet_service import generate_annotations_with_fallback
 from services.image_utils import save_uploaded_image
+from services.image_gen import render_card, build_image_url
 from services.user_model import get_or_create_user, get_learned_vocabulary
 from database import get_db
 
@@ -64,11 +65,27 @@ async def generate(
                 all_new_words.append(nw.word)
 
     session_id = str(uuid.uuid4())
+
+    rendered_image_path = None
+    rendered_image_url = None
+    try:
+        rendered_image_path = await render_card(
+            annotations=[ann.model_dump() for ann in annotations],
+            caption=caption,
+            cefr=cefr,
+            session_id=session_id,
+            original_image_path=image_path,
+        )
+        rendered_image_url = build_image_url(session_id)
+    except Exception as e:
+        logger.warning(f"Image rendering failed for session {session_id}: {e}")
+
     try:
         session = LearningSession(
             session_id=session_id,
             user_id=request.user_id,
             image_path=image_path,
+            rendered_image_path=rendered_image_path,
             generated_content=result,
             new_vocab=all_new_words,
             output_task=task_raw,
@@ -87,4 +104,5 @@ async def generate(
         annotations=annotations,
         caption=caption,
         output_task=output_task,
+        rendered_image_url=rendered_image_url,
     )

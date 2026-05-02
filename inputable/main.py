@@ -92,7 +92,7 @@ app.add_middleware(
 os.makedirs(IMAGE_DIR, exist_ok=True)
 app.mount("/images", StaticFiles(directory=IMAGE_DIR), name="images")
 
-from routers import generate, render, evaluate, export_anki, placement, auth
+from routers import generate, render, evaluate, export_anki, placement, auth, sessions, vocabulary
 
 app.include_router(generate.router)
 app.include_router(render.router)
@@ -100,6 +100,8 @@ app.include_router(evaluate.router)
 app.include_router(export_anki.router)
 app.include_router(placement.router)
 app.include_router(auth.router)
+app.include_router(sessions.router)
+app.include_router(vocabulary.router)
 
 
 @app.get("/health")
