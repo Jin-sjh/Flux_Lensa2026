@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from '../../stores/authStore';
 import '../../styles/auth.css';
 
 type AuthMode = 'login' | 'register';

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { useTest } from '../../contexts/TestContext';
-import { useAuth } from '../../contexts/AuthContext';
+import { useTest } from '../../stores/testStore';
+import { useAuth } from '../../stores/authStore';
 import { updateUserLevel } from '../../services/authApi';
 import TestResultDisplay from './TestResultDisplay';
 import type { TestResult } from '../../types/auth';
@@ -127,7 +127,7 @@ export default function LevelTest({ onComplete }: LevelTestProps) {
           <h2 className="question-text">{currentQuestion.question}</h2>
 
           <div className="options-list">
-            {currentQuestion.options.map((option, index) => {
+            {currentQuestion.options.map((option: string, index: number) => {
               let optionClass = 'option-item';
               if (isAnswered) {
                 if (option === currentQuestion.correctAnswer) {

@@ -155,6 +155,17 @@ export async function register(credentials: RegisterCredentials): Promise<AuthRe
   return apiRegister(credentials);
 }
 
+function getAuthToken(): string | null {
+  const stored = localStorage.getItem('lensa_auth');
+  if (!stored) return null;
+  try {
+    const { token } = JSON.parse(stored);
+    return token || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function updateUserLevel(userId: string, cefrLevel: 'A1' | 'A2' | 'B1'): Promise<User> {
   if (USE_MOCK) {
     await new Promise(resolve => setTimeout(resolve, MOCK_DELAY));
@@ -177,9 +188,15 @@ export async function updateUserLevel(userId: string, cefrLevel: 'A1' | 'A2' | '
     return userWithoutPassword;
   }
 
+  const token = getAuthToken();
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
   const response = await fetch(`${API_BASE}/api/user/level`, {
     method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     body: JSON.stringify({ userId, cefrLevel }),
   });
 

@@ -1,4 +1,4 @@
-import { useSettings } from '../../contexts/SettingsContext';
+import { useSettings } from '../../stores/settingsStore';
 import { useResponsive } from '../../hooks/useResponsive';
 
 interface WelcomeSectionProps {

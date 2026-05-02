@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import type { GalleryCard as GalleryCardType } from '../../types/gallery';
 import type { OutputTask } from '../../services/api';
-import { useSettings } from '../../contexts/SettingsContext';
+import { useSettings } from '../../stores/settingsStore';
 import GalleryCardItem from './GalleryCard';
 import GalleryDetail from './GalleryDetail';
 

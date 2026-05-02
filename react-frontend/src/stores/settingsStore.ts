@@ -1,114 +1,113 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import type { ReactNode } from 'react';
+import { create } from 'zustand';
 
 export type AppLanguage = 'zh' | 'en' | 'id';
 
 const STORAGE_KEY = 'lensa_language';
 
-const languageMeta: Record<AppLanguage, { label: string; locale: string }> = {
-  zh: { label: '简体中文', locale: 'zh-CN' },
+export const languageMeta: Record<AppLanguage, { label: string; locale: string }> = {
+  zh: { label: '绠€浣撲腑鏂?', locale: 'zh-CN' },
   en: { label: 'English', locale: 'en-US' },
   id: { label: 'Bahasa Indonesia', locale: 'id-ID' },
 };
 
-const translations = {
+export const translations = {
   zh: {
     common: {
-      openMenu: '打开菜单',
-      notifications: '通知',
-      currentTime: '当前时间',
-      language: '界面语言',
-      viewAll: '查看全部',
-      all: '全部',
+      openMenu: '鎵撳紑鑿滃崟',
+      notifications: '閫氱煡',
+      currentTime: '褰撳墠鏃堕棿',
+      language: '鐣岄潰璇█',
+      viewAll: '鏌ョ湅鍏ㄩ儴',
+      all: '鍏ㄩ儴',
     },
     welcome: {
       eyebrow: 'Visual Indonesian Learning',
-      title: '用镜头捕捉生活，顺手学会印尼语。',
-      subtitle: '拍一张照片，Lensa 会识别物体、生成词汇卡片，并把今天的学习节奏整理好。',
-      overview: '今日学习概览',
-      immersion: '今日沉浸',
-      words: '累计词汇',
-      accuracy: '练习正确率',
+      title: '鐢ㄩ暅澶存崟鎹夌敓娲伙紝椤烘墜瀛︿細鍗板凹璇€?',
+      subtitle: '鎷嶄竴寮犵収鐗囷紝Lensa 浼氳瘑鍒墿浣撱€佺敓鎴愯瘝姹囧崱鐗囷紝骞舵妸浠婂ぉ鐨勫涔犺妭濂忔暣鐞嗗ソ銆?',
+      overview: '浠婃棩瀛︿範姒傝',
+      immersion: '浠婃棩娌夋蹈',
+      words: '绱璇嶆眹',
+      accuracy: '缁冧範姝ｇ‘鐜?',
     },
     upload: {
       eyebrow: 'Start with a photo',
-      title: '把眼前的物品变成今天的学习卡片',
-      subtitle: '支持拍照、上传和拖拽图片。建议选择清晰、主体突出的生活场景。',
-      camera: '拍照',
-      upload: '上传图片',
-      drag: '拖拽上传',
-      previewAlt: '待生成的图片预览',
-      placeholderTitle: '点击选择，或把图片拖到这里',
-      placeholderHint: '支持 JPG / JPEG / PNG，建议小于 10MB',
-      chooseAgain: '重新选择图片',
-      openCamera: '打开摄像头',
-      chooseImage: '选择图片',
-      clear: '清除',
-      generating: '正在生成学习内容...',
-      generate: '生成学习内容',
-      chooseFirst: '先选择一张图片',
+      title: '鎶婄溂鍓嶇殑鐗╁搧鍙樻垚浠婂ぉ鐨勫涔犲崱鐗?',
+      subtitle: '鏀寔鎷嶇収銆佷笂浼犲拰鎷栨嫿鍥剧墖銆傚缓璁€夋嫨娓呮櫚銆佷富浣撶獊鍑虹殑鐢熸椿鍦烘櫙銆?',
+      camera: '鎷嶇収',
+      upload: '涓婁紶鍥剧墖',
+      drag: '鎷栨嫿涓婁紶',
+      previewAlt: '寰呯敓鎴愮殑鍥剧墖棰勮',
+      placeholderTitle: '鐐瑰嚮閫夋嫨锛屾垨鎶婂浘鐗囨嫋鍒拌繖閲?',
+      placeholderHint: '鏀寔 JPG / JPEG / PNG锛屽缓璁皬浜?10MB',
+      chooseAgain: '閲嶆柊閫夋嫨鍥剧墖',
+      openCamera: '鎵撳紑鎽勫儚澶?',
+      chooseImage: '閫夋嫨鍥剧墖',
+      clear: '娓呴櫎',
+      generating: '姝ｅ湪鐢熸垚瀛︿範鍐呭...',
+      generate: '鐢熸垚瀛︿範鍐呭',
+      chooseFirst: '鍏堥€夋嫨涓€寮犲浘鐗?',
     },
     recent: {
       eyebrow: 'Recently captured',
-      title: '最近学习',
-      completed: '已完成',
-      learnedOneHour: '学习于 1 小时前',
-      learnedThreeHours: '学习于 3 小时前',
-      learnedYesterday: '学习于昨天',
-      coffee: '咖啡',
-      bag: '包',
-      bicycle: '自行车',
+      title: '鏈€杩戝涔?',
+      completed: '宸插畬鎴?',
+      learnedOneHour: '瀛︿範浜?1 灏忔椂鍓?',
+      learnedThreeHours: '瀛︿範浜?3 灏忔椂鍓?',
+      learnedYesterday: '瀛︿範浜庢槰澶?',
+      coffee: '鍜栧暋',
+      bag: '鍖?',
+      bicycle: '鑷杞?',
     },
     quickActions: {
       eyebrow: 'Next steps',
-      title: '接下来可以这样学',
-      practiceTitle: '填空练习',
-      practiceDesc: '用刚生成的词汇卡做即时练习，把"看过"变成"记住"。',
-      practiceButton: '开始练习',
-      ankiTitle: 'Anki 导出',
-      ankiDesc: '一键整理成可复习的卡片包，适合间隔重复学习。',
-      ankiButton: '导出卡片',
-      reportTitle: '学习报告',
-      reportDesc: '查看词汇增长、练习正确率和连续学习状态。',
-      reportButton: '查看报告',
-      galleryTitle: '学习画册',
-      galleryDesc: '浏览所有生成的学习卡片，回顾你的视觉词汇旅程。',
-      galleryButton: '浏览画册',
+      title: '鎺ヤ笅鏉ュ彲浠ヨ繖鏍峰',
+      practiceTitle: '濉┖缁冧範',
+      practiceDesc: '鐢ㄥ垰鐢熸垚鐨勮瘝姹囧崱鍋氬嵆鏃剁粌涔狅紝鎶?鐪嬭繃"鍙樻垚"璁颁綇"銆?',
+      practiceButton: '寮€濮嬬粌涔?',
+      ankiTitle: 'Anki 瀵煎嚭',
+      ankiDesc: '涓€閿暣鐞嗘垚鍙涔犵殑鍗＄墖鍖咃紝閫傚悎闂撮殧閲嶅瀛︿範銆?',
+      ankiButton: '瀵煎嚭鍗＄墖',
+      reportTitle: '瀛︿範鎶ュ憡',
+      reportDesc: '鏌ョ湅璇嶆眹澧為暱銆佺粌涔犳纭巼鍜岃繛缁涔犵姸鎬併€?',
+      reportButton: '鏌ョ湅鎶ュ憡',
+      galleryTitle: '瀛︿範鐢诲唽',
+      galleryDesc: '娴忚鎵€鏈夌敓鎴愮殑瀛︿範鍗＄墖锛屽洖椤句綘鐨勮瑙夎瘝姹囨梾绋嬨€?',
+      galleryButton: '娴忚鐢诲唽',
     },
     stats: {
       eyebrow: 'Progress',
-      title: '学习统计',
-      today: '今日学习',
-      words: '已学词汇',
-      streak: '连续学习',
-      accuracy: '正确率',
-      minutes: '分钟',
-      count: '个',
-      days: '天',
-      noteTitle: '今日建议',
-      note: '再完成 1 次拍照学习，就能补齐今天的词汇卡片节奏。',
+      title: '瀛︿範缁熻',
+      today: '浠婃棩瀛︿範',
+      words: '宸插璇嶆眹',
+      streak: '杩炵画瀛︿範',
+      accuracy: '姝ｇ‘鐜?',
+      minutes: '鍒嗛挓',
+      count: '涓?',
+      days: '澶?',
+      noteTitle: '浠婃棩寤鸿',
+      note: '鍐嶅畬鎴?1 娆℃媿鐓у涔狅紝灏辫兘琛ラ綈浠婂ぉ鐨勮瘝姹囧崱鐗囪妭濂忋€?',
     },
     gallery: {
       eyebrow: 'Gallery',
-      title: '学习画册',
-      all: '全部',
-      completed: '已完成',
-      inProgress: '未完成',
-      newest: '最新优先',
-      oldest: '最早优先',
-      emptyTitle: '还没有学习卡片',
-      emptyHint: '拍照生成学习内容后，卡片会自动出现在这里',
-      goCapture: '去拍照',
-      detail: '卡片详情',
-      annotations: '词汇标注',
-      task: '练习题',
-      startPractice: '开始练习',
-      saveImage: '保存图片',
-      deleteCard: '删除',
-      confirmDelete: '确定删除这张卡片？',
-      words: '个词汇',
+      title: '瀛︿範鐢诲唽',
+      all: '鍏ㄩ儴',
+      completed: '宸插畬鎴?',
+      inProgress: '鏈畬鎴?',
+      newest: '鏈€鏂颁紭鍏?',
+      oldest: '鏈€鏃╀紭鍏?',
+      emptyTitle: '杩樻病鏈夊涔犲崱鐗?',
+      emptyHint: '鎷嶇収鐢熸垚瀛︿範鍐呭鍚庯紝鍗＄墖浼氳嚜鍔ㄥ嚭鐜板湪杩欓噷',
+      goCapture: '鍘绘媿鐓?',
+      detail: '鍗＄墖璇︽儏',
+      annotations: '璇嶆眹鏍囨敞',
+      task: '缁冧範棰?',
+      startPractice: '寮€濮嬬粌涔?',
+      saveImage: '淇濆瓨鍥剧墖',
+      deleteCard: '鍒犻櫎',
+      confirmDelete: '纭畾鍒犻櫎杩欏紶鍗＄墖锛?',
+      words: '涓瘝姹?',
     },
-    loading: '加载中...',
+    loading: '鍔犺浇涓?..',
   },
   en: {
     common: {
@@ -310,17 +309,16 @@ const translations = {
 
 type Translation = (typeof translations)[AppLanguage];
 
-interface SettingsContextValue {
+interface SettingsStore {
   language: AppLanguage;
-  setLanguage: (language: AppLanguage) => void;
   languages: typeof languageMeta;
   locale: string;
   now: Date;
-  formatTime: (date?: Date) => string;
   t: Translation;
+  setLanguage: (language: AppLanguage) => void;
+  setNow: (now: Date) => void;
+  formatTime: (date?: Date) => string;
 }
-
-const SettingsContext = createContext<SettingsContextValue | undefined>(undefined);
 
 function getInitialLanguage(): AppLanguage {
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -332,50 +330,53 @@ function getInitialLanguage(): AppLanguage {
   return 'zh';
 }
 
-export function SettingsProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<AppLanguage>(getInitialLanguage);
-  const [now, setNow] = useState(new Date());
-
-  useEffect(() => {
-    const timer = window.setInterval(() => setNow(new Date()), 1000);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  const setLanguage = (nextLanguage: AppLanguage) => {
-    setLanguageState(nextLanguage);
-    localStorage.setItem(STORAGE_KEY, nextLanguage);
+function getLanguageValues(language: AppLanguage) {
+  return {
+    language,
+    locale: languageMeta[language].locale,
+    t: translations[language],
   };
-
-  const value = useMemo<SettingsContextValue>(() => {
-    const locale = languageMeta[language].locale;
-
-    return {
-      language,
-      setLanguage,
-      languages: languageMeta,
-      locale,
-      now,
-      formatTime: (date = now) =>
-        date.toLocaleTimeString(locale, {
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: language === 'en',
-        }),
-      t: translations[language],
-    };
-  }, [language, now]);
-
-  useEffect(() => {
-    document.documentElement.lang = languageMeta[language].locale;
-  }, [language]);
-
-  return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 }
 
-export function useSettings() {
-  const context = useContext(SettingsContext);
-  if (!context) {
-    throw new Error('useSettings must be used within SettingsProvider');
-  }
-  return context;
+export const useSettingsStore = create<SettingsStore>((set, get) => {
+  const initialLanguage = getInitialLanguage();
+
+  return {
+    ...getLanguageValues(initialLanguage),
+    languages: languageMeta,
+    now: new Date(),
+
+    setLanguage: (nextLanguage) => {
+      localStorage.setItem(STORAGE_KEY, nextLanguage);
+      document.documentElement.lang = languageMeta[nextLanguage].locale;
+      set(getLanguageValues(nextLanguage));
+    },
+
+    setNow: (now) => {
+      set({ now });
+    },
+
+    formatTime: (date) => {
+      const { language, locale, now } = get();
+      return (date ?? now).toLocaleTimeString(locale, {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: language === 'en',
+      });
+    },
+  };
+});
+
+document.documentElement.lang = languageMeta[useSettingsStore.getState().language].locale;
+
+let clockStarted = false;
+
+export function startSettingsClock() {
+  if (clockStarted) return;
+  clockStarted = true;
+  window.setInterval(() => {
+    useSettingsStore.getState().setNow(new Date());
+  }, 1000);
 }
+
+export const useSettings = useSettingsStore;

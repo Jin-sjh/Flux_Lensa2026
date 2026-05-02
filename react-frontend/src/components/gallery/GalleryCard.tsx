@@ -1,5 +1,5 @@
 import type { GalleryCard as GalleryCardType } from '../../types/gallery';
-import { useSettings } from '../../contexts/SettingsContext';
+import { useSettings } from '../../stores/settingsStore';
 
 interface GalleryCardProps {
   card: GalleryCardType;

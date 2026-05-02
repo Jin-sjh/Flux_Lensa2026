@@ -1,7 +1,5 @@
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://127.0.0.1:8000';
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
-
-import { mockApi } from './mockApi';
+const API_ORIGIN = API_BASE.replace(/\/$/, '');
 
 export interface NewWord {
   word: string;
@@ -71,12 +69,28 @@ function compressImage(file: File): Promise<string> {
   });
 }
 
+function normalizeImageUrl(url: string | null): string {
+  if (!url) throw new Error('后端没有返回生成图片地址');
+
+  if (url.startsWith('/')) {
+    return `${API_ORIGIN}${url}`;
+  }
+
+  const parsed = new URL(url);
+  if (['localhost', '127.0.0.1'].includes(parsed.hostname)) {
+    const api = new URL(API_ORIGIN);
+    if (api.origin !== parsed.origin) {
+      return `${api.origin}${parsed.pathname}${parsed.search}${parsed.hash}`;
+    }
+  }
+
+  return url;
+}
+
 export async function generateAnnotations(
   file: File,
   userId: string
 ): Promise<{ sessionId: string; annotations: Annotation[]; caption: string; task: OutputTask }> {
-  if (USE_MOCK) return mockApi.generateAnnotations(file, userId);
-
   const b64 = await compressImage(file);
   const resp = await fetch(`${API_BASE}/api/generate`, {
     method: 'POST',
@@ -95,21 +109,17 @@ export async function generateAnnotations(
 
 export async function renderImage(
   sessionId: string
-): Promise<{ imageUrl: string | null }> {
-  if (USE_MOCK) return mockApi.renderImage(sessionId);
-
+): Promise<{ imageUrl: string }> {
   const resp = await fetch(`${API_BASE}/api/render?session_id=${encodeURIComponent(sessionId)}`);
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   const data: RenderResponse = await resp.json();
-  return { imageUrl: data.rendered_image_url };
+  return { imageUrl: normalizeImageUrl(data.rendered_image_url) };
 }
 
 export async function evaluateAnswer(
   sessionId: string,
   userAnswer: string
 ): Promise<EvaluateResponse> {
-  if (USE_MOCK) return mockApi.evaluateAnswer(sessionId, userAnswer);
-
   const resp = await fetch(`${API_BASE}/api/evaluate`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -120,7 +130,6 @@ export async function evaluateAnswer(
 }
 
 export function getAnkiDownloadUrl(userId: string): string {
-  if (USE_MOCK) return mockApi.getAnkiDownloadUrl(userId);
   return `${API_BASE}/api/export_anki?user_id=${encodeURIComponent(userId)}`;
 }
 

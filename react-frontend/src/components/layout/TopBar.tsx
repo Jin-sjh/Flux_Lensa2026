@@ -1,5 +1,5 @@
-import { useSettings } from '../../contexts/SettingsContext';
-import type { AppLanguage } from '../../contexts/SettingsContext';
+import { useSettings } from '../../stores/settingsStore';
+import type { AppLanguage } from '../../stores/settingsStore';
 import { useResponsive } from '../../hooks/useResponsive';
 
 export default function TopBar({ isSidebarCollapsed = false }: { isSidebarCollapsed?: boolean }) {
@@ -24,11 +24,14 @@ export default function TopBar({ isSidebarCollapsed = false }: { isSidebarCollap
         onChange={(event) => setLanguage(event.target.value as AppLanguage)}
         aria-label={t.common.language}
       >
-        {Object.entries(languages).map(([value, meta]) => (
+        {Object.entries(languages).map(([value, meta]) => {
+          const item = meta as { label: string };
+          return (
           <option key={value} value={value}>
-            {meta.label}
+            {item.label}
           </option>
-        ))}
+          );
+        })}
       </select>
 
       <div className="user-avatar">N</div>

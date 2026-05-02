@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
-import { useSettings } from '../../contexts/SettingsContext';
-import type { AppLanguage } from '../../contexts/SettingsContext';
+import { useAuth } from '../../stores/authStore';
+import { useSettings } from '../../stores/settingsStore';
+import type { AppLanguage } from '../../stores/settingsStore';
 import type { GalleryCard } from '../../types/gallery';
 import { getLevelInfo } from '../../utils/levelUtils';
 
@@ -87,11 +87,14 @@ export default function SettingsPage({ cards, userId, ankiUrl, onNavigate }: Set
               value={language}
               onChange={(event) => setLanguage(event.target.value as AppLanguage)}
             >
-              {Object.entries(languages).map(([value, meta]) => (
+              {Object.entries(languages).map(([value, meta]) => {
+                const item = meta as { label: string };
+                return (
                 <option key={value} value={value}>
-                  {meta.label}
+                  {item.label}
                 </option>
-              ))}
+                );
+              })}
             </select>
           </label>
           <div className="settings-note">选择后会写入本地偏好，下次打开应用会自动沿用。</div>

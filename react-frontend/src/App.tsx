@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { useAuth } from './contexts/AuthContext';
-import { SettingsProvider, useSettings } from './contexts/SettingsContext';
-import { TestProvider } from './contexts/TestContext';
+import { useAuth } from './stores/authStore';
+import { useSettings } from './stores/settingsStore';
 import AuthPage from './components/auth/AuthPage';
 import LevelTest from './components/test/LevelTest';
 import MainLayout from './components/layout/MainLayout';
@@ -40,11 +39,7 @@ function AppContent() {
   }
 
   if (!user?.hasCompletedTest) {
-    return (
-      <TestProvider>
-        <LevelTest onComplete={() => {}} />
-      </TestProvider>
-    );
+    return <LevelTest onComplete={() => {}} />;
   }
 
   if (state.phase === 'practice') {
@@ -129,9 +124,5 @@ function AppContent() {
 }
 
 export default function App() {
-  return (
-    <SettingsProvider>
-      <AppContent />
-    </SettingsProvider>
-  );
+  return <AppContent />;
 }

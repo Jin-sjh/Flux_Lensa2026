@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import type { GalleryCard } from '../../types/gallery';
 import type { OutputTask } from '../../services/api';
-import { useSettings } from '../../contexts/SettingsContext';
+import { useSettings } from '../../stores/settingsStore';
 
 interface GalleryDetailProps {
   card: GalleryCard;
