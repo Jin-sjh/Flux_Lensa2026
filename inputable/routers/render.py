@@ -79,5 +79,5 @@ async def render(
         return RenderResponse(rendered_image_url=image_url)
 
     except Exception as e:
-        logger.error(f"Image generation failed for session {session_id}: {e}")
+        logger.exception(f"Image generation failed for session {session_id}")
         return RenderResponse(rendered_image_url=None, annotations=annotations)

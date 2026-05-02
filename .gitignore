@@ -1,0 +1,47 @@
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded/generated images
+inputable/images/*.jpg
+inputable/images/*.png
+
+# Anki exports
+inputable/anki/*.apkg
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+dist/
+
+# IDE / Editor
+.vscode/
+.idea/
+.claude/
+.kiro/
+.obsidian/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files with secrets
+.env
+react-frontend/.env
+react-frontend/.env.local
+
+# Test artifacts
+test_pictures/
+OtherMaterials/
+
+# Misc
+HANDOFF.md
+*.tmp

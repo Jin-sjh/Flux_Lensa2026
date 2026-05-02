@@ -9,7 +9,9 @@ from PIL import Image
 
 logger = logging.getLogger(__name__)
 
-IMAGE_DIR = os.getenv("IMAGE_DIR", "images")
+
+def _image_dir() -> str:
+    return os.getenv("IMAGE_DIR", "images")
 
 
 def save_uploaded_image(image_base64: str, user_id: str) -> str:
@@ -17,7 +19,7 @@ def save_uploaded_image(image_base64: str, user_id: str) -> str:
     save to images/{user_id}_{timestamp}_{uuid6}.jpg.
     Returns the relative file path (e.g. images/user1_20260501_143022_abc123.jpg).
     """
-    os.makedirs(IMAGE_DIR, exist_ok=True)
+    os.makedirs(_image_dir(), exist_ok=True)
 
     # Decode base64
     image_bytes = base64.b64decode(image_base64)
@@ -30,7 +32,7 @@ def save_uploaded_image(image_base64: str, user_id: str) -> str:
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     uid = uuid.uuid4().hex[:6]
     filename = f"{user_id}_{timestamp}_{uid}.jpg"
-    filepath = os.path.join(IMAGE_DIR, filename)
+    filepath = os.path.join(_image_dir(), filename)
 
     # Save compressed JPEG
     img.save(filepath, format="JPEG", quality=85)

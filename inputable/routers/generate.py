@@ -15,7 +15,6 @@ router = APIRouter()
 
 
 def _get_db():
-    """Import here to avoid circular imports at module load time."""
     from main import get_db
     return get_db
 
@@ -39,8 +38,8 @@ async def generate(
     # 3. Load learned vocabulary for i+1 constraint
     learned_words = await get_learned_vocabulary(request.user_id, db)
 
-    # 4. Call Sonnet (with retry + fallback)
-    result = generate_annotations_with_fallback(request.image, cefr, learned_words)
+    # 4. Call Sonnet (async, with retry + fallback)
+    result = await generate_annotations_with_fallback(request.image, cefr, learned_words)
 
     # 5. Parse result into typed objects
     annotations = [
@@ -67,8 +66,8 @@ async def generate(
         answer=task_raw.get("answer", ""),
     )
 
-    # 6. Collect all new words (flat list of word strings)
-    all_new_words = []
+    # 6. Collect all new words (flat, deduplicated list of word strings)
+    all_new_words: list[str] = []
     for ann in annotations:
         for nw in ann.new_words:
             if nw.word and nw.word not in all_new_words:

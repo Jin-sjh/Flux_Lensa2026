@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 import logging
 import os
-from anthropic import Anthropic
-from models.schemas import Annotation, NewWord, OutputTask
+
+from anthropic import AsyncAnthropic
 
 logger = logging.getLogger(__name__)
 
@@ -65,14 +65,14 @@ def enforce_i1_cap(new_vocab: list, cefr: str) -> list:
     return new_vocab[:cap]
 
 
-def generate_annotations(
+async def generate_annotations(
     image_base64: str, cefr: str, learned_words: list[str]
 ) -> dict:
     """Call Claude Sonnet 4.6 with image + CEFR-tiered prompt.
     Returns parsed {annotations, caption, output_task}.
     Raises on failure — caller handles retry logic.
     """
-    client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    client = AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
     words_list = learned_words[:60]
     style = _build_style_prompt(cefr)
     cap = CEFR_CAPS.get(cefr, 1)
@@ -104,8 +104,8 @@ def generate_annotations(
 }}
 """
 
-    response = client.messages.create(
-        model="claude-sonnet-4-5",
+    response = await client.messages.create(
+        model="claude-sonnet-4-6",
         max_tokens=2048,
         messages=[
             {
@@ -126,21 +126,31 @@ def generate_annotations(
     )
 
     raw = response.content[0].text
-    return json.loads(raw)
+
+    # Strip markdown code fences if model wraps JSON in ```json ... ```
+    clean = raw.strip()
+    if clean.startswith("```"):
+        clean = clean.split("```", 2)[-1] if clean.count("```") >= 2 else clean
+        clean = clean.removeprefix("json").strip().rstrip("`").strip()
+
+    return json.loads(clean)
 
 
-def generate_annotations_with_fallback(
+async def generate_annotations_with_fallback(
     image_base64: str, cefr: str, learned_words: list[str]
 ) -> dict:
     """Calls generate_annotations with one retry. Returns HARDCODED_DEFAULT on double failure."""
     for attempt in range(2):
         try:
-            result = generate_annotations(image_base64, cefr, learned_words)
-            # Hard-enforce i+1 cap on new_vocab across all annotations
+            result = await generate_annotations(image_base64, cefr, learned_words)
+
+            # Hard-enforce i+1 cap: collect all new_words across annotations
             all_new_words = []
             for ann in result.get("annotations", []):
                 all_new_words.extend(ann.get("new_words", []))
+
             capped = enforce_i1_cap(all_new_words, cefr)
+
             # Redistribute capped new_words back into annotations
             cap_remaining = len(capped)
             for ann in result.get("annotations", []):
@@ -148,7 +158,9 @@ def generate_annotations_with_fallback(
                 take = min(len(ann_new), cap_remaining)
                 ann["new_words"] = ann_new[:take]
                 cap_remaining -= take
+
             return result
+
         except Exception as e:
             logger.warning(f"Sonnet attempt {attempt + 1} failed: {e}")
 

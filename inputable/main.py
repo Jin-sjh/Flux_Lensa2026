@@ -3,10 +3,14 @@ import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 from dotenv import load_dotenv
+
+# Load env before anything else so os.getenv() calls in services see the values
+load_dotenv()
 
 from models.db_models import Base
 from services.vocab_cache import load_vocab_cache
@@ -16,7 +20,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # ── Environment ───────────────────────────────────────────────────────────────
-load_dotenv()
+# (load_dotenv already called above)
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./app.db")
 IMAGE_DIR = os.getenv("IMAGE_DIR", "images")
@@ -62,9 +66,17 @@ async def lifespan(app: FastAPI):
     await engine.dispose()
     logger.info("Lensa backend shut down")
 
-
 # ── App ───────────────────────────────────────────────────────────────────────
 app = FastAPI(title="Lensa Backend", version="1.0.0", lifespan=lifespan)
+
+# CORS — 允许前端访问
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Static file serving for generated images
 os.makedirs(IMAGE_DIR, exist_ok=True)
