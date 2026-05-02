@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import logging
 import uuid
-from datetime import datetime, timedelta, timezone
+from datetime import timedelta, timezone
 
 
-def _utcnow() -> datetime:
+def _utcnow():
+    from datetime import datetime
     return datetime.now(timezone.utc).replace(tzinfo=None)
 
 from sqlalchemy import select, func
@@ -104,8 +105,8 @@ def apply_fsrs_update(record: UserWordStatus, is_correct: bool) -> UserWordStatu
     record.interval = new_interval
     record.ease_factor = round(new_ease, 2)
     record.status = new_status
-    record.last_seen_at = datetime.utcnow()
-    record.next_review_at = datetime.utcnow() + timedelta(days=new_interval)
+    record.last_seen_at = _utcnow()
+    record.next_review_at = _utcnow() + timedelta(days=new_interval)
     return record
 
 

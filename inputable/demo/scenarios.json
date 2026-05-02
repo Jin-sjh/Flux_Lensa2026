@@ -1,0 +1,100 @@
+[
+  {
+    "id": "scene_01",
+    "annotations": [
+      {
+        "object": "meja",
+        "label": "meja kayu coklat",
+        "new_words": [
+          {"word": "meja", "translation_zh": "桌子", "translation_en": "table"},
+          {"word": "kayu", "translation_zh": "木头", "translation_en": "wood"}
+        ]
+      }
+    ],
+    "caption": "Ini meja kayu yang bagus.",
+    "output_task": {
+      "type": "fill_blank",
+      "prompt": "Ini ___ kayu yang bagus.",
+      "answer": "meja"
+    }
+  },
+  {
+    "id": "scene_02",
+    "annotations": [
+      {
+        "object": "kopi",
+        "label": "kopi panas di cangkir putih",
+        "new_words": [
+          {"word": "kopi", "translation_zh": "咖啡", "translation_en": "coffee"},
+          {"word": "panas", "translation_zh": "热的", "translation_en": "hot"},
+          {"word": "cangkir", "translation_zh": "杯子", "translation_en": "cup"}
+        ]
+      }
+    ],
+    "caption": "Saya minum kopi panas setiap pagi.",
+    "output_task": {
+      "type": "fill_blank",
+      "prompt": "Saya minum ___ panas setiap pagi.",
+      "answer": "kopi"
+    }
+  },
+  {
+    "id": "scene_03",
+    "annotations": [
+      {
+        "object": "buku",
+        "label": "buku bahasa Indonesia",
+        "new_words": [
+          {"word": "buku", "translation_zh": "书", "translation_en": "book"},
+          {"word": "bahasa", "translation_zh": "语言", "translation_en": "language"}
+        ]
+      }
+    ],
+    "caption": "Dia membaca buku bahasa Indonesia.",
+    "output_task": {
+      "type": "fill_blank",
+      "prompt": "Dia membaca ___ bahasa Indonesia.",
+      "answer": "buku"
+    }
+  },
+  {
+    "id": "scene_04",
+    "annotations": [
+      {
+        "object": "rumah",
+        "label": "rumah putih dengan pintu biru",
+        "new_words": [
+          {"word": "rumah", "translation_zh": "房子", "translation_en": "house"},
+          {"word": "pintu", "translation_zh": "门", "translation_en": "door"},
+          {"word": "biru", "translation_zh": "蓝色的", "translation_en": "blue"}
+        ]
+      }
+    ],
+    "caption": "Rumah ini punya pintu biru.",
+    "output_task": {
+      "type": "fill_blank",
+      "prompt": "___ ini punya pintu biru.",
+      "answer": "rumah"
+    }
+  },
+  {
+    "id": "scene_05",
+    "annotations": [
+      {
+        "object": "makanan",
+        "label": "makanan enak di piring",
+        "new_words": [
+          {"word": "makanan", "translation_zh": "食物", "translation_en": "food"},
+          {"word": "enak", "translation_zh": "好吃的", "translation_en": "delicious"},
+          {"word": "piring", "translation_zh": "盘子", "translation_en": "plate"}
+        ]
+      }
+    ],
+    "caption": "Makanan ini sangat enak.",
+    "output_task": {
+      "type": "fill_blank",
+      "prompt": "___ ini sangat enak.",
+      "answer": "makanan"
+    }
+  }
+]
