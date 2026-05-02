@@ -206,6 +206,7 @@ export function generateMockGenerateResponse(scenario: MockScenario): GenerateRe
       prompt: scenario.outputTask,
       answer: scenario.annotations[0].object,
     },
+    rendered_image_url: null,
   };
 }
 

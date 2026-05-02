@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSettings } from '../../stores/settingsStore';
+import { useUI } from '../../stores/uiStore';
+
+const MAX_IMAGE_PREVIEW_SIZE = 500 * 1024;
 
 interface ImageUploaderProps {
   onImageSelect?: (file: File) => void;
@@ -19,6 +22,7 @@ export default function ImageUploader({
   variant = 'default',
 }: ImageUploaderProps) {
   const { t } = useSettings();
+  const { imagePreview: persistedPreview, setImagePreview, clearImagePreview } = useUI();
   const fileRef = useRef<HTMLInputElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -31,19 +35,40 @@ export default function ImageUploader({
 
   const isCompact = variant === 'compact';
 
+  useEffect(() => {
+    if (persistedPreview && !preview) {
+      setPreview(persistedPreview);
+    }
+  }, [persistedPreview, preview]);
+
   const emitSelection = useCallback(
     (file: File) => {
       setSelectedFile(file);
-      setPreview((currentPreview) => {
-        if (currentPreview) URL.revokeObjectURL(currentPreview);
-        return URL.createObjectURL(file);
-      });
+
+      if (file.size < MAX_IMAGE_PREVIEW_SIZE) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const base64 = reader.result as string;
+          setPreview(base64);
+          setImagePreview(base64);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        const blobUrl = URL.createObjectURL(file);
+        setPreview((currentPreview) => {
+          if (currentPreview && currentPreview.startsWith('blob:')) {
+            URL.revokeObjectURL(currentPreview);
+          }
+          return blobUrl;
+        });
+        clearImagePreview();
+      }
 
       if (!showGenerateButton) {
         onImageSelect?.(file);
       }
     },
-    [onImageSelect, showGenerateButton],
+    [onImageSelect, showGenerateButton, setImagePreview, clearImagePreview]
   );
 
   useEffect(() => {
@@ -84,9 +109,12 @@ export default function ImageUploader({
   };
 
   const handleClear = () => {
-    if (preview) URL.revokeObjectURL(preview);
+    if (preview && preview.startsWith('blob:')) {
+      URL.revokeObjectURL(preview);
+    }
     setPreview(null);
     setSelectedFile(null);
+    clearImagePreview();
     if (fileRef.current) fileRef.current.value = '';
   };
 

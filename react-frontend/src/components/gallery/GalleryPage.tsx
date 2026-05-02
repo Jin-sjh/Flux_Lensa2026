@@ -12,10 +12,11 @@ interface GalleryPageProps {
   cards: GalleryCardType[];
   onDelete: (id: string) => void;
   onToggleComplete: (id: string) => void;
+  onUpdateCaption: (id: string, caption: string) => void;
   onNavigate: (page: string) => void;
 }
 
-export default function GalleryPage({ cards, onDelete, onToggleComplete, onNavigate }: GalleryPageProps) {
+export default function GalleryPage({ cards, onDelete, onToggleComplete, onUpdateCaption, onNavigate }: GalleryPageProps) {
   const { t } = useSettings();
   const [filter, setFilter] = useState<FilterType>('all');
   const [sort, setSort] = useState<SortType>('newest');
@@ -39,7 +40,7 @@ export default function GalleryPage({ cards, onDelete, onToggleComplete, onNavig
     return result;
   }, [cards, filter, sort]);
 
-  const handlePractice = (_task: OutputTask) => {
+  const handlePractice = (_task: OutputTask | null) => {
     setSelectedCard(null);
     onNavigate('practice');
   };
@@ -51,7 +52,12 @@ export default function GalleryPage({ cards, onDelete, onToggleComplete, onNavig
           <span className="eyebrow">{t.gallery.eyebrow}</span>
           <h2 className="section-title">{t.gallery.title}</h2>
         </div>
-        <span className="gallery-count">{cards.length} {t.gallery.words}</span>
+        <div className="section-header-actions">
+          <span className="gallery-count">{cards.length} {t.gallery.words}</span>
+          <button className="gallery-add-btn" onClick={() => onNavigate('learning')}>
+            📷 {t.gallery.addNewCard}
+          </button>
+        </div>
       </div>
 
       <div className="gallery-toolbar">
@@ -115,6 +121,7 @@ export default function GalleryPage({ cards, onDelete, onToggleComplete, onNavig
           onClose={() => setSelectedCard(null)}
           onDelete={onDelete}
           onToggleComplete={onToggleComplete}
+          onUpdateCaption={onUpdateCaption}
           onPractice={handlePractice}
         />
       )}

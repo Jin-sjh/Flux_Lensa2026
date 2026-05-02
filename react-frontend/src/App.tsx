@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from './stores/authStore';
 import { useSettings } from './stores/settingsStore';
 import AuthPage from './components/auth/AuthPage';
@@ -11,18 +11,57 @@ import MyLearningPage from './components/learning/MyLearningPage';
 import PracticeHistoryPage from './components/practice/PracticeHistoryPage';
 import AnkiExportPage from './components/anki/AnkiExportPage';
 import SettingsPage from './components/settings/SettingsPage';
+import VocabularyPage from './components/vocabulary/VocabularyPage';
 import { useLensaApp } from './hooks/useLensaApp';
 import './styles/components.css';
-import Practice from './components/Practice';
 
 function AppContent() {
   const { isAuthenticated, isLoading, user } = useAuth();
   const { t } = useSettings();
-  const { state, handleGenerate, handleSubmitAnswer, ankiUrl, handleDeleteCard, handleToggleComplete } = useLensaApp();
+  const {
+    state,
+    handleGenerate,
+    handleSubmitAnswer,
+    ankiUrl,
+    handleDeleteCard,
+    handleToggleComplete,
+    handleUpdateCaption,
+    handleCompleteSession,
+    loadSessions,
+    loadVocabulary,
+  } = useLensaApp();
   const [activeNav, setActiveNav] = useState('home');
+  const imageUploaderRef = useRef<HTMLDivElement>(null);
+  const [shouldScrollToUploader, setShouldScrollToUploader] = useState(false);
 
-  const handleNavigate = (item: string) => {
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      loadSessions();
+      loadVocabulary();
+    }
+  }, [isAuthenticated, user, loadSessions, loadVocabulary]);
+
+  useEffect(() => {
+    if (shouldScrollToUploader && activeNav === 'learning' && imageUploaderRef.current) {
+      setTimeout(() => {
+        imageUploaderRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setShouldScrollToUploader(false);
+      }, 100);
+    }
+  }, [shouldScrollToUploader, activeNav]);
+
+  const handleNavigate = (item: string, scrollToUploader?: boolean) => {
     setActiveNav(item);
+    if (scrollToUploader) {
+      setShouldScrollToUploader(true);
+    }
+    if (state.phase === 'completed') {
+      state.phase = 'upload';
+    }
+  };
+
+  const handleStartLearning = () => {
+    handleNavigate('learning', true);
   };
 
   if (isLoading) {
@@ -42,35 +81,17 @@ function AppContent() {
     return <LevelTest onComplete={() => {}} />;
   }
 
-  if (state.phase === 'practice') {
-    return (
-      <MainLayout>
-        <div className="dashboard-content">
-          <p className="status-text">{state.status}</p>
-          {state.resultImageUrl && (
-            <img src={state.resultImageUrl} alt="学习卡片" style={{ width: '100%', borderRadius: 12 }} />
-          )}
-          <Practice
-            task={state.task}
-            feedback={state.feedback}
-            onSubmit={handleSubmitAnswer}
-            disabled={state.isRendering}
-          />
-        </div>
-      </MainLayout>
-    );
-  }
-
   return (
     <MainLayout activeNav={activeNav} onNavigate={handleNavigate}>
       {activeNav === 'home' && (
         <div className="dashboard-content">
-          <WelcomeSection />
+          <WelcomeSection onStartLearning={handleStartLearning} />
           <QuickActions
             onActionClick={(actionId) => {
-              if (actionId === 'practice') handleNavigate('practice');
+              if (actionId === 'practice') handleNavigate('learning');
               else if (actionId === 'gallery') handleNavigate('gallery');
               else if (actionId === 'anki') handleNavigate('anki');
+              else if (actionId === 'vocabulary') handleNavigate('vocabulary');
               else if (actionId === 'report') handleNavigate('practice');
               else console.log('Action clicked:', actionId);
             }}
@@ -80,6 +101,7 @@ function AppContent() {
 
       {activeNav === 'learning' && (
         <MyLearningPage
+          ref={imageUploaderRef}
           onImageSelect={handleGenerate}
           resultImageUrl={state.resultImageUrl}
           isRendering={state.isRendering}
@@ -87,12 +109,19 @@ function AppContent() {
           task={state.task}
           feedback={state.feedback}
           onSubmitAnswer={handleSubmitAnswer}
+          onCompleteSession={handleCompleteSession}
           disabled={state.isGenerating || state.isRendering}
+          phase={state.phase}
+          status={state.status}
+          caption={state.caption}
         />
       )}
 
       {activeNav === 'practice' && (
-        <PracticeHistoryPage />
+        <PracticeHistoryPage
+          practiceRecords={state.practiceRecords}
+          isLoading={state.isLoadingSessions}
+        />
       )}
 
       {activeNav === 'anki' && (
@@ -107,7 +136,15 @@ function AppContent() {
           cards={state.galleryCards}
           onDelete={handleDeleteCard}
           onToggleComplete={handleToggleComplete}
+          onUpdateCaption={handleUpdateCaption}
           onNavigate={handleNavigate}
+        />
+      )}
+
+      {activeNav === 'vocabulary' && (
+        <VocabularyPage
+          vocabularyItems={state.vocabularyItems}
+          isLoading={state.isLoadingVocabulary}
         />
       )}
 

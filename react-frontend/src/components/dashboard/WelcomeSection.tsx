@@ -3,9 +3,10 @@ import { useResponsive } from '../../hooks/useResponsive';
 
 interface WelcomeSectionProps {
   variant?: 'default' | 'lite';
+  onStartLearning?: () => void;
 }
 
-export default function WelcomeSection({ variant = 'default' }: WelcomeSectionProps) {
+export default function WelcomeSection({ variant = 'default', onStartLearning }: WelcomeSectionProps) {
   const { isMobile: _isMobile } = useResponsive();
   const { language, t } = useSettings();
 
@@ -39,7 +40,7 @@ export default function WelcomeSection({ variant = 'default' }: WelcomeSectionPr
           <p className="welcome-subtitle">{t.welcome.subtitle}</p>
           
           <div className="welcome-cta">
-            <button className="cta-primary">
+            <button className="cta-primary" onClick={onStartLearning}>
               <span>开始学习</span>
               <span className="cta-icon">→</span>
             </button>

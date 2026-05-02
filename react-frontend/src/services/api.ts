@@ -24,6 +24,7 @@ export interface GenerateResponse {
   annotations: Annotation[];
   caption: string;
   output_task: OutputTask;
+  rendered_image_url: string | null;
 }
 
 export interface RenderResponse {
@@ -90,7 +91,7 @@ function normalizeImageUrl(url: string | null): string {
 export async function generateAnnotations(
   file: File,
   userId: string
-): Promise<{ sessionId: string; annotations: Annotation[]; caption: string; task: OutputTask }> {
+): Promise<{ sessionId: string; annotations: Annotation[]; caption: string; task: OutputTask; renderedImageUrl: string | null }> {
   const b64 = await compressImage(file);
   const resp = await fetch(`${API_BASE}/api/generate`, {
     method: 'POST',
@@ -104,6 +105,7 @@ export async function generateAnnotations(
     annotations: data.annotations,
     caption: data.caption,
     task: data.output_task,
+    renderedImageUrl: data.rendered_image_url ? normalizeImageUrl(data.rendered_image_url) : null,
   };
 }
 
@@ -145,6 +147,130 @@ export async function createUser(userId?: string, cefr = 'A1'): Promise<UserResp
 
 export async function getUser(userId: string): Promise<UserResponse> {
   const resp = await fetch(`${API_BASE}/api/users/${encodeURIComponent(userId)}`);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+export interface SessionListItem {
+  session_id: string;
+  user_id: string;
+  image_path: string | null;
+  rendered_image_path: string | null;
+  thumbnail_path: string | null;
+  caption: string | null;
+  new_vocab: string[];
+  output_task: {
+    type: 'fill_blank';
+    prompt: string;
+    answer: string;
+  } | null;
+  user_output: string | null;
+  feedback: {
+    is_correct: boolean;
+    expected: string;
+    user_answer: string;
+  } | null;
+  completed: boolean;
+  created_at: string;
+}
+
+export interface SessionListResponse {
+  sessions: SessionListItem[];
+  total: number;
+}
+
+export interface SessionDetail {
+  session_id: string;
+  user_id: string;
+  image_path: string | null;
+  rendered_image_path: string | null;
+  generated_content: Record<string, unknown> | null;
+  caption: string | null;
+  annotations: Annotation[];
+  new_vocab: string[];
+  output_task: OutputTask | null;
+  user_output: string | null;
+  feedback: Record<string, unknown> | null;
+  completed: boolean;
+  created_at: string;
+}
+
+export interface VocabularyItem {
+  word: string;
+  status: 'learning' | 'learned' | 'mastered';
+  translation_zh: string | null;
+  translation_en: string | null;
+  last_seen_at: string | null;
+  next_review_at: string | null;
+  interval: number;
+  ease_factor: number;
+}
+
+export interface VocabularyListResponse {
+  vocabulary: VocabularyItem[];
+  total: number;
+}
+
+export interface CompleteSessionResponse {
+  session_id: string;
+  completed: boolean;
+  message: string;
+}
+
+export interface DeleteSessionResponse {
+  session_id: string;
+  deleted: boolean;
+  message: string;
+}
+
+export interface UpdateSessionRequest {
+  caption?: string;
+  completed?: boolean;
+}
+
+export async function fetchSessions(userId: string): Promise<SessionListResponse> {
+  const resp = await fetch(`${API_BASE}/api/sessions?user_id=${encodeURIComponent(userId)}`);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+export async function fetchSessionDetail(sessionId: string): Promise<SessionDetail> {
+  const resp = await fetch(`${API_BASE}/api/sessions/${encodeURIComponent(sessionId)}`);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+export async function completeSession(sessionId: string): Promise<CompleteSessionResponse> {
+  const resp = await fetch(`${API_BASE}/api/sessions/${encodeURIComponent(sessionId)}/complete`, {
+    method: 'POST',
+  });
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+export async function fetchVocabulary(userId: string): Promise<VocabularyListResponse> {
+  const resp = await fetch(`${API_BASE}/api/vocabulary?user_id=${encodeURIComponent(userId)}`);
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+export async function deleteSession(sessionId: string): Promise<DeleteSessionResponse> {
+  const resp = await fetch(`${API_BASE}/api/sessions/${encodeURIComponent(sessionId)}`, {
+    method: 'DELETE',
+  });
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  return resp.json();
+}
+
+export async function updateSession(
+  sessionId: string,
+  updates: UpdateSessionRequest
+): Promise<SessionDetail> {
+  const resp = await fetch(`${API_BASE}/api/sessions/${encodeURIComponent(sessionId)}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(updates),
+  });
   if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
   return resp.json();
 }
