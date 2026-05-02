@@ -2,7 +2,7 @@ import { useSettings } from '../../contexts/SettingsContext';
 import { useResponsive } from '../../hooks/useResponsive';
 
 export default function WelcomeSection() {
-  const { isMobile } = useResponsive();
+  const { isMobile: _isMobile } = useResponsive();
   const { language, t } = useSettings();
 
   return (

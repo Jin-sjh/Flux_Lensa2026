@@ -1,4 +1,5 @@
 import type { Annotation, OutputTask } from '../services/api';
+import type { GalleryCard } from '../types/gallery';
 
 export interface LensaState {
   userId: string;
@@ -12,6 +13,7 @@ export interface LensaState {
   isGenerating: boolean;
   isRendering: boolean;
   caption: string;
+  galleryCards: GalleryCard[];
 }
 
 export type LensaAction =
@@ -24,6 +26,9 @@ export type LensaAction =
   | { type: 'RENDER_SUCCESS'; payload: string | null }
   | { type: 'RENDER_ERROR'; payload: string }
   | { type: 'SET_FEEDBACK'; payload: string }
+  | { type: 'ADD_GALLERY_CARD'; payload: GalleryCard }
+  | { type: 'REMOVE_GALLERY_CARD'; payload: string }
+  | { type: 'TOGGLE_GALLERY_CARD_COMPLETE'; payload: string }
   | { type: 'RESET' };
 
 export const initialState: LensaState = {
@@ -38,6 +43,7 @@ export const initialState: LensaState = {
   isGenerating: false,
   isRendering: false,
   caption: '',
+  galleryCards: [],
 };
 
 export function lensaReducer(state: LensaState, action: LensaAction): LensaState {
@@ -60,6 +66,17 @@ export function lensaReducer(state: LensaState, action: LensaAction): LensaState
       return { ...state, isRendering: false, status: `⚠️ ${action.payload}` };
     case 'SET_FEEDBACK':
       return { ...state, feedback: action.payload };
+    case 'ADD_GALLERY_CARD':
+      return { ...state, galleryCards: [action.payload, ...state.galleryCards] };
+    case 'REMOVE_GALLERY_CARD':
+      return { ...state, galleryCards: state.galleryCards.filter(card => card.id !== action.payload) };
+    case 'TOGGLE_GALLERY_CARD_COMPLETE':
+      return {
+        ...state,
+        galleryCards: state.galleryCards.map(card =>
+          card.id === action.payload ? { ...card, isCompleted: !card.isCompleted } : card
+        ),
+      };
     case 'RESET':
       return initialState;
     default:

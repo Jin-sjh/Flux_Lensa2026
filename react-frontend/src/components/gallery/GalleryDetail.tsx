@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from 'react';
 import type { GalleryCard } from '../../types/gallery';
+import type { OutputTask } from '../../services/api';
 import { useSettings } from '../../contexts/SettingsContext';
 
 interface GalleryDetailProps {
@@ -7,7 +8,7 @@ interface GalleryDetailProps {
   onClose: () => void;
   onDelete: (id: string) => void;
   onToggleComplete: (id: string) => void;
-  onPractice: (task: string) => void;
+  onPractice: (task: OutputTask) => void;
 }
 
 export default function GalleryDetail({ card, onClose, onDelete, onToggleComplete, onPractice }: GalleryDetailProps) {
@@ -60,7 +61,7 @@ export default function GalleryDetail({ card, onClose, onDelete, onToggleComplet
                     {ann.new_words.length > 0 && (
                       <div className="annotation-words">
                         {ann.new_words.map((w, wi) => (
-                          <span key={wi} className="annotation-word-tag">{w}</span>
+                          <span key={wi} className="annotation-word-tag">{w.word}</span>
                         ))}
                       </div>
                     )}
@@ -72,7 +73,7 @@ export default function GalleryDetail({ card, onClose, onDelete, onToggleComplet
             {card.task && (
               <div className="gallery-detail-section">
                 <h4 className="gallery-detail-section-title">{t.gallery.task}</h4>
-                <p className="gallery-detail-task">{card.task}</p>
+                <p className="gallery-detail-task">{card.task.prompt}</p>
               </div>
             )}
 

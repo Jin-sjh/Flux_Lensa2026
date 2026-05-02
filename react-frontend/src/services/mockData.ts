@@ -1,5 +1,4 @@
 import type { Annotation, GenerateResponse, RenderResponse, EvaluateResponse } from './api';
-import type { GalleryCard } from '../types/gallery';
 
 export interface MockScenario {
   id: string;

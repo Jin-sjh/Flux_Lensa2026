@@ -16,17 +16,19 @@ export function useLensaApp() {
         const renderResult = await renderImage(result.sessionId);
         dispatch({ type: 'RENDER_SUCCESS', payload: renderResult.imageUrl });
 
-        const galleryCard: GalleryCard = {
-          id: `card-${Date.now()}-${Math.random().toString(36).substring(7)}`,
-          imageUrl: renderResult.imageUrl,
-          annotations: result.annotations,
-          caption: result.caption,
-          task: result.task,
-          sessionId: result.sessionId,
-          createdAt: new Date().toISOString(),
-          isCompleted: false,
-        };
-        dispatch({ type: 'ADD_GALLERY_CARD', payload: galleryCard });
+        if (renderResult.imageUrl) {
+          const galleryCard: GalleryCard = {
+            id: `card-${Date.now()}-${Math.random().toString(36).substring(7)}`,
+            imageUrl: renderResult.imageUrl,
+            annotations: result.annotations,
+            caption: result.caption,
+            task: result.task,
+            sessionId: result.sessionId,
+            createdAt: new Date().toISOString(),
+            isCompleted: false,
+          };
+          dispatch({ type: 'ADD_GALLERY_CARD', payload: galleryCard });
+        }
       } catch (err: any) {
         dispatch({ type: 'RENDER_ERROR', payload: err.message || '渲染失败' });
       }
@@ -45,8 +47,8 @@ export function useLensaApp() {
       return;
     }
     try {
-      const feedback = await evaluateAnswer(state.sessionId, answer);
-      dispatch({ type: 'SET_FEEDBACK', payload: feedback });
+      const result = await evaluateAnswer(state.sessionId, answer);
+      dispatch({ type: 'SET_FEEDBACK', payload: result.feedback });
     } catch (err: any) {
       dispatch({ type: 'SET_FEEDBACK', payload: `⚠️ 评估失败：${err.message}` });
     }

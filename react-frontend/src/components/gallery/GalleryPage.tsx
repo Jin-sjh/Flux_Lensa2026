@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import type { GalleryCard as GalleryCardType } from '../../types/gallery';
+import type { OutputTask } from '../../services/api';
 import { useSettings } from '../../contexts/SettingsContext';
 import GalleryCardItem from './GalleryCard';
 import GalleryDetail from './GalleryDetail';
@@ -38,7 +39,7 @@ export default function GalleryPage({ cards, onDelete, onToggleComplete, onNavig
     return result;
   }, [cards, filter, sort]);
 
-  const handlePractice = (task: string) => {
+  const handlePractice = (_task: OutputTask) => {
     setSelectedCard(null);
     onNavigate('practice');
   };

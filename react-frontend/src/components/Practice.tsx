@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import type { OutputTask } from '../services/api';
 
 interface PracticeProps {
-  task: string;
+  task: OutputTask | null;
   feedback: string;
   onSubmit: (answer: string) => void;
   disabled: boolean;
@@ -21,14 +22,14 @@ export default function Practice({ task, feedback, onSubmit, disabled }: Practic
     if (e.key === 'Enter') handleSubmit();
   };
 
-  const isCorrect = feedback.startsWith('✅');
-  const isWrong = feedback.startsWith('🔄');
+  const isCorrect = feedback.startsWith('✅') || feedback.startsWith('非常') || feedback.startsWith('太棒') || feedback.startsWith('正确') || feedback.startsWith('很好');
+  const isWrong = feedback.startsWith('🔄') || feedback.startsWith('提示');
 
   return (
     <div className="practice-section">
       <div className="practice-task">
         {task ? (
-          <p className="practice-task-text">{task}</p>
+          <p className="practice-task-text">{task.prompt}</p>
         ) : (
           <p className="practice-task-placeholder">生成学习内容后将出现练习题...</p>
         )}
