@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lensa - 拍下世界，学会印尼语</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #6B5FF1;
+            --primary-light: #E8E6FF;
+            --secondary: #FF6B81;
+            --accent: #4CD9A1;
+            --bg-main: #F8F9FF;
+            --bg-card: #FFFFFF;
+            --text-primary: #1F2937;
+            --text-secondary: #6B7280;
+            --text-light: #9CA3AF;
+            --border: #E5E7EB;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+            --shadow: 0 4px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+            --radius-sm: 8px;
+            --radius: 16px;
+            --radius-lg: 24px;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(180deg, #F8F9FF 0%, #F0F2FF 100%);
+            min-height: 100vh;
+            color: var(--text-primary);
+        }
+        
+        .app-container {
+            max-width: 430px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: var(--bg-main);
+            position: relative;
+        }
+        
+        .page {
+            display: none;
+            padding: 20px;
+            min-height: 100vh;
+            padding-bottom: 100px;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0 24px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, #8B7FF8 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFE8E8 0%, #FFF0F5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #8B7FF8 100%);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: -20px;
+            width: 140px;
+            height: 140px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            right: 20px;
+            bottom: -30px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .hero-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 16px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            padding: 10px 16px;
+            border-radius: 12px;
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.85;
+        }
+        
+        .hero-mascot {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 80px;
+            z-index: 0;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-more {
+            font-size: 13px;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .action-btn {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 16px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+            border: none;
+            width: 100%;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .action-btn:active {
+            transform: translateY(0);
+        }
+        
+        .action-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #F0EFFA 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 8px;
+        }
+        
+        .action-icon.primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #8B7FF8 100%);
+            color: white;
+        }
+        
+        .action-icon.warning {
+            background: linear-gradient(135deg, #FFF4E6 0%, #FFE8D6 100%);
+        }
+        
+        .action-icon.success {
+            background: linear-gradient(135deg, #E6FFF4 0%, #D6FFE8 100%);
+        }
+        
+        .action-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 16px;
+        }
+        
+        .upload-zone {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #F5F4FF 100%);
+            border: 2px dashed var(--primary);
+            border-radius: var(--radius-lg);
+            padding: 40px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .upload-zone:hover {
+            background: linear-gradient(135deg, #E0DDFA 0%, #EDEBFF 100%);
+            transform: scale(1.01);
+        }
+        
+        .upload-zone.dragover {
+            border-color: var(--secondary);
+            background: linear-gradient(135deg, #FFE8EC 0%, #FFF0F3 100%);
+        }
+        
+        .upload-icon {
+            width: 72px;
+            height: 72px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 36px;
+            box-shadow: var(--shadow);
+        }
+        
+        .upload-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        
+        .upload-subtext {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .upload-zone input {
+            display: none;
+        }
+        
+        .preview-container {
+            display: none;
+            margin-bottom: 20px;
+        }
+        
+        .preview-container.show {
+            display: block;
+        }
+        
+        .preview-image {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 16px;
+        }
+        
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+        }
+        
+        .file-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .file-size {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #8B7FF8 100%);
+            color: white;
+            width: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(107, 95, 241, 0.35);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+        
+        .progress-container {
+            display: none;
+            margin-bottom: 20px;
+        }
+        
+        .progress-container.show {
+            display: block;
+        }
+        
+        .progress-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .progress-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .progress-mascot {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #F5F4FF 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            animation: bounce 1s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        
+        .progress-info h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .progress-info p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .progress-bar-wrap {
+            background: var(--primary-light);
+            border-radius: 8px;
+            height: 12px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary) 0%, #8B7FF8 100%);
+            border-radius: 8px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .result-container {
+            display: none;
+        }
+        
+        .result-container.show {
+            display: block;
+        }
+        
+        .result-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .result-img-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .result-img-label {
+            padding: 10px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: var(--bg-main);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .result-img-card img {
+            width: 100%;
+            display: block;
+        }
+        
+        .annotations-box {
+            background: linear-gradient(135deg, #FFF8F0 0%, #FFF5EB 100%);
+            border-radius: var(--radius);
+            padding: 12px;
+            border: 1px solid #FFE8D6;
+        }
+        
+        .annotations-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .annotations-content {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+            white-space: pre-wrap;
+        }
+        
+        .annotation-item {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .annotation-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .annotation-indo {
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+        
+        .annotation-text {
+            flex: 1;
+        }
+        
+        .speak-btn {
+            background: none;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            line-height: 1;
+        }
+        
+        .speak-btn:hover {
+            background: var(--primary-light);
+        }
+        
+        .speak-btn.speaking {
+            animation: pulse 0.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .annotation-chinese {
+            color: var(--text-secondary);
+            font-size: 11px;
+            margin-top: 2px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 430px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0 20px;
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            padding: 6px 16px;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+        
+        .nav-item:hover {
+            background: var(--primary-light);
+        }
+        
+        .nav-item.active {
+            background: var(--primary-light);
+        }
+        
+        .nav-icon {
+            font-size: 24px;
+        }
+        
+        .nav-label {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        .nav-item.active .nav-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .history-item {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .history-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .history-item img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+        
+        .history-meta {
+            padding: 10px 12px;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-light);
+        }
+        
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+        
+        .empty-text {
+            font-size: 14px;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--primary-light);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .mascot-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, #F5F4FF 100%);
+            padding: 10px 14px;
+            border-radius: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .mascot-small .icon {
+            font-size: 28px;
+        }
+        
+        .mascot-small .text {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .floating-camera {
+            position: fixed;
+            bottom: 90px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--secondary) 0%, #FF8A9A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 6px 20px rgba(255, 107, 129, 0.4);
+            cursor: pointer;
+            z-index: 99;
+            transition: all 0.2s;
+        }
+        
+        .floating-camera:hover {
+            transform: translateX(50%) scale(1.08);
+        }
+        
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.2s ease;
+        }
+        
+        .image-modal.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .image-modal-content {
+            position: relative;
+            max-width: 95%;
+            max-height: 90%;
+            animation: zoomIn 0.2s ease;
+        }
+        
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+        
+        .image-modal-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        .image-modal-close {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            color: white;
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+        
+        .image-modal-close:hover {
+            transform: scale(1.2);
+        }
+        
+        .result-img-card img {
+            cursor: zoom-in;
+            transition: transform 0.2s;
+        }
+        
+        .result-img-card img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="page active" id="homePage">
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon">📷</div>
+                    <span class="logo-text">Lensa</span>
+                </div>
+                <div class="user-avatar">👤</div>
+            </div>
+            
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-title">Halo, temen-temen! 👋</div>
+                    <div class="hero-subtitle">拍下世界，学会印尼语</div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-value" id="totalWords">0</div>
+                            <div class="stat-label">已学单词</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value" id="totalPhotos">0</div>
+                            <div class="stat-label">拍摄照片</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-mascot">🤖</div>
+            </div>
+            
+            <div class="section-title">
+                <span>快捷功能</span>
+            </div>
+            
+            <div class="quick-actions">
+                <button class="action-btn" onclick="goToCamera()">
+                    <div class="action-icon primary">📷</div>
+                    <div class="action-label">拍照识别</div>
+                </button>
+                <button class="action-btn" onclick="goToHistory()">
+                    <div class="action-icon">📚</div>
+                    <div class="action-label">学习卡片</div>
+                </button>
+                <button class="action-btn" onclick="goToHistory()">
+                    <div class="action-icon warning">⭐</div>
+                    <div class="action-label">收藏夹</div>
+                </button>
+                <button class="action-btn">
+                    <div class="action-icon success">🏆</div>
+                    <div class="action-label">成就</div>
+                </button>
+            </div>
+            
+            <div class="section-title">
+                <span>全部照片</span>
+            </div>
+            <div class="history-grid" id="homeHistoryGrid">
+                <div class="empty-state">
+                    <div class="empty-icon">📷</div>
+                    <div class="empty-text">还没有照片哦，快来拍一张吧！</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page" id="cameraPage">
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon">📷</div>
+                    <span class="logo-text">Lensa</span>
+                </div>
+            </div>
+            
+            <div class="mascot-small">
+                <span class="icon">🤖</span>
+                <span class="text">Hi! 上传照片让我认识一下吧~</span>
+            </div>
+            
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">🖼️</div>
+                <div class="upload-text">点击或拖拽上传图片</div>
+                <div class="upload-subtext">支持 JPG / PNG / WEBP</div>
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+            
+            <div class="preview-container" id="previewContainer">
+                <img class="preview-image" id="previewImg" src="" alt="Preview">
+                <div class="file-info">
+                    <div>
+                        <div class="file-name" id="fileName">image.jpg</div>
+                        <div class="file-size" id="fileSize"></div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="resetUpload()">重新选择</button>
+                </div>
+                <button class="btn btn-primary" id="startBtn" onclick="startAnnotation()">
+                    <span>✨ 开始注解</span>
+                </button>
+            </div>
+            
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <div class="progress-mascot">🤖</div>
+                        <div class="progress-info">
+                            <h4 id="stepText">正在处理中...</h4>
+                            <p id="progressMsg">请稍等片刻~</p>
+                        </div>
+                    </div>
+                    <div class="progress-bar-wrap">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="progress-text">
+                        <span>进度</span>
+                        <span id="progressPct">0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-container" id="resultContainer">
+                <div class="section-title">
+                    <span>🎉 注解完成！</span>
+                </div>
+                <div class="result-images">
+                    <div class="result-img-card">
+                        <div class="result-img-label">原图</div>
+                        <img id="origResult" src="" alt="Original" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="result-img-card">
+                        <div class="result-img-label">注解图</div>
+                        <img id="annotResult" src="" alt="Annotated" onclick="openImageModal(this.src)">
+                    </div>
+                </div>
+                <div class="annotations-box">
+                    <div class="annotations-title">
+                        <span>📝</span>
+                        <span>印尼语碎碎念</span>
+                    </div>
+                    <div class="annotations-content" id="annotationsText"></div>
+                </div>
+                <div style="margin-top: 20px; display: flex; gap: 12px;">
+                    <button class="btn btn-secondary" style="flex: 1;" id="camFavBtn" onclick="toggleFavorite()">
+                        <span id="camFavText">⭐ 收藏</span>
+                    </button>
+                    <button class="btn btn-secondary" style="flex: 1;" onclick="resetUpload()">再拍一张</button>
+                    <button class="btn btn-primary" style="flex: 1;" onclick="goToHome()">返回首页</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page" id="historyPage">
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon">⭐</div>
+                    <span class="logo-text">收藏夹</span>
+                </div>
+            </div>
+            
+            <div class="section-title">
+                <span>我的收藏</span>
+            </div>
+            
+            <div class="history-grid" id="historyGrid">
+                <div class="empty-state" id="historyEmpty">
+                    <div class="empty-icon">⭐</div>
+                    <div class="empty-text">还没有收藏哦，快去收藏吧！</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page" id="detailPage">
+            <div class="header">
+                <div class="logo" style="cursor: pointer;" onclick="goToHome()">
+                    <span style="font-size: 20px;">←</span>
+                    <span class="logo-text" style="margin-left: 8px; font-size: 16px;">返回</span>
+                </div>
+            </div>
+            
+            <div class="result-container" style="display: block;">
+                <div class="result-images">
+                    <div class="result-img-card">
+                        <div class="result-img-label">原图</div>
+                        <img id="detailOrig" src="" alt="Original" onclick="openImageModal(this.src)">
+                    </div>
+                    <div class="result-img-card">
+                        <div class="result-img-label">注解图</div>
+                        <img id="detailAnnot" src="" alt="Annotated" onclick="openImageModal(this.src)">
+                    </div>
+                </div>
+                <div class="annotations-box">
+                    <div class="annotations-title">
+                        <span>📝</span>
+                        <span>印尼语碎碎念</span>
+                    </div>
+                    <div class="annotations-content" id="detailAnnotations"></div>
+                </div>
+                <div style="margin-top: 20px; display: flex; gap: 12px;">
+                    <button class="btn btn-secondary" style="flex: 1;" id="detailFavBtn" onclick="toggleFavorite()">
+                        <span id="detailFavText">⭐ 收藏</span>
+                    </button>
+                    <button class="btn btn-primary" style="flex: 1;" onclick="goToHome()">返回首页</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page" id="profilePage">
+            <div class="header">
+                <div class="logo">
+                    <div class="logo-icon">👤</div>
+                    <span class="logo-text">我的</span>
+                </div>
+            </div>
+            
+            <div class="card" style="text-align: center; padding: 32px 20px;">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-light) 0%, #F5F4FF 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 48px; margin: 0 auto 16px;">🤖</div>
+                <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">Lensa 用户</div>
+                <div style="font-size: 13px; color: var(--text-secondary);">拍下世界，学会印尼语</div>
+            </div>
+            
+            <div class="card">
+                <div class="section-title" style="margin-bottom: 16px;">
+                    <span>学习数据</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; text-align: center;">
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--primary);" id="profileWords">0</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">已学单词</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--secondary);" id="profilePhotos">0</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">拍摄照片</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--accent);">0</div>
+                        <div style="font-size: 12px; color: var(--text-secondary);">连续学习</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-nav">
+            <div class="nav-item active" onclick="goToHome()" data-page="homePage">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">首页</span>
+            </div>
+            <div class="nav-item" onclick="goToHistory()" data-page="historyPage">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label">学习</span>
+            </div>
+            <div class="nav-item" onclick="goToProfile()" data-page="profilePage">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">我的</span>
+            </div>
+        </div>
+        
+        <div class="floating-camera" onclick="goToCamera()">📷</div>
+    </div>
+    
+    <!-- Image Modal -->
+    <div class="image-modal" id="imageModal" onclick="closeImageModal()">
+        <div class="image-modal-content" onclick="event.stopPropagation()">
+            <span class="image-modal-close" onclick="closeImageModal()">×</span>
+            <img id="modalImage" src="" alt="Full size">
+        </div>
+    </div>
+    
+    <script>
+        let currentTaskId = null;
+        let historyData = [];
+        let currentViewingItem = null;
+        let favorites = JSON.parse(localStorage.getItem('lensa_favorites') || '[]');
+        
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+        
+        uploadZone.addEventListener('click', () => fileInput.click());
+        uploadZone.addEventListener('dragover', e => { 
+            e.preventDefault(); 
+            uploadZone.classList.add('dragover'); 
+        });
+        uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('dragover'));
+        uploadZone.addEventListener('drop', e => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+        });
+        fileInput.addEventListener('change', e => { 
+            if (e.target.files.length) handleFile(e.target.files[0]); 
+        });
+        
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            const navItem = document.querySelector(`.nav-item[data-page="${pageId}"]`);
+            if (navItem) navItem.classList.add('active');
+        }
+        
+        function goToHome() {
+            showPage('homePage');
+            loadHomeHistory();
+        }
+        
+        function goToCamera() {
+            showPage('cameraPage');
+            resetUpload();
+        }
+        
+        function goToHistory() {
+            showPage('historyPage');
+            loadHistory();
+        }
+        
+        function goToProfile() {
+            showPage('profilePage');
+            updateStats();
+        }
+        
+        function goToDetail(index) {
+            const item = historyData[index];
+            currentViewingItem = item;
+            document.getElementById('detailOrig').src = item.original_url || '';
+            document.getElementById('detailAnnot').src = item.result_url;
+            document.getElementById('detailAnnotations').innerHTML = formatAnnotations(item.annotations) || '暂无注解内容';
+            updateFavoriteButton('detail', item.task_id);
+            showPage('detailPage');
+        }
+        
+        function isFavorite(taskId) {
+            return favorites.includes(taskId);
+        }
+        
+        function toggleFavorite() {
+            const item = currentViewingItem;
+            if (!item || !item.task_id) return;
+            
+            if (isFavorite(item.task_id)) {
+                favorites = favorites.filter(id => id !== item.task_id);
+            } else {
+                favorites.push(item.task_id);
+            }
+            
+            localStorage.setItem('lensa_favorites', JSON.stringify(favorites));
+            updateFavoriteButton('detail', item.task_id);
+            updateFavoriteButton('cam', item.task_id);
+        }
+        
+        function updateFavoriteButton(type, taskId) {
+            const favText = type === 'detail' ? 'detailFavText' : 'camFavText';
+            const favBtn = type === 'detail' ? 'detailFavBtn' : 'camFavBtn';
+            const textEl = document.getElementById(favText);
+            const btnEl = document.getElementById(favBtn);
+            
+            if (!textEl || !btnEl) return;
+            
+            if (isFavorite(taskId)) {
+                textEl.textContent = '⭐ 已收藏';
+                btnEl.classList.add('btn-primary');
+                btnEl.classList.remove('btn-secondary');
+            } else {
+                textEl.textContent = '⭐ 收藏';
+                btnEl.classList.remove('btn-primary');
+                btnEl.classList.add('btn-secondary');
+            }
+        }
+        
+        function resetUpload() {
+            document.getElementById('previewContainer').classList.remove('show');
+            document.getElementById('progressContainer').classList.remove('show');
+            document.getElementById('resultContainer').classList.remove('show');
+            document.getElementById('uploadZone').style.display = 'block';
+            document.getElementById('startBtn').disabled = false;
+            fileInput.value = '';
+            currentTaskId = null;
+        }
+        
+        async function handleFile(file) {
+            if (!file.type.startsWith('image/')) { 
+                alert('请选择图片文件'); 
+                return; 
+            }
+            
+            document.getElementById('previewImg').src = URL.createObjectURL(file);
+            document.getElementById('fileName').textContent = file.name;
+            document.getElementById('fileSize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+            
+            document.getElementById('uploadZone').style.display = 'none';
+            document.getElementById('previewContainer').classList.add('show');
+            document.getElementById('startBtn').disabled = false;
+            
+            const fd = new FormData();
+            fd.append('file', file);
+            try {
+                const res = await fetch('/api/upload', { method: 'POST', body: fd });
+                const data = await res.json();
+                currentTaskId = data.task_id;
+            } catch (e) {
+                alert('上传失败: ' + e.message);
+            }
+        }
+        
+        async function startAnnotation() {
+            if (!currentTaskId) return;
+            
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('previewContainer').classList.remove('show');
+            document.getElementById('progressContainer').classList.add('show');
+            
+            updateProgress({ status: 'processing', step: 'starting', progress: 5, message: '准备中...' });
+            
+            try {
+                await fetch('/api/annotate/' + currentTaskId, { method: 'POST' });
+                pollStatus();
+            } catch (e) {
+                updateProgress({ status: 'error', message: e.message, progress: 0 });
+            }
+        }
+        
+        function pollStatus() {
+            const interval = setInterval(async () => {
+                try {
+                    const res = await fetch('/api/status/' + currentTaskId);
+                    const data = await res.json();
+                    updateProgress(data);
+                    if (data.status === 'completed' || data.status === 'error') {
+                        clearInterval(interval);
+                        if (data.status === 'completed') showResult(data);
+                    }
+                } catch (e) {
+                    clearInterval(interval);
+                }
+            }, 1500);
+        }
+        
+        function updateProgress(data) {
+            const bar = document.getElementById('progressBar');
+            const pct = document.getElementById('progressPct');
+            const msg = document.getElementById('progressMsg');
+            const step = document.getElementById('stepText');
+            
+            bar.style.width = (data.progress || 0) + '%';
+            pct.textContent = (data.progress || 0) + '%';
+            msg.textContent = data.message || '';
+            
+            if (data.status === 'processing') {
+                const stepLabel = data.step === 'recognizing' ? '🔍 正在识别图片...' : 
+                                 data.step === 'annotating' ? '🎨 正在生成注解...' : '处理中...';
+                step.innerHTML = stepLabel;
+            } else if (data.status === 'error') {
+                step.textContent = '出错了';
+                step.style.color = '#e74c3c';
+            }
+        }
+        
+        function speakIndonesian(text, button) {
+            if (!text) return;
+            
+            // 提取印尼语内容（去掉前面的item name）
+            let speakText = text;
+            const colonIndex = text.indexOf(':');
+            if (colonIndex !== -1) {
+                speakText = text.substring(colonIndex + 1).trim();
+            }
+            
+            if (!('speechSynthesis' in window)) {
+                alert('您的浏览器不支持语音朗读功能');
+                return;
+            }
+            
+            window.speechSynthesis.cancel();
+            
+            const utterance = new SpeechSynthesisUtterance(speakText);
+            utterance.lang = 'id-ID'; // 印尼语
+            utterance.rate = 0.9; // 稍微慢一点
+            utterance.pitch = 1.1; // 稍微高一点
+            
+            // 播放动画
+            if (button) {
+                button.classList.add('speaking');
+                utterance.onend = () => button.classList.remove('speaking');
+            }
+            
+            window.speechSynthesis.speak(utterance);
+        }
+        
+        function formatAnnotations(text) {
+            if (!text) return '';
+            
+            const lines = text.trim().split('\n').filter(line => line.trim());
+            let html = '';
+            
+            lines.forEach(line => {
+                const parts = line.split('|');
+                if (parts.length >= 2) {
+                    const indo = parts[0].trim();
+                    const chinese = parts[1].trim();
+                    html += `
+                        <div class="annotation-item">
+                            <div class="annotation-indo">
+                                <span class="annotation-text">${indo}</span>
+                                <button class="speak-btn" onclick="speakIndonesian('${indo.replace(/'/g, "\\'")}', this)">🔊</button>
+                            </div>
+                            <div class="annotation-chinese">${chinese}</div>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="annotation-item">
+                            <div class="annotation-indo">
+                                <span class="annotation-text">${line.trim()}</span>
+                                <button class="speak-btn" onclick="speakIndonesian('${line.replace(/'/g, "\\'")}', this)">🔊</button>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            return html;
+        }
+        
+        function showResult(data) {
+            document.getElementById('progressContainer').classList.remove('show');
+            document.getElementById('resultContainer').classList.add('show');
+            document.getElementById('origResult').src = data.original_url;
+            document.getElementById('annotResult').src = data.result_url;
+            document.getElementById('annotationsText').innerHTML = formatAnnotations(data.annotations);
+            
+            currentViewingItem = {
+                task_id: currentTaskId,
+                original_url: data.original_url,
+                result_url: data.result_url,
+                annotations: data.annotations,
+                created_at: data.created_at
+            };
+            
+            updateFavoriteButton('cam', currentTaskId);
+            
+            loadHomeHistory();
+            loadHistory();
+            updateStats();
+        }
+        
+        async function loadHistory() {
+            try {
+                const res = await fetch('/api/history');
+                const items = await res.json();
+                historyData = items;
+                
+                const grid = document.getElementById('historyGrid');
+                const empty = document.getElementById('historyEmpty');
+                
+                const favoriteItems = items.filter(item => isFavorite(item.task_id));
+                
+                if (!favoriteItems.length) {
+                    grid.innerHTML = '';
+                    grid.appendChild(empty);
+                    empty.style.display = 'block';
+                    return;
+                }
+                
+                empty.style.display = 'none';
+                grid.innerHTML = favoriteItems.map((item) => {
+                    const originalIndex = items.findIndex(i => i.task_id === item.task_id);
+                    return `
+                        <div class="history-item" onclick="goToDetail(${originalIndex})">
+                            <img src="${item.result_url}" alt="Result">
+                            <div class="history-meta">${item.created_at || item.task_id.slice(0, 8)}</div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (e) {
+                console.error(e);
+            }
+        }
+        
+        async function loadHomeHistory() {
+            try {
+                const res = await fetch('/api/history');
+                const items = await res.json();
+                historyData = items;
+                
+                const grid = document.getElementById('homeHistoryGrid');
+                
+                if (!items.length) {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">📷</div>
+                            <div class="empty-text">还没有照片哦，快来拍一张吧！</div>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                grid.innerHTML = items.map((item, index) => `
+                    <div class="history-item" onclick="goToDetail(${index})">
+                        <img src="${item.result_url}" alt="Result">
+                        <div class="history-meta">${item.created_at || item.task_id.slice(0, 8)}</div>
+                    </div>
+                `).join('');
+            } catch (e) {
+                console.error(e);
+            }
+        }
+        
+        function updateStats() {
+            const count = historyData.length;
+            document.getElementById('totalWords').textContent = count * 3;
+            document.getElementById('totalPhotos').textContent = count;
+            document.getElementById('profileWords').textContent = count * 3;
+            document.getElementById('profilePhotos').textContent = count;
+        }
+        
+        loadHomeHistory();
+        loadHistory();
+        
+        // Image Modal Functions
+        function openImageModal(imgSrc) {
+            document.getElementById('modalImage').src = imgSrc;
+            document.getElementById('imageModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>

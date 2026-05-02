@@ -1,0 +1,32 @@
+# Configuration file with API keys
+.env
+config.py
+
+# Uploaded images
+uploads/
+results/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Redis dump
+dump.rdb

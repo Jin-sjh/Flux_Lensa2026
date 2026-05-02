@@ -1,0 +1,4002 @@
+[
+  {
+    "word": "saya",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "我（正式）",
+    "translation_en": "I / me (formal)",
+    "example_sentence": "Saya mahasiswa di universitas ini."
+  },
+  {
+    "word": "kamu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "你",
+    "translation_en": "you (informal)",
+    "example_sentence": "Kamu mau pergi ke mana?"
+  },
+  {
+    "word": "dia",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "他/她",
+    "translation_en": "he / she / it",
+    "example_sentence": "Dia tinggal di Jakarta."
+  },
+  {
+    "word": "kita",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "我们（包括听者）",
+    "translation_en": "we (including listener)",
+    "example_sentence": "Kita pergi bersama ya."
+  },
+  {
+    "word": "kami",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "我们（不包括听者）",
+    "translation_en": "we (excluding listener)",
+    "example_sentence": "Kami sudah makan."
+  },
+  {
+    "word": "mereka",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "他们",
+    "translation_en": "they / them",
+    "example_sentence": "Mereka belajar bahasa Indonesia."
+  },
+  {
+    "word": "ini",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "这个",
+    "translation_en": "this",
+    "example_sentence": "Buku ini sangat bagus."
+  },
+  {
+    "word": "itu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "那个",
+    "translation_en": "that",
+    "example_sentence": "Rumah itu sangat besar."
+  },
+  {
+    "word": "apa",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "什么",
+    "translation_en": "what",
+    "example_sentence": "Apa nama kamu?"
+  },
+  {
+    "word": "siapa",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "谁",
+    "translation_en": "who",
+    "example_sentence": "Siapa orang itu?"
+  },
+  {
+    "word": "di mana",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "在哪里",
+    "translation_en": "where",
+    "example_sentence": "Di mana rumah kamu?"
+  },
+  {
+    "word": "kapan",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "什么时候",
+    "translation_en": "when",
+    "example_sentence": "Kapan kamu datang?"
+  },
+  {
+    "word": "bagaimana",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "怎么样",
+    "translation_en": "how",
+    "example_sentence": "Bagaimana kabar kamu?"
+  },
+  {
+    "word": "berapa",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "多少",
+    "translation_en": "how many / how much",
+    "example_sentence": "Berapa harganya?"
+  },
+  {
+    "word": "tidak",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "不（否定）",
+    "translation_en": "not / no",
+    "example_sentence": "Saya tidak suka kopi."
+  },
+  {
+    "word": "sudah",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "已经",
+    "translation_en": "already",
+    "example_sentence": "Saya sudah makan."
+  },
+  {
+    "word": "belum",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "还没",
+    "translation_en": "not yet",
+    "example_sentence": "Saya belum makan."
+  },
+  {
+    "word": "sedang",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "正在（进行体标记）",
+    "translation_en": "currently / in progress",
+    "example_sentence": "Saya sedang makan."
+  },
+  {
+    "word": "terlalu",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "太/过于",
+    "translation_en": "too / excessively",
+    "example_sentence": "Ini terlalu mahal."
+  },
+  {
+    "word": "cukup",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "足够",
+    "translation_en": "enough",
+    "example_sentence": "Ini cukup untuk saya."
+  },
+  {
+    "word": "lagi",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "再/又",
+    "translation_en": "again / still",
+    "example_sentence": "Saya mau minum lagi."
+  },
+  {
+    "word": "juga",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "也",
+    "translation_en": "also / too",
+    "example_sentence": "Saya juga suka kopi."
+  },
+  {
+    "word": "hanya",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "只/仅仅",
+    "translation_en": "only",
+    "example_sentence": "Saya hanya punya sedikit uang."
+  },
+  {
+    "word": "selalu",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "总是",
+    "translation_en": "always",
+    "example_sentence": "Dia selalu datang tepat waktu."
+  },
+  {
+    "word": "sering",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "经常",
+    "translation_en": "often",
+    "example_sentence": "Saya sering pergi ke pasar."
+  },
+  {
+    "word": "sekarang",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "现在",
+    "translation_en": "now",
+    "example_sentence": "Saya sedang belajar sekarang."
+  },
+  {
+    "word": "nanti",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "等一下/之后",
+    "translation_en": "later",
+    "example_sentence": "Kita bicara nanti ya."
+  },
+  {
+    "word": "kemarin",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "昨天",
+    "translation_en": "yesterday",
+    "example_sentence": "Kemarin saya pergi ke rumah teman."
+  },
+  {
+    "word": "besok",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "明天",
+    "translation_en": "tomorrow",
+    "example_sentence": "Besok saya pergi ke sekolah."
+  },
+  {
+    "word": "setiap",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "每",
+    "translation_en": "every / each",
+    "example_sentence": "Saya belajar setiap hari."
+  },
+  {
+    "word": "sebelum",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "在...之前",
+    "translation_en": "before",
+    "example_sentence": "Cuci tangan sebelum makan."
+  },
+  {
+    "word": "sesudah",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "在...之后",
+    "translation_en": "after",
+    "example_sentence": "Sesudah makan, saya tidur."
+  },
+  {
+    "word": "di",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "在（地点）",
+    "translation_en": "in / at (location)",
+    "example_sentence": "Saya tinggal di Jakarta."
+  },
+  {
+    "word": "ke",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "到/去（方向）",
+    "translation_en": "to (direction)",
+    "example_sentence": "Saya pergi ke sekolah."
+  },
+  {
+    "word": "dari",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "从",
+    "translation_en": "from",
+    "example_sentence": "Saya datang dari China."
+  },
+  {
+    "word": "dengan",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "和/用",
+    "translation_en": "with / by",
+    "example_sentence": "Saya pergi dengan teman."
+  },
+  {
+    "word": "untuk",
+    "pos": "adverb",
+    "cefr_level": "A1",
+    "translation_zh": "为了/给",
+    "translation_en": "for",
+    "example_sentence": "Ini untuk kamu."
+  },
+  {
+    "word": "ada",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "有/存在",
+    "translation_en": "there is / to exist",
+    "example_sentence": "Ada buku di meja."
+  },
+  {
+    "word": "punya",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "拥有",
+    "translation_en": "to have / to own",
+    "example_sentence": "Saya punya dua buku."
+  },
+  {
+    "word": "bisa",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "能/可以",
+    "translation_en": "can / to be able to",
+    "example_sentence": "Saya bisa berbahasa Indonesia."
+  },
+  {
+    "word": "makan",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "吃",
+    "translation_en": "to eat",
+    "example_sentence": "Saya makan nasi setiap pagi."
+  },
+  {
+    "word": "minum",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "喝",
+    "translation_en": "to drink",
+    "example_sentence": "Saya minum air setiap hari."
+  },
+  {
+    "word": "pergi",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "去",
+    "translation_en": "to go",
+    "example_sentence": "Dia pergi ke sekolah setiap hari."
+  },
+  {
+    "word": "datang",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "来",
+    "translation_en": "to come",
+    "example_sentence": "Tolong datang ke rumah saya."
+  },
+  {
+    "word": "lihat",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "看",
+    "translation_en": "to see",
+    "example_sentence": "Saya melihat burung di pohon."
+  },
+  {
+    "word": "dengar",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "听",
+    "translation_en": "to hear",
+    "example_sentence": "Saya mendengar musik setiap malam."
+  },
+  {
+    "word": "baca",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "读",
+    "translation_en": "to read",
+    "example_sentence": "Saya membaca buku di perpustakaan."
+  },
+  {
+    "word": "tulis",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "写",
+    "translation_en": "to write",
+    "example_sentence": "Dia menulis surat untuk ibu."
+  },
+  {
+    "word": "bicara",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "说/说话",
+    "translation_en": "to speak",
+    "example_sentence": "Dia berbicara bahasa Indonesia dengan baik."
+  },
+  {
+    "word": "kerja",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "工作",
+    "translation_en": "to work",
+    "example_sentence": "Ayah saya bekerja di kantor."
+  },
+  {
+    "word": "tidur",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "睡觉",
+    "translation_en": "to sleep",
+    "example_sentence": "Anak itu tidur di kamar."
+  },
+  {
+    "word": "bangun",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "起床",
+    "translation_en": "to wake up",
+    "example_sentence": "Saya bangun pagi-pagi setiap hari."
+  },
+  {
+    "word": "duduk",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "坐",
+    "translation_en": "to sit",
+    "example_sentence": "Silakan duduk di sini."
+  },
+  {
+    "word": "berdiri",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "站",
+    "translation_en": "to stand",
+    "example_sentence": "Dia berdiri di depan kelas."
+  },
+  {
+    "word": "jalan",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "走路/路",
+    "translation_en": "to walk / road",
+    "example_sentence": "Saya berjalan ke taman bersama."
+  },
+  {
+    "word": "lari",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "跑",
+    "translation_en": "to run",
+    "example_sentence": "Anak-anak berlari di halaman."
+  },
+  {
+    "word": "beri",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "给",
+    "translation_en": "to give",
+    "example_sentence": "Ibu memberi saya uang."
+  },
+  {
+    "word": "ambil",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "拿",
+    "translation_en": "to take",
+    "example_sentence": "Tolong ambil buku itu."
+  },
+  {
+    "word": "buka",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "打开",
+    "translation_en": "to open",
+    "example_sentence": "Silakan membuka pintu."
+  },
+  {
+    "word": "tutup",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "关闭",
+    "translation_en": "to close",
+    "example_sentence": "Tolong menutup jendela."
+  },
+  {
+    "word": "beli",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "买",
+    "translation_en": "to buy",
+    "example_sentence": "Saya membeli buah di pasar."
+  },
+  {
+    "word": "jual",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "卖",
+    "translation_en": "to sell",
+    "example_sentence": "Paman menjual sayur di pasar."
+  },
+  {
+    "word": "masak",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "做饭",
+    "translation_en": "to cook",
+    "example_sentence": "Ibu memasak nasi goreng untuk makan malam."
+  },
+  {
+    "word": "cuci",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "洗",
+    "translation_en": "to wash",
+    "example_sentence": "Saya mencuci tangan sebelum makan."
+  },
+  {
+    "word": "pakai",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "穿/用",
+    "translation_en": "to wear / to use",
+    "example_sentence": "Dia memakai baju merah hari ini."
+  },
+  {
+    "word": "pulang",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "回家",
+    "translation_en": "to go home",
+    "example_sentence": "Saya pulang jam lima."
+  },
+  {
+    "word": "mau",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "想要",
+    "translation_en": "to want",
+    "example_sentence": "Saya mau minum kopi."
+  },
+  {
+    "word": "suka",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "喜欢",
+    "translation_en": "to like",
+    "example_sentence": "Saya suka makan nasi goreng."
+  },
+  {
+    "word": "tahu",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "知道",
+    "translation_en": "to know",
+    "example_sentence": "Saya tahu dia dari sekolah."
+  },
+  {
+    "word": "mandi",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "洗澡",
+    "translation_en": "to take a bath",
+    "example_sentence": "Saya mandi setiap pagi."
+  },
+  {
+    "word": "bermain",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "玩",
+    "translation_en": "to play",
+    "example_sentence": "Anak-anak bermain di taman."
+  },
+  {
+    "word": "lupa",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "忘记",
+    "translation_en": "to forget",
+    "example_sentence": "Saya lupa membawa buku."
+  },
+  {
+    "word": "ingat",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "记得",
+    "translation_en": "to remember",
+    "example_sentence": "Saya ingat wajahnya."
+  },
+  {
+    "word": "berhenti",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "停",
+    "translation_en": "to stop",
+    "example_sentence": "Bus berhenti di halte."
+  },
+  {
+    "word": "mulai",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "开始",
+    "translation_en": "to start / to begin",
+    "example_sentence": "Film mulai jam tujuh."
+  },
+  {
+    "word": "coba",
+    "pos": "verb",
+    "cefr_level": "A1",
+    "translation_zh": "尝试",
+    "translation_en": "to try",
+    "example_sentence": "Silakan mencoba makanan ini."
+  },
+  {
+    "word": "nasi",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "米饭",
+    "translation_en": "rice",
+    "example_sentence": "Nasi adalah makanan pokok di Indonesia."
+  },
+  {
+    "word": "air",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "水",
+    "translation_en": "water",
+    "example_sentence": "Saya minum air setelah berlari."
+  },
+  {
+    "word": "kopi",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "咖啡",
+    "translation_en": "coffee",
+    "example_sentence": "Saya minum kopi setiap pagi."
+  },
+  {
+    "word": "teh",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "茶",
+    "translation_en": "tea",
+    "example_sentence": "Ibu membuat teh manis."
+  },
+  {
+    "word": "buah",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "水果",
+    "translation_en": "fruit",
+    "example_sentence": "Saya suka makan buah segar."
+  },
+  {
+    "word": "sayur",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "蔬菜",
+    "translation_en": "vegetable",
+    "example_sentence": "Ibu memasak sayur untuk makan malam."
+  },
+  {
+    "word": "ikan",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "鱼",
+    "translation_en": "fish",
+    "example_sentence": "Ikan di pasar sangat segar."
+  },
+  {
+    "word": "ayam",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "鸡",
+    "translation_en": "chicken",
+    "example_sentence": "Kami makan ayam goreng."
+  },
+  {
+    "word": "telur",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "蛋",
+    "translation_en": "egg",
+    "example_sentence": "Saya makan telur untuk sarapan."
+  },
+  {
+    "word": "roti",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "面包",
+    "translation_en": "bread",
+    "example_sentence": "Saya makan roti setiap pagi."
+  },
+  {
+    "word": "makanan",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "食物",
+    "translation_en": "food",
+    "example_sentence": "Makanan Indonesia sangat enak."
+  },
+  {
+    "word": "rumah",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "房子/家",
+    "translation_en": "house / home",
+    "example_sentence": "Rumah saya besar dan bersih."
+  },
+  {
+    "word": "sekolah",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "学校",
+    "translation_en": "school",
+    "example_sentence": "Anak itu pergi ke sekolah setiap hari."
+  },
+  {
+    "word": "kantor",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "办公室",
+    "translation_en": "office",
+    "example_sentence": "Ayah bekerja di kantor."
+  },
+  {
+    "word": "kamar",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "房间",
+    "translation_en": "room",
+    "example_sentence": "Kamar saya kecil tapi bersih."
+  },
+  {
+    "word": "pasar",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "市场",
+    "translation_en": "market",
+    "example_sentence": "Ibu pergi ke pasar setiap pagi."
+  },
+  {
+    "word": "taman",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "公园",
+    "translation_en": "park / garden",
+    "example_sentence": "Anak-anak bermain di taman."
+  },
+  {
+    "word": "dapur",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "厨房",
+    "translation_en": "kitchen",
+    "example_sentence": "Ibu memasak di dapur."
+  },
+  {
+    "word": "buku",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "书",
+    "translation_en": "book",
+    "example_sentence": "Buku itu ada di meja."
+  },
+  {
+    "word": "meja",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "桌子",
+    "translation_en": "table",
+    "example_sentence": "Makanan ada di meja."
+  },
+  {
+    "word": "kursi",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "椅子",
+    "translation_en": "chair",
+    "example_sentence": "Silakan duduk di kursi itu."
+  },
+  {
+    "word": "pintu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "门",
+    "translation_en": "door",
+    "example_sentence": "Tolong buka pintu."
+  },
+  {
+    "word": "jendela",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "窗户",
+    "translation_en": "window",
+    "example_sentence": "Angin masuk dari jendela."
+  },
+  {
+    "word": "mobil",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "汽车",
+    "translation_en": "car",
+    "example_sentence": "Mobil saya berwarna putih."
+  },
+  {
+    "word": "motor",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "摩托车",
+    "translation_en": "motorcycle",
+    "example_sentence": "Banyak orang naik motor di Jakarta."
+  },
+  {
+    "word": "telepon",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "电话",
+    "translation_en": "telephone / phone",
+    "example_sentence": "Tolong jawab telepon."
+  },
+  {
+    "word": "kunci",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "钥匙",
+    "translation_en": "key",
+    "example_sentence": "Saya kehilangan kunci rumah."
+  },
+  {
+    "word": "lampu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "灯",
+    "translation_en": "lamp / light",
+    "example_sentence": "Tolong nyalakan lampu."
+  },
+  {
+    "word": "foto",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "照片",
+    "translation_en": "photo / picture",
+    "example_sentence": "Foto ini sangat bagus."
+  },
+  {
+    "word": "surat",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "信",
+    "translation_en": "letter",
+    "example_sentence": "Saya menulis surat untuk teman."
+  },
+  {
+    "word": "pakaian",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "衣服",
+    "translation_en": "clothes",
+    "example_sentence": "Pakaian baru saya sangat bagus."
+  },
+  {
+    "word": "baju",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "衣服/衬衫",
+    "translation_en": "shirt / clothes",
+    "example_sentence": "Baju ini terlalu besar."
+  },
+  {
+    "word": "celana",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "裤子",
+    "translation_en": "pants / trousers",
+    "example_sentence": "Celana baru saya bagus."
+  },
+  {
+    "word": "sepatu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "鞋子",
+    "translation_en": "shoe",
+    "example_sentence": "Sepatu baru saya bagus."
+  },
+  {
+    "word": "topi",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "帽子",
+    "translation_en": "hat / cap",
+    "example_sentence": "Dia memakai topi hitam."
+  },
+  {
+    "word": "tas",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "包",
+    "translation_en": "bag",
+    "example_sentence": "Tas saya berat sekali."
+  },
+  {
+    "word": "orang",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "人",
+    "translation_en": "person / people",
+    "example_sentence": "Orang itu sangat baik."
+  },
+  {
+    "word": "ibu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "妈妈",
+    "translation_en": "mother",
+    "example_sentence": "Ibu memasak di dapur."
+  },
+  {
+    "word": "ayah",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "爸爸",
+    "translation_en": "father",
+    "example_sentence": "Ayah pergi bekerja setiap hari."
+  },
+  {
+    "word": "anak",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "孩子",
+    "translation_en": "child",
+    "example_sentence": "Anak itu bermain di taman."
+  },
+  {
+    "word": "teman",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "朋友",
+    "translation_en": "friend",
+    "example_sentence": "Teman saya datang ke rumah."
+  },
+  {
+    "word": "keluarga",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "家庭",
+    "translation_en": "family",
+    "example_sentence": "Keluarga saya tinggal di Jakarta."
+  },
+  {
+    "word": "kakak",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "哥哥/姐姐",
+    "translation_en": "older sibling",
+    "example_sentence": "Kakak saya bekerja di rumah sakit."
+  },
+  {
+    "word": "adik",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "弟弟/妹妹",
+    "translation_en": "younger sibling",
+    "example_sentence": "Adik saya masih kecil."
+  },
+  {
+    "word": "suami",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "丈夫",
+    "translation_en": "husband",
+    "example_sentence": "Suami saya bekerja di kantor."
+  },
+  {
+    "word": "istri",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "妻子",
+    "translation_en": "wife",
+    "example_sentence": "Istrinya sangat cantik."
+  },
+  {
+    "word": "nama",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "名字",
+    "translation_en": "name",
+    "example_sentence": "Nama saya Budi."
+  },
+  {
+    "word": "tangan",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "手",
+    "translation_en": "hand",
+    "example_sentence": "Cuci tangan sebelum makan."
+  },
+  {
+    "word": "mata",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "眼睛",
+    "translation_en": "eye",
+    "example_sentence": "Mata saya berwarna hitam."
+  },
+  {
+    "word": "kepala",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "头",
+    "translation_en": "head",
+    "example_sentence": "Kepala saya sakit."
+  },
+  {
+    "word": "mulut",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "嘴",
+    "translation_en": "mouth",
+    "example_sentence": "Tutup mulut kamu."
+  },
+  {
+    "word": "hidung",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "鼻子",
+    "translation_en": "nose",
+    "example_sentence": "Hidungnya tajam."
+  },
+  {
+    "word": "telinga",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "耳朵",
+    "translation_en": "ear",
+    "example_sentence": "Telinga saya sakit."
+  },
+  {
+    "word": "kaki",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "脚/腿",
+    "translation_en": "foot / leg",
+    "example_sentence": "Kaki saya lelah setelah berjalan."
+  },
+  {
+    "word": "perut",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "肚子",
+    "translation_en": "stomach",
+    "example_sentence": "Perut saya lapar."
+  },
+  {
+    "word": "rambut",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "头发",
+    "translation_en": "hair",
+    "example_sentence": "Rambutnya panjang dan hitam."
+  },
+  {
+    "word": "waktu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "时间",
+    "translation_en": "time",
+    "example_sentence": "Waktu sudah malam."
+  },
+  {
+    "word": "hari",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "天/日",
+    "translation_en": "day",
+    "example_sentence": "Hari ini cuaca sangat baik."
+  },
+  {
+    "word": "malam",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "晚上",
+    "translation_en": "night",
+    "example_sentence": "Malam ini saya belajar di rumah."
+  },
+  {
+    "word": "pagi",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "早上",
+    "translation_en": "morning",
+    "example_sentence": "Selamat pagi, apa kabar?"
+  },
+  {
+    "word": "siang",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "中午/白天",
+    "translation_en": "noon / daytime",
+    "example_sentence": "Selamat siang, Bu."
+  },
+  {
+    "word": "sore",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "傍晚",
+    "translation_en": "late afternoon",
+    "example_sentence": "Sore ini saya olahraga."
+  },
+  {
+    "word": "tahun",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "年",
+    "translation_en": "year",
+    "example_sentence": "Tahun ini cuaca sangat panas."
+  },
+  {
+    "word": "bulan",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "月/月亮",
+    "translation_en": "month / moon",
+    "example_sentence": "Bulan depan saya libur."
+  },
+  {
+    "word": "minggu",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "周/星期",
+    "translation_en": "week / Sunday",
+    "example_sentence": "Satu minggu ada tujuh hari."
+  },
+  {
+    "word": "jam",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "钟/小时",
+    "translation_en": "hour / clock",
+    "example_sentence": "Saya belajar dua jam setiap hari."
+  },
+  {
+    "word": "hujan",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "雨",
+    "translation_en": "rain",
+    "example_sentence": "Hari ini turun hujan."
+  },
+  {
+    "word": "matahari",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "太阳",
+    "translation_en": "sun",
+    "example_sentence": "Matahari bersinar terik."
+  },
+  {
+    "word": "bunga",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "花",
+    "translation_en": "flower",
+    "example_sentence": "Bunga di taman sangat cantik."
+  },
+  {
+    "word": "pohon",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "树",
+    "translation_en": "tree",
+    "example_sentence": "Pohon itu sangat tinggi."
+  },
+  {
+    "word": "gunung",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "山",
+    "translation_en": "mountain",
+    "example_sentence": "Gunung itu sangat tinggi."
+  },
+  {
+    "word": "laut",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "海",
+    "translation_en": "sea",
+    "example_sentence": "Lautnya sangat biru."
+  },
+  {
+    "word": "langit",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "天空",
+    "translation_en": "sky",
+    "example_sentence": "Langit hari ini biru."
+  },
+  {
+    "word": "cuaca",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "天气",
+    "translation_en": "weather",
+    "example_sentence": "Cuaca hari ini sangat panas."
+  },
+  {
+    "word": "sungai",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "河流",
+    "translation_en": "river",
+    "example_sentence": "Sungai ini panjang sekali."
+  },
+  {
+    "word": "tanah",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "土地/地面",
+    "translation_en": "land / ground",
+    "example_sentence": "Tanah di sini sangat subur."
+  },
+  {
+    "word": "negara",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "国家",
+    "translation_en": "country",
+    "example_sentence": "Indonesia adalah negara yang besar."
+  },
+  {
+    "word": "kota",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "城市",
+    "translation_en": "city",
+    "example_sentence": "Jakarta adalah kota besar."
+  },
+  {
+    "word": "uang",
+    "pos": "noun",
+    "cefr_level": "A1",
+    "translation_zh": "钱",
+    "translation_en": "money",
+    "example_sentence": "Saya tidak punya uang."
+  },
+  {
+    "word": "besar",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "大的",
+    "translation_en": "big",
+    "example_sentence": "Rumah itu sangat besar."
+  },
+  {
+    "word": "kecil",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "小的",
+    "translation_en": "small",
+    "example_sentence": "Kucing itu kecil dan lucu."
+  },
+  {
+    "word": "baik",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "好的",
+    "translation_en": "good",
+    "example_sentence": "Dia adalah orang yang baik."
+  },
+  {
+    "word": "buruk",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "坏的",
+    "translation_en": "bad",
+    "example_sentence": "Cuaca hari ini sangat buruk."
+  },
+  {
+    "word": "panas",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "热的",
+    "translation_en": "hot",
+    "example_sentence": "Airnya sangat panas."
+  },
+  {
+    "word": "dingin",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "冷的",
+    "translation_en": "cold",
+    "example_sentence": "Es krim sangat dingin."
+  },
+  {
+    "word": "baru",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "新的",
+    "translation_en": "new",
+    "example_sentence": "Saya punya buku baru."
+  },
+  {
+    "word": "lama",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "旧的/久的",
+    "translation_en": "old / long time",
+    "example_sentence": "Rumah itu sudah lama."
+  },
+  {
+    "word": "cantik",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "漂亮的",
+    "translation_en": "beautiful",
+    "example_sentence": "Bunga itu sangat cantik."
+  },
+  {
+    "word": "bagus",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "好的/棒的",
+    "translation_en": "nice / good",
+    "example_sentence": "Film itu sangat bagus."
+  },
+  {
+    "word": "enak",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "好吃的/舒服的",
+    "translation_en": "delicious / comfortable",
+    "example_sentence": "Makanan ini sangat enak."
+  },
+  {
+    "word": "mahal",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "贵的",
+    "translation_en": "expensive",
+    "example_sentence": "Harga mobil itu mahal."
+  },
+  {
+    "word": "murah",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "便宜的",
+    "translation_en": "cheap",
+    "example_sentence": "Sayur di pasar sangat murah."
+  },
+  {
+    "word": "bersih",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "干净的",
+    "translation_en": "clean",
+    "example_sentence": "Kamar ini sangat bersih."
+  },
+  {
+    "word": "kotor",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "脏的",
+    "translation_en": "dirty",
+    "example_sentence": "Baju ini sudah kotor."
+  },
+  {
+    "word": "cepat",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "快的",
+    "translation_en": "fast",
+    "example_sentence": "Mobil itu sangat cepat."
+  },
+  {
+    "word": "lambat",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "慢的",
+    "translation_en": "slow",
+    "example_sentence": "Internet di sini sangat lambat."
+  },
+  {
+    "word": "jauh",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "远的",
+    "translation_en": "far",
+    "example_sentence": "Sekolah itu jauh dari rumah."
+  },
+  {
+    "word": "dekat",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "近的",
+    "translation_en": "near",
+    "example_sentence": "Taman itu dekat dari sini."
+  },
+  {
+    "word": "banyak",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "多的/许多",
+    "translation_en": "many / much",
+    "example_sentence": "Banyak orang di pasar."
+  },
+  {
+    "word": "sedikit",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "少的/一点",
+    "translation_en": "a little / few",
+    "example_sentence": "Saya hanya punya sedikit uang."
+  },
+  {
+    "word": "tinggi",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "高的",
+    "translation_en": "tall / high",
+    "example_sentence": "Pohon itu sangat tinggi."
+  },
+  {
+    "word": "rendah",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "低的",
+    "translation_en": "low / short",
+    "example_sentence": "Harga sayur rendah sekali."
+  },
+  {
+    "word": "panjang",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "长的",
+    "translation_en": "long",
+    "example_sentence": "Jalan ini sangat panjang."
+  },
+  {
+    "word": "pendek",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "短的",
+    "translation_en": "short",
+    "example_sentence": "Rambutnya pendek."
+  },
+  {
+    "word": "lebar",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "宽的",
+    "translation_en": "wide",
+    "example_sentence": "Jalan itu sangat lebar."
+  },
+  {
+    "word": "sempit",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "窄的",
+    "translation_en": "narrow",
+    "example_sentence": "Jalan ini sangat sempit."
+  },
+  {
+    "word": "berat",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "重的",
+    "translation_en": "heavy",
+    "example_sentence": "Tas ini sangat berat."
+  },
+  {
+    "word": "ringan",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "轻的",
+    "translation_en": "light (weight)",
+    "example_sentence": "Buku ini ringan sekali."
+  },
+  {
+    "word": "lapar",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "饿的",
+    "translation_en": "hungry",
+    "example_sentence": "Saya lapar, mau makan."
+  },
+  {
+    "word": "haus",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "渴的",
+    "translation_en": "thirsty",
+    "example_sentence": "Saya haus, mau minum."
+  },
+  {
+    "word": "lelah",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "累的",
+    "translation_en": "tired",
+    "example_sentence": "Saya lelah setelah bekerja."
+  },
+  {
+    "word": "sehat",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "健康的",
+    "translation_en": "healthy",
+    "example_sentence": "Kakek saya masih sehat."
+  },
+  {
+    "word": "sakit",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "生病的/疼的",
+    "translation_en": "sick / painful",
+    "example_sentence": "Kepala saya sakit."
+  },
+  {
+    "word": "senang",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "高兴的",
+    "translation_en": "happy / glad",
+    "example_sentence": "Saya senang bertemu kamu."
+  },
+  {
+    "word": "sedih",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "伤心的",
+    "translation_en": "sad",
+    "example_sentence": "Dia sedih karena gagal ujian."
+  },
+  {
+    "word": "putih",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "白色的",
+    "translation_en": "white",
+    "example_sentence": "Baju putih itu milik saya."
+  },
+  {
+    "word": "hitam",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "黑色的",
+    "translation_en": "black",
+    "example_sentence": "Kucing hitam itu di halaman."
+  },
+  {
+    "word": "merah",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "红色的",
+    "translation_en": "red",
+    "example_sentence": "Bunga merah itu sangat cantik."
+  },
+  {
+    "word": "kuning",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "黄色的",
+    "translation_en": "yellow",
+    "example_sentence": "Bunga kuning itu cantik."
+  },
+  {
+    "word": "hijau",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "绿色的",
+    "translation_en": "green",
+    "example_sentence": "Rumputnya sangat hijau."
+  },
+  {
+    "word": "biru",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "蓝色的",
+    "translation_en": "blue",
+    "example_sentence": "Langit hari ini biru."
+  },
+  {
+    "word": "satu",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "一",
+    "translation_en": "one",
+    "example_sentence": "Saya punya satu buku."
+  },
+  {
+    "word": "dua",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "二",
+    "translation_en": "two",
+    "example_sentence": "Saya punya dua anak."
+  },
+  {
+    "word": "tiga",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "三",
+    "translation_en": "three",
+    "example_sentence": "Ada tiga kucing di rumah."
+  },
+  {
+    "word": "empat",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "四",
+    "translation_en": "four",
+    "example_sentence": "Ada empat orang di kamar."
+  },
+  {
+    "word": "lima",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "五",
+    "translation_en": "five",
+    "example_sentence": "Saya bangun jam lima."
+  },
+  {
+    "word": "enam",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "六",
+    "translation_en": "six",
+    "example_sentence": "Enam orang datang ke pesta."
+  },
+  {
+    "word": "tujuh",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "七",
+    "translation_en": "seven",
+    "example_sentence": "Ada tujuh hari dalam seminggu."
+  },
+  {
+    "word": "delapan",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "八",
+    "translation_en": "eight",
+    "example_sentence": "Jam delapan saya berangkat."
+  },
+  {
+    "word": "sembilan",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "九",
+    "translation_en": "nine",
+    "example_sentence": "Sembilan orang duduk di sana."
+  },
+  {
+    "word": "sepuluh",
+    "pos": "adjective",
+    "cefr_level": "A1",
+    "translation_zh": "十",
+    "translation_en": "ten",
+    "example_sentence": "Saya punya sepuluh jari."
+  },
+  {
+    "word": "dan",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "和",
+    "translation_en": "and",
+    "example_sentence": "Saya suka nasi dan ayam."
+  },
+  {
+    "word": "tapi",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "但是",
+    "translation_en": "but",
+    "example_sentence": "Saya mau pergi tapi hujan."
+  },
+  {
+    "word": "karena",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "因为",
+    "translation_en": "because",
+    "example_sentence": "Saya tidak pergi karena hujan."
+  },
+  {
+    "word": "atau",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "或者",
+    "translation_en": "or",
+    "example_sentence": "Kamu mau kopi atau teh?"
+  },
+  {
+    "word": "kalau",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "如果",
+    "translation_en": "if",
+    "example_sentence": "Kalau hujan, saya tidak pergi."
+  },
+  {
+    "word": "tetapi",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "但是（正式）",
+    "translation_en": "but (formal)",
+    "example_sentence": "Saya mau pergi tetapi hujan."
+  },
+  {
+    "word": "supaya",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "以便/为了",
+    "translation_en": "so that / in order to",
+    "example_sentence": "Belajar keras supaya lulus ujian."
+  },
+  {
+    "word": "meskipun",
+    "pos": "conjunction",
+    "cefr_level": "A1",
+    "translation_zh": "虽然",
+    "translation_en": "although / even though",
+    "example_sentence": "Meskipun hujan, saya tetap pergi."
+  },
+  {
+    "word": "mengerti",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "理解/明白",
+    "translation_en": "to understand",
+    "example_sentence": "Saya mengerti apa yang kamu bilang."
+  },
+  {
+    "word": "merasa",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "感觉",
+    "translation_en": "to feel",
+    "example_sentence": "Saya merasa senang hari ini."
+  },
+  {
+    "word": "berpikir",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "思考/想",
+    "translation_en": "to think",
+    "example_sentence": "Saya berpikir ini ide yang bagus."
+  },
+  {
+    "word": "berubah",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "改变",
+    "translation_en": "to change",
+    "example_sentence": "Cuaca bisa berubah dengan cepat."
+  },
+  {
+    "word": "mencoba",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "尝试",
+    "translation_en": "to try / to attempt",
+    "example_sentence": "Saya mencoba memasak masakan baru."
+  },
+  {
+    "word": "berhasil",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "成功",
+    "translation_en": "to succeed",
+    "example_sentence": "Dia berhasil lulus ujian."
+  },
+  {
+    "word": "gagal",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "失败",
+    "translation_en": "to fail",
+    "example_sentence": "Dia gagal dalam ujian."
+  },
+  {
+    "word": "setuju",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "同意",
+    "translation_en": "to agree",
+    "example_sentence": "Saya setuju dengan pendapatmu."
+  },
+  {
+    "word": "menolak",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "拒绝",
+    "translation_en": "to refuse / to reject",
+    "example_sentence": "Dia menolak tawaran itu."
+  },
+  {
+    "word": "mengirim",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "发送",
+    "translation_en": "to send",
+    "example_sentence": "Saya mengirim email ke kantor."
+  },
+  {
+    "word": "menerima",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "接受/收到",
+    "translation_en": "to receive / to accept",
+    "example_sentence": "Saya menerima undangan pesta."
+  },
+  {
+    "word": "mengundang",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "邀请",
+    "translation_en": "to invite",
+    "example_sentence": "Kami mengundang teman untuk makan malam."
+  },
+  {
+    "word": "menghubungi",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "联系",
+    "translation_en": "to contact",
+    "example_sentence": "Saya menghubungi dia kemarin."
+  },
+  {
+    "word": "memutuskan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "决定",
+    "translation_en": "to decide",
+    "example_sentence": "Saya memutuskan untuk pindah."
+  },
+  {
+    "word": "memilih",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "选择",
+    "translation_en": "to choose / to elect",
+    "example_sentence": "Silakan memilih menu yang kamu suka."
+  },
+  {
+    "word": "menghadapi",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "面对",
+    "translation_en": "to face / to confront",
+    "example_sentence": "Kita harus menghadapi masalah ini."
+  },
+  {
+    "word": "mengatasi",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "克服/解决",
+    "translation_en": "to overcome / to solve",
+    "example_sentence": "Kita bisa mengatasi masalah ini."
+  },
+  {
+    "word": "berlibur",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "度假",
+    "translation_en": "to go on holiday",
+    "example_sentence": "Kami berlibur ke Bali bulan depan."
+  },
+  {
+    "word": "mengajar",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "教",
+    "translation_en": "to teach",
+    "example_sentence": "Ibu mengajar bahasa Inggris di sekolah."
+  },
+  {
+    "word": "menggunakan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "使用",
+    "translation_en": "to use",
+    "example_sentence": "Saya menggunakan komputer untuk bekerja."
+  },
+  {
+    "word": "memperbaiki",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "修理/改进",
+    "translation_en": "to repair / to improve",
+    "example_sentence": "Dia memperbaiki mobil yang rusak."
+  },
+  {
+    "word": "meninggalkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "离开",
+    "translation_en": "to leave",
+    "example_sentence": "Dia meninggalkan rumah pagi-pagi."
+  },
+  {
+    "word": "berkumpul",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "聚集",
+    "translation_en": "to gather / to assemble",
+    "example_sentence": "Keluarga berkumpul saat lebaran."
+  },
+  {
+    "word": "menghabiskan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "花费/用完",
+    "translation_en": "to spend / to use up",
+    "example_sentence": "Saya menghabiskan uang untuk buku."
+  },
+  {
+    "word": "menyimpan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "保存/存放",
+    "translation_en": "to keep / to store",
+    "example_sentence": "Saya menyimpan uang di bank."
+  },
+  {
+    "word": "menghargai",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "尊重/欣赏",
+    "translation_en": "to appreciate / to respect",
+    "example_sentence": "Kita harus menghargai perbedaan."
+  },
+  {
+    "word": "menyelesaikan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "完成/解决",
+    "translation_en": "to finish / to solve",
+    "example_sentence": "Saya menyelesaikan pekerjaan rumah."
+  },
+  {
+    "word": "menyediakan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "提供",
+    "translation_en": "to provide / to supply",
+    "example_sentence": "Hotel ini menyediakan sarapan."
+  },
+  {
+    "word": "memperkenalkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "介绍",
+    "translation_en": "to introduce",
+    "example_sentence": "Perkenankan saya memperkenalkan diri."
+  },
+  {
+    "word": "menyapa",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "打招呼",
+    "translation_en": "to greet",
+    "example_sentence": "Dia menyapa saya dengan ramah."
+  },
+  {
+    "word": "berbicara",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "说话/演讲",
+    "translation_en": "to speak / to talk",
+    "example_sentence": "Dia berbicara di depan kelas."
+  },
+  {
+    "word": "mendengarkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "倾听",
+    "translation_en": "to listen",
+    "example_sentence": "Tolong mendengarkan penjelasan guru."
+  },
+  {
+    "word": "menulis",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "写",
+    "translation_en": "to write",
+    "example_sentence": "Dia menulis surat dengan rapi."
+  },
+  {
+    "word": "menjelaskan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "解释",
+    "translation_en": "to explain",
+    "example_sentence": "Guru menjelaskan materi dengan jelas."
+  },
+  {
+    "word": "mengulang",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "重复",
+    "translation_en": "to repeat",
+    "example_sentence": "Tolong mengulang kalimat itu."
+  },
+  {
+    "word": "melanjutkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "继续",
+    "translation_en": "to continue",
+    "example_sentence": "Kita melanjutkan belajar besok."
+  },
+  {
+    "word": "menemukan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "发现/找到",
+    "translation_en": "to find / to discover",
+    "example_sentence": "Saya menemukan buku yang hilang."
+  },
+  {
+    "word": "mencari",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "寻找",
+    "translation_en": "to look for / to search",
+    "example_sentence": "Saya mencari kunci yang hilang."
+  },
+  {
+    "word": "membawa",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "带/携带",
+    "translation_en": "to bring / to carry",
+    "example_sentence": "Dia membawa tas besar."
+  },
+  {
+    "word": "membantu",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "帮助",
+    "translation_en": "to help",
+    "example_sentence": "Tolong membantu saya."
+  },
+  {
+    "word": "menjawab",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "回答",
+    "translation_en": "to answer",
+    "example_sentence": "Dia menjawab pertanyaan guru."
+  },
+  {
+    "word": "bertanya",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "提问",
+    "translation_en": "to ask",
+    "example_sentence": "Silakan bertanya kalau tidak mengerti."
+  },
+  {
+    "word": "menganggap",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "认为",
+    "translation_en": "to consider / to regard",
+    "example_sentence": "Saya menganggap dia teman baik."
+  },
+  {
+    "word": "membutuhkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "需要",
+    "translation_en": "to need / to require",
+    "example_sentence": "Saya membutuhkan bantuan kamu."
+  },
+  {
+    "word": "memperhatikan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "注意/关注",
+    "translation_en": "to pay attention to",
+    "example_sentence": "Tolong memperhatikan penjelasan ini."
+  },
+  {
+    "word": "berlatih",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "练习",
+    "translation_en": "to practice",
+    "example_sentence": "Saya berlatih bahasa Indonesia setiap hari."
+  },
+  {
+    "word": "membangun",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "建造/建设",
+    "translation_en": "to build",
+    "example_sentence": "Mereka membangun rumah baru."
+  },
+  {
+    "word": "menambah",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "增加/添加",
+    "translation_en": "to add",
+    "example_sentence": "Tolong menambah gula di kopi."
+  },
+  {
+    "word": "mengurangi",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "减少",
+    "translation_en": "to reduce / to decrease",
+    "example_sentence": "Kita harus mengurangi sampah."
+  },
+  {
+    "word": "mengambil",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "拿/取",
+    "translation_en": "to take",
+    "example_sentence": "Silakan mengambil buku di meja."
+  },
+  {
+    "word": "menunggu",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "等待",
+    "translation_en": "to wait",
+    "example_sentence": "Saya menunggu bus di halte."
+  },
+  {
+    "word": "pekerjaan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "工作/职业",
+    "translation_en": "job / occupation",
+    "example_sentence": "Pekerjaan saya adalah guru."
+  },
+  {
+    "word": "pendidikan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "教育",
+    "translation_en": "education",
+    "example_sentence": "Pendidikan sangat penting."
+  },
+  {
+    "word": "kesehatan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "健康",
+    "translation_en": "health",
+    "example_sentence": "Kesehatan lebih penting dari uang."
+  },
+  {
+    "word": "masalah",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "问题",
+    "translation_en": "problem / issue",
+    "example_sentence": "Kita harus menyelesaikan masalah ini."
+  },
+  {
+    "word": "kesempatan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "机会",
+    "translation_en": "opportunity / chance",
+    "example_sentence": "Ini kesempatan yang bagus."
+  },
+  {
+    "word": "pengalaman",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "经验",
+    "translation_en": "experience",
+    "example_sentence": "Pengalaman mengajar sangat berharga."
+  },
+  {
+    "word": "kemampuan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "能力",
+    "translation_en": "ability / capability",
+    "example_sentence": "Kemampuan bahasanya sangat baik."
+  },
+  {
+    "word": "kebutuhan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "需求",
+    "translation_en": "need / requirement",
+    "example_sentence": "Kebutuhan pokok harus terpenuhi."
+  },
+  {
+    "word": "perasaan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "感觉/感情",
+    "translation_en": "feeling / emotion",
+    "example_sentence": "Perasaannya sangat sensitif."
+  },
+  {
+    "word": "pendapat",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "意见/观点",
+    "translation_en": "opinion",
+    "example_sentence": "Pendapat saya berbeda."
+  },
+  {
+    "word": "keadaan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "状况/情况",
+    "translation_en": "situation / condition",
+    "example_sentence": "Keadaan cuaca tidak menentu."
+  },
+  {
+    "word": "hobi",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "爱好",
+    "translation_en": "hobby",
+    "example_sentence": "Hobi saya membaca buku."
+  },
+  {
+    "word": "cerita",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "故事",
+    "translation_en": "story / tale",
+    "example_sentence": "Cerita ini sangat menarik."
+  },
+  {
+    "word": "jawaban",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "答案/回答",
+    "translation_en": "answer / response",
+    "example_sentence": "Jawaban kamu benar."
+  },
+  {
+    "word": "pertanyaan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "问题/提问",
+    "translation_en": "question",
+    "example_sentence": "Pertanyaan itu sulit."
+  },
+  {
+    "word": "rencana",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "计划",
+    "translation_en": "plan",
+    "example_sentence": "Rencana saya liburan ke Bali."
+  },
+  {
+    "word": "kebiasaan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "习惯",
+    "translation_en": "habit / custom",
+    "example_sentence": "Kebiasaan makan nasi setiap hari."
+  },
+  {
+    "word": "bahasa",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "语言",
+    "translation_en": "language",
+    "example_sentence": "Bahasa Indonesia tidak sulit."
+  },
+  {
+    "word": "budaya",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "文化",
+    "translation_en": "culture",
+    "example_sentence": "Budaya Indonesia sangat kaya."
+  },
+  {
+    "word": "sejarah",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "历史",
+    "translation_en": "history",
+    "example_sentence": "Sejarah Indonesia sangat panjang."
+  },
+  {
+    "word": "suhu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "温度",
+    "translation_en": "temperature",
+    "example_sentence": "Suhu hari ini 30 derajat."
+  },
+  {
+    "word": "harga",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "价格",
+    "translation_en": "price",
+    "example_sentence": "Harga beras naik."
+  },
+  {
+    "word": "warna",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "颜色",
+    "translation_en": "color",
+    "example_sentence": "Warna kesukaan saya biru."
+  },
+  {
+    "word": "bentuk",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "形状/形式",
+    "translation_en": "shape / form",
+    "example_sentence": "Bentuk bunga ini unik."
+  },
+  {
+    "word": "ukuran",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "尺寸/大小",
+    "translation_en": "size / measurement",
+    "example_sentence": "Ukuran baju ini terlalu besar."
+  },
+  {
+    "word": "bagian",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "部分",
+    "translation_en": "part / section",
+    "example_sentence": "Bagian ini sangat penting."
+  },
+  {
+    "word": "hasil",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "结果",
+    "translation_en": "result / outcome",
+    "example_sentence": "Hasil ujian sangat baik."
+  },
+  {
+    "word": "tujuan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "目的/目标",
+    "translation_en": "purpose / goal",
+    "example_sentence": "Tujuan saya belajar bahasa Indonesia."
+  },
+  {
+    "word": "cara",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "方法/方式",
+    "translation_en": "way / method",
+    "example_sentence": "Cara ini lebih mudah."
+  },
+  {
+    "word": "alasan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "原因/理由",
+    "translation_en": "reason",
+    "example_sentence": "Apa alasan kamu terlambat?"
+  },
+  {
+    "word": "perjalanan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "旅行/旅程",
+    "translation_en": "journey / trip",
+    "example_sentence": "Perjalanan ke Bali sangat menyenangkan."
+  },
+  {
+    "word": "tiket",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "票",
+    "translation_en": "ticket",
+    "example_sentence": "Saya membeli tiket pesawat."
+  },
+  {
+    "word": "hotel",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "酒店",
+    "translation_en": "hotel",
+    "example_sentence": "Hotel ini sangat nyaman."
+  },
+  {
+    "word": "bandara",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "机场",
+    "translation_en": "airport",
+    "example_sentence": "Kami pergi ke bandara."
+  },
+  {
+    "word": "stasiun",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "车站",
+    "translation_en": "station",
+    "example_sentence": "Tolong antar saya ke stasiun."
+  },
+  {
+    "word": "terminal",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "公交总站",
+    "translation_en": "bus terminal",
+    "example_sentence": "Bus berangkat dari terminal."
+  },
+  {
+    "word": "rumah sakit",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "医院",
+    "translation_en": "hospital",
+    "example_sentence": "Dia dirawat di rumah sakit."
+  },
+  {
+    "word": "perpustakaan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "图书馆",
+    "translation_en": "library",
+    "example_sentence": "Saya membaca buku di perpustakaan."
+  },
+  {
+    "word": "universitas",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "大学",
+    "translation_en": "university",
+    "example_sentence": "Saya belajar di universitas."
+  },
+  {
+    "word": "toko",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "商店",
+    "translation_en": "shop / store",
+    "example_sentence": "Saya membeli baju di toko."
+  },
+  {
+    "word": "restoran",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "餐厅",
+    "translation_en": "restaurant",
+    "example_sentence": "Kami makan di restoran."
+  },
+  {
+    "word": "apotek",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "药店",
+    "translation_en": "pharmacy",
+    "example_sentence": "Saya membeli obat di apotek."
+  },
+  {
+    "word": "bank",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "银行",
+    "translation_en": "bank",
+    "example_sentence": "Saya menabung di bank."
+  },
+  {
+    "word": "polisi",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "警察",
+    "translation_en": "police",
+    "example_sentence": "Polisi menjaga keamanan kota."
+  },
+  {
+    "word": "guru",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "老师",
+    "translation_en": "teacher",
+    "example_sentence": "Guru menjelaskan pelajaran dengan sabar."
+  },
+  {
+    "word": "dokter",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "医生",
+    "translation_en": "doctor",
+    "example_sentence": "Dokter memeriksa pasien."
+  },
+  {
+    "word": "perawat",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "护士",
+    "translation_en": "nurse",
+    "example_sentence": "Perawat merawat pasien di rumah sakit."
+  },
+  {
+    "word": "pelayan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "服务员",
+    "translation_en": "waiter / servant",
+    "example_sentence": "Pelayan membawa makanan ke meja."
+  },
+  {
+    "word": "pemilik",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "拥有者/老板",
+    "translation_en": "owner",
+    "example_sentence": "Pemilik toko sangat ramah."
+  },
+  {
+    "word": "pembeli",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "买家",
+    "translation_en": "buyer / customer",
+    "example_sentence": "Pembeli memilih barang di toko."
+  },
+  {
+    "word": "tetangga",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "邻居",
+    "translation_en": "neighbor",
+    "example_sentence": "Tetangga saya sangat baik."
+  },
+  {
+    "word": "tamu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "客人",
+    "translation_en": "guest",
+    "example_sentence": "Kami menerima tamu dari luar kota."
+  },
+  {
+    "word": "paman",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "叔叔/舅舅",
+    "translation_en": "uncle",
+    "example_sentence": "Paman tinggal di Surabaya."
+  },
+  {
+    "word": "bibi",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "阿姨/姑姑",
+    "translation_en": "aunt",
+    "example_sentence": "Bibi memasak kue."
+  },
+  {
+    "word": "kakek",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "爷爷/外公",
+    "translation_en": "grandfather",
+    "example_sentence": "Kakek saya sudah tua."
+  },
+  {
+    "word": "nenek",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "奶奶/外婆",
+    "translation_en": "grandmother",
+    "example_sentence": "Nenek saya sangat baik."
+  },
+  {
+    "word": "keponakan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "侄子/外甥",
+    "translation_en": "nephew / niece",
+    "example_sentence": "Keponakan saya lucu sekali."
+  },
+  {
+    "word": "obat",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "药",
+    "translation_en": "medicine / drug",
+    "example_sentence": "Saya minum obat setelah makan."
+  },
+  {
+    "word": "resep",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "处方/食谱",
+    "translation_en": "prescription / recipe",
+    "example_sentence": "Dokter menulis resep obat."
+  },
+  {
+    "word": "demam",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "发烧",
+    "translation_en": "fever",
+    "example_sentence": "Anak itu demam."
+  },
+  {
+    "word": "batuk",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "咳嗽",
+    "translation_en": "cough",
+    "example_sentence": "Dia batuk karena pilek."
+  },
+  {
+    "word": "pilek",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "感冒",
+    "translation_en": "cold (illness)",
+    "example_sentence": "Saya pilek karena hujan."
+  },
+  {
+    "word": "luka",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "伤口/受伤",
+    "translation_en": "wound / injury",
+    "example_sentence": "Lukanya tidak terlalu parah."
+  },
+  {
+    "word": "komputer",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "电脑",
+    "translation_en": "computer",
+    "example_sentence": "Saya menggunakan komputer untuk bekerja."
+  },
+  {
+    "word": "internet",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "互联网",
+    "translation_en": "internet",
+    "example_sentence": "Internet di sini cepat."
+  },
+  {
+    "word": "televisi",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "电视",
+    "translation_en": "television",
+    "example_sentence": "Saya menonton televisi setiap malam."
+  },
+  {
+    "word": "radio",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "收音机",
+    "translation_en": "radio",
+    "example_sentence": "Dia mendengarkan radio setiap pagi."
+  },
+  {
+    "word": "kamera",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "相机",
+    "translation_en": "camera",
+    "example_sentence": "Saya membawa kamera untuk foto."
+  },
+  {
+    "word": "charger",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "充电器",
+    "translation_en": "charger",
+    "example_sentence": "Charger telepon saya hilang."
+  },
+  {
+    "word": "agenda",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "议程/日程",
+    "translation_en": "agenda / schedule",
+    "example_sentence": "Agenda hari ini sangat padat."
+  },
+  {
+    "word": "janji",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "约定/承诺",
+    "translation_en": "promise / appointment",
+    "example_sentence": "Saya punya janji dengan dokter."
+  },
+  {
+    "word": "undangan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "邀请函",
+    "translation_en": "invitation",
+    "example_sentence": "Saya menerima undangan pernikahan."
+  },
+  {
+    "word": "berita",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "新闻",
+    "translation_en": "news",
+    "example_sentence": "Berita hari ini sangat mengejutkan."
+  },
+  {
+    "word": "iklan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "广告",
+    "translation_en": "advertisement",
+    "example_sentence": "Iklan di televisi sangat banyak."
+  },
+  {
+    "word": "film",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "电影",
+    "translation_en": "film / movie",
+    "example_sentence": "Film ini sangat menarik."
+  },
+  {
+    "word": "musik",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "音乐",
+    "translation_en": "music",
+    "example_sentence": "Saya suka mendengarkan musik."
+  },
+  {
+    "word": "lagu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "歌曲",
+    "translation_en": "song",
+    "example_sentence": "Lagu Indonesia sangat enak."
+  },
+  {
+    "word": "olahraga",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "运动",
+    "translation_en": "sport / exercise",
+    "example_sentence": "Olahraga penting untuk kesehatan."
+  },
+  {
+    "word": "sepak bola",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "足球",
+    "translation_en": "football / soccer",
+    "example_sentence": "Sepak bola adalah olahraga populer."
+  },
+  {
+    "word": "renang",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "游泳",
+    "translation_en": "swimming",
+    "example_sentence": "Saya suka renang di kolam."
+  },
+  {
+    "word": "benua",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "洲/大陆",
+    "translation_en": "continent",
+    "example_sentence": "Asia adalah benua terbesar."
+  },
+  {
+    "word": "pulau",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "岛屿",
+    "translation_en": "island",
+    "example_sentence": "Bali adalah pulau yang indah."
+  },
+  {
+    "word": "pantai",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "海滩",
+    "translation_en": "beach",
+    "example_sentence": "Pantai di Bali sangat cantik."
+  },
+  {
+    "word": "hutan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "森林",
+    "translation_en": "forest",
+    "example_sentence": "Hutan tropis sangat lebat."
+  },
+  {
+    "word": "jembatan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "桥",
+    "translation_en": "bridge",
+    "example_sentence": "Jembatan ini panjang sekali."
+  },
+  {
+    "word": "jalan raya",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "公路",
+    "translation_en": "highway / main road",
+    "example_sentence": "Jalan raya ini sangat ramai."
+  },
+  {
+    "word": "halte",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "公交站",
+    "translation_en": "bus stop",
+    "example_sentence": "Saya menunggu bus di halte."
+  },
+  {
+    "word": "parkir",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "停车场",
+    "translation_en": "parking",
+    "example_sentence": "Parkir di sini gratis."
+  },
+  {
+    "word": "bensin",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "汽油",
+    "translation_en": "gasoline / petrol",
+    "example_sentence": "Bensin mahal sekali sekarang."
+  },
+  {
+    "word": "rokok",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "香烟",
+    "translation_en": "cigarette",
+    "example_sentence": "Merokok tidak baik untuk kesehatan."
+  },
+  {
+    "word": "sabun",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "肥皂",
+    "translation_en": "soap",
+    "example_sentence": "Saya membeli sabun di toko."
+  },
+  {
+    "word": "sikat",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "刷子",
+    "translation_en": "brush",
+    "example_sentence": "Sikat gigi ada di kamar mandi."
+  },
+  {
+    "word": "handuk",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "毛巾",
+    "translation_en": "towel",
+    "example_sentence": "Handuk ini masih basah."
+  },
+  {
+    "word": "bantal",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "枕头",
+    "translation_en": "pillow",
+    "example_sentence": "Bantal ini sangat lembut."
+  },
+  {
+    "word": "selimut",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "毯子",
+    "translation_en": "blanket",
+    "example_sentence": "Selimut ini hangat sekali."
+  },
+  {
+    "word": "cermin",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "镜子",
+    "translation_en": "mirror",
+    "example_sentence": "Cermin di kamar mandi besar."
+  },
+  {
+    "word": "perhiasan",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "首饰",
+    "translation_en": "jewelry",
+    "example_sentence": "Perhiasan ini sangat mahal."
+  },
+  {
+    "word": "dompet",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "钱包",
+    "translation_en": "wallet",
+    "example_sentence": "Saya kehilangan dompet."
+  },
+  {
+    "word": "payung",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "伞",
+    "translation_en": "umbrella",
+    "example_sentence": "Bawa payung karena hujan."
+  },
+  {
+    "word": "penting",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "重要的",
+    "translation_en": "important",
+    "example_sentence": "Pendidikan sangat penting."
+  },
+  {
+    "word": "menarik",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "有趣的/吸引人的",
+    "translation_en": "interesting / attractive",
+    "example_sentence": "Cerita ini sangat menarik."
+  },
+  {
+    "word": "mudah",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "容易的",
+    "translation_en": "easy",
+    "example_sentence": "Bahasa Indonesia mudah dipelajari."
+  },
+  {
+    "word": "sulit",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "困难的",
+    "translation_en": "difficult",
+    "example_sentence": "Soal ini sangat sulit."
+  },
+  {
+    "word": "ramai",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "热闹的/拥挤的",
+    "translation_en": "crowded / busy",
+    "example_sentence": "Pasar sangat ramai pagi ini."
+  },
+  {
+    "word": "sepi",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "安静的/冷清的",
+    "translation_en": "quiet / deserted",
+    "example_sentence": "Jalan sepi pada malam hari."
+  },
+  {
+    "word": "aman",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "安全的",
+    "translation_en": "safe",
+    "example_sentence": "Kota ini cukup aman."
+  },
+  {
+    "word": "bahaya",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "危险的",
+    "translation_en": "dangerous",
+    "example_sentence": "Jalan ini bahaya pada malam hari."
+  },
+  {
+    "word": "nyaman",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "舒适的",
+    "translation_en": "comfortable",
+    "example_sentence": "Rumah ini sangat nyaman."
+  },
+  {
+    "word": "jelek",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "丑的/差的",
+    "translation_en": "ugly / bad",
+    "example_sentence": "Gambar ini jelek."
+  },
+  {
+    "word": "lembut",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "柔软的/温和的",
+    "translation_en": "soft / gentle",
+    "example_sentence": "Bantal ini sangat lembut."
+  },
+  {
+    "word": "keras",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "硬的/严厉的",
+    "translation_en": "hard / strict",
+    "example_sentence": "Roti ini keras sekali."
+  },
+  {
+    "word": "tajam",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "锋利的",
+    "translation_en": "sharp",
+    "example_sentence": "Pisau ini sangat tajam."
+  },
+  {
+    "word": "tumpul",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "钝的",
+    "translation_en": "blunt",
+    "example_sentence": "Pisau ini sudah tumpul."
+  },
+  {
+    "word": "basah",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "湿的",
+    "translation_en": "wet",
+    "example_sentence": "Baju ini masih basah."
+  },
+  {
+    "word": "kering",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "干的",
+    "translation_en": "dry",
+    "example_sentence": "Pakaian ini sudah kering."
+  },
+  {
+    "word": "tebal",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "厚的",
+    "translation_en": "thick",
+    "example_sentence": "Buku ini sangat tebal."
+  },
+  {
+    "word": "tipis",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "薄的",
+    "translation_en": "thin",
+    "example_sentence": "Kertas ini sangat tipis."
+  },
+  {
+    "word": "gelap",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "暗的",
+    "translation_en": "dark",
+    "example_sentence": "Kamar ini gelap sekali."
+  },
+  {
+    "word": "terang",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "亮的/明亮的",
+    "translation_en": "bright",
+    "example_sentence": "Ruangan ini sangat terang."
+  },
+  {
+    "word": "rapi",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "整齐的",
+    "translation_en": "neat / tidy",
+    "example_sentence": "Kamar ini sangat rapi."
+  },
+  {
+    "word": "ramah",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "友好的",
+    "translation_en": "friendly",
+    "example_sentence": "Orang di sini sangat ramah."
+  },
+  {
+    "word": "jujur",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "诚实的",
+    "translation_en": "honest",
+    "example_sentence": "Dia adalah orang yang jujur."
+  },
+  {
+    "word": "malas",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "懒的",
+    "translation_en": "lazy",
+    "example_sentence": "Dia malas bangun pagi."
+  },
+  {
+    "word": "rajin",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "勤奋的",
+    "translation_en": "diligent / hardworking",
+    "example_sentence": "Dia rajin belajar setiap hari."
+  },
+  {
+    "word": "pandai",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "聪明的/能干的",
+    "translation_en": "clever / skilled",
+    "example_sentence": "Dia pandai matematika."
+  },
+  {
+    "word": "bodoh",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "笨的",
+    "translation_en": "stupid / foolish",
+    "example_sentence": "Jangan bodoh, belajarlah."
+  },
+  {
+    "word": "sombong",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "傲慢的",
+    "translation_en": "arrogant / proud",
+    "example_sentence": "Dia sombong karena kaya."
+  },
+  {
+    "word": "malu",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "害羞的/羞愧的",
+    "translation_en": "shy / ashamed",
+    "example_sentence": "Dia malu berbicara di depan umum."
+  },
+  {
+    "word": "takut",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "害怕的",
+    "translation_en": "afraid / scared",
+    "example_sentence": "Saya takut gelap."
+  },
+  {
+    "word": "marah",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "生气的",
+    "translation_en": "angry",
+    "example_sentence": "Dia marah karena ditipu."
+  },
+  {
+    "word": "kagum",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "钦佩的",
+    "translation_en": "amazed / admiring",
+    "example_sentence": "Saya kagum dengan kemampuannya."
+  },
+  {
+    "word": "khusus",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "特别的/专门的",
+    "translation_en": "special",
+    "example_sentence": "Ini menu khusus untuk anak."
+  },
+  {
+    "word": "biasa",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "普通的/平常的",
+    "translation_en": "usual / ordinary",
+    "example_sentence": "Ini hari biasa untuk saya."
+  },
+  {
+    "word": "tua",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "老的",
+    "translation_en": "old (age)",
+    "example_sentence": "Kakek saya sudah tua."
+  },
+  {
+    "word": "muda",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "年轻的",
+    "translation_en": "young",
+    "example_sentence": "Dia masih muda."
+  },
+  {
+    "word": "lucu",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "可爱的/好笑的",
+    "translation_en": "cute / funny",
+    "example_sentence": "Kucing itu sangat lucu."
+  },
+  {
+    "word": "aneh",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "奇怪的",
+    "translation_en": "strange / weird",
+    "example_sentence": "Suara ini sangat aneh."
+  },
+  {
+    "word": "langka",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "稀有的/罕见的",
+    "translation_en": "rare",
+    "example_sentence": "Hewan ini sudah langka."
+  },
+  {
+    "word": "hampir",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "几乎",
+    "translation_en": "almost",
+    "example_sentence": "Saya hampir terlambat."
+  },
+  {
+    "word": "mungkin",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "也许/可能",
+    "translation_en": "maybe / perhaps",
+    "example_sentence": "Mungkin dia tidak datang."
+  },
+  {
+    "word": "sekitar",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "大约/周围",
+    "translation_en": "about / around",
+    "example_sentence": "Harganya sekitar seribu rupiah."
+  },
+  {
+    "word": "sambil",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "一边/同时",
+    "translation_en": "while / at the same time",
+    "example_sentence": "Saya makan sambil menonton televisi."
+  },
+  {
+    "word": "bahkan",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "甚至",
+    "translation_en": "even",
+    "example_sentence": "Dia bahkan tidak bilang terima kasih."
+  },
+  {
+    "word": "segera",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "立刻/马上",
+    "translation_en": "immediately / soon",
+    "example_sentence": "Tolong segera datang ke sini."
+  },
+  {
+    "word": "akhirnya",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "终于",
+    "translation_en": "finally",
+    "example_sentence": "Akhirnya dia datang juga."
+  },
+  {
+    "word": "baru-baru",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "最近",
+    "translation_en": "recently",
+    "example_sentence": "Saya baru-baru ini pindah ke sini."
+  },
+  {
+    "word": "sebetulnya",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "实际上",
+    "translation_en": "actually / in fact",
+    "example_sentence": "Sebetulnya saya tidak suka."
+  },
+  {
+    "word": "sebab",
+    "pos": "conjunction",
+    "cefr_level": "A2",
+    "translation_zh": "因为（正式）",
+    "translation_en": "because (formal)",
+    "example_sentence": "Saya tidak datang sebab sakit."
+  },
+  {
+    "word": "namun",
+    "pos": "conjunction",
+    "cefr_level": "A2",
+    "translation_zh": "然而",
+    "translation_en": "however / but",
+    "example_sentence": "Dia pandai namun malas."
+  },
+  {
+    "word": "sehingga",
+    "pos": "conjunction",
+    "cefr_level": "A2",
+    "translation_zh": "以至于",
+    "translation_en": "so that / as a result",
+    "example_sentence": "Dia belajar keras sehingga lulus."
+  },
+  {
+    "word": "walaupun",
+    "pos": "conjunction",
+    "cefr_level": "A2",
+    "translation_zh": "尽管",
+    "translation_en": "although / even though",
+    "example_sentence": "Walaupun sakit, dia tetap pergi."
+  },
+  {
+    "word": "menangis",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "哭",
+    "translation_en": "to cry",
+    "example_sentence": "Anak itu menangis karena jatuh."
+  },
+  {
+    "word": "tertawa",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "笑",
+    "translation_en": "to laugh",
+    "example_sentence": "Kami tertawa mendengar leluconnya."
+  },
+  {
+    "word": "tersenyum",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "微笑",
+    "translation_en": "to smile",
+    "example_sentence": "Dia tersenyum melihat kami."
+  },
+  {
+    "word": "bernyanyi",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "唱歌",
+    "translation_en": "to sing",
+    "example_sentence": "Dia bernyanyi dengan suara merdu."
+  },
+  {
+    "word": "menari",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "跳舞",
+    "translation_en": "to dance",
+    "example_sentence": "Anak-anak menari di pesta."
+  },
+  {
+    "word": "memasak",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "烹饪",
+    "translation_en": "to cook",
+    "example_sentence": "Ibu memasak makanan yang enak."
+  },
+  {
+    "word": "menyapu",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "扫地",
+    "translation_en": "to sweep",
+    "example_sentence": "Saya menyapu lantai setiap pagi."
+  },
+  {
+    "word": "mengepel",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "拖地",
+    "translation_en": "to mop",
+    "example_sentence": "Ibu mengepel lantai kamar."
+  },
+  {
+    "word": "menyetrika",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "熨烫",
+    "translation_en": "to iron",
+    "example_sentence": "Saya menyetrika baju untuk bekerja."
+  },
+  {
+    "word": "mencuci",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "洗",
+    "translation_en": "to wash",
+    "example_sentence": "Saya mencuci piring setelah makan."
+  },
+  {
+    "word": "memasukkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "放入",
+    "translation_en": "to put in / to insert",
+    "example_sentence": "Tolong memasukkan buku ke dalam tas."
+  },
+  {
+    "word": "mengeluarkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "拿出",
+    "translation_en": "to take out / to remove",
+    "example_sentence": "Dia mengeluarkan uang dari dompet."
+  },
+  {
+    "word": "membeli",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "买",
+    "translation_en": "to buy",
+    "example_sentence": "Saya membeli sayur di pasar."
+  },
+  {
+    "word": "menjual",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "卖",
+    "translation_en": "to sell",
+    "example_sentence": "Toko ini menjual buah segar."
+  },
+  {
+    "word": "menyewa",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "租",
+    "translation_en": "to rent",
+    "example_sentence": "Kami menyewa mobil untuk liburan."
+  },
+  {
+    "word": "meminjam",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "借",
+    "translation_en": "to borrow",
+    "example_sentence": "Saya meminjam buku dari perpustakaan."
+  },
+  {
+    "word": "menabung",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "存钱",
+    "translation_en": "to save money",
+    "example_sentence": "Saya menabung setiap bulan."
+  },
+  {
+    "word": "menghitung",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "计算/数",
+    "translation_en": "to count / to calculate",
+    "example_sentence": "Dia menghitung uang dengan teliti."
+  },
+  {
+    "word": "mengangkat",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "举起/拿起",
+    "translation_en": "to lift / to pick up",
+    "example_sentence": "Dia mengangkat tas yang berat."
+  },
+  {
+    "word": "meletakkan",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "放置",
+    "translation_en": "to put / to place",
+    "example_sentence": "Tolong meletakkan buku di meja."
+  },
+  {
+    "word": "menunggangi",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "骑",
+    "translation_en": "to ride",
+    "example_sentence": "Dia menunggangi kuda di padang."
+  },
+  {
+    "word": "menyetir",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "驾驶",
+    "translation_en": "to drive",
+    "example_sentence": "Ayah menyetir mobil ke kantor."
+  },
+  {
+    "word": "mendarat",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "着陆",
+    "translation_en": "to land",
+    "example_sentence": "Pesawat mendarat di bandara."
+  },
+  {
+    "word": "berangkat",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "出发",
+    "translation_en": "to depart / to leave",
+    "example_sentence": "Kami berangkat pagi-pagi."
+  },
+  {
+    "word": "tiba",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "到达",
+    "translation_en": "to arrive",
+    "example_sentence": "Kami tiba di Jakarta sore hari."
+  },
+  {
+    "word": "kembali",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "回来/返回",
+    "translation_en": "to return",
+    "example_sentence": "Dia kembali ke rumah setelah bekerja."
+  },
+  {
+    "word": "berdoa",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "祈祷",
+    "translation_en": "to pray",
+    "example_sentence": "Kami berdoa sebelum makan."
+  },
+  {
+    "word": "berterima kasih",
+    "pos": "verb",
+    "cefr_level": "A2",
+    "translation_zh": "感谢",
+    "translation_en": "to thank",
+    "example_sentence": "Saya berterima kasih atas bantuannya."
+  },
+  {
+    "word": "senin",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "星期一",
+    "translation_en": "Monday",
+    "example_sentence": "Senin adalah hari pertama dalam seminggu."
+  },
+  {
+    "word": "selasa",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "星期二",
+    "translation_en": "Tuesday",
+    "example_sentence": "Selasa saya ada rapat."
+  },
+  {
+    "word": "rabu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "星期三",
+    "translation_en": "Wednesday",
+    "example_sentence": "Rabu saya pergi ke gym."
+  },
+  {
+    "word": "kamis",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "星期四",
+    "translation_en": "Thursday",
+    "example_sentence": "Kamis ada ujian bahasa."
+  },
+  {
+    "word": "jumat",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "星期五",
+    "translation_en": "Friday",
+    "example_sentence": "Jumat adalah hari suci bagi umat Islam."
+  },
+  {
+    "word": "sabtu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "星期六",
+    "translation_en": "Saturday",
+    "example_sentence": "Sabtu saya libur."
+  },
+  {
+    "word": "januari",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "一月",
+    "translation_en": "January",
+    "example_sentence": "Januari adalah bulan pertama."
+  },
+  {
+    "word": "februari",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "二月",
+    "translation_en": "February",
+    "example_sentence": "Februari bulan pendek."
+  },
+  {
+    "word": "maret",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "三月",
+    "translation_en": "March",
+    "example_sentence": "Maret cuaca mulai panas."
+  },
+  {
+    "word": "april",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "四月",
+    "translation_en": "April",
+    "example_sentence": "April adalah bulah keempat."
+  },
+  {
+    "word": "mei",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "五月",
+    "translation_en": "May",
+    "example_sentence": "Mei saya punya ujian."
+  },
+  {
+    "word": "juni",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "六月",
+    "translation_en": "June",
+    "example_sentence": "Juni mulai libur sekolah."
+  },
+  {
+    "word": "juli",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "七月",
+    "translation_en": "July",
+    "example_sentence": "Juli cuaca sangat panas."
+  },
+  {
+    "word": "agustus",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "八月",
+    "translation_en": "August",
+    "example_sentence": "Agustus adalah bulan kemerdekaan Indonesia."
+  },
+  {
+    "word": "september",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "九月",
+    "translation_en": "September",
+    "example_sentence": "September mulai sekolah lagi."
+  },
+  {
+    "word": "oktober",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "十月",
+    "translation_en": "October",
+    "example_sentence": "Oktober cuaca mulai dingin."
+  },
+  {
+    "word": "november",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "十一月",
+    "translation_en": "November",
+    "example_sentence": "November hujan sering turun."
+  },
+  {
+    "word": "desember",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "十二月",
+    "translation_en": "December",
+    "example_sentence": "Desember akhir tahun."
+  },
+  {
+    "word": "kue",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "蛋糕/糕点",
+    "translation_en": "cake / pastry",
+    "example_sentence": "Ibu membuat kue ulang tahun."
+  },
+  {
+    "word": "gula",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "糖",
+    "translation_en": "sugar",
+    "example_sentence": "Tolong tambah gula di kopi."
+  },
+  {
+    "word": "garam",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "盐",
+    "translation_en": "salt",
+    "example_sentence": "Makanan ini kurang garam."
+  },
+  {
+    "word": "susu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "牛奶",
+    "translation_en": "milk",
+    "example_sentence": "Anak itu minum susu setiap pagi."
+  },
+  {
+    "word": "mentega",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "黄油",
+    "translation_en": "butter",
+    "example_sentence": "Saya memakai mentega untuk roti."
+  },
+  {
+    "word": "beras",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "大米",
+    "translation_en": "rice (uncooked)",
+    "example_sentence": "Harga beras naik lagi."
+  },
+  {
+    "word": "minyak",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "油",
+    "translation_en": "oil",
+    "example_sentence": "Ibu memasak dengan minyak goreng."
+  },
+  {
+    "word": "bumbu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "调料",
+    "translation_en": "spice / seasoning",
+    "example_sentence": "Bumbu masakan Indonesia sangat kaya."
+  },
+  {
+    "word": "piring",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "盘子",
+    "translation_en": "plate",
+    "example_sentence": "Tolong letakkan piring di meja."
+  },
+  {
+    "word": "gelas",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "杯子（玻璃）",
+    "translation_en": "glass",
+    "example_sentence": "Saya minum air dari gelas."
+  },
+  {
+    "word": "mangkuk",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "碗",
+    "translation_en": "bowl",
+    "example_sentence": "Nasi disajikan di mangkuk."
+  },
+  {
+    "word": "sendok",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "勺子",
+    "translation_en": "spoon",
+    "example_sentence": "Makan sup pakai sendok."
+  },
+  {
+    "word": "garpu",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "叉子",
+    "translation_en": "fork",
+    "example_sentence": "Makan steak pakai garpu."
+  },
+  {
+    "word": "pisau",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "刀",
+    "translation_en": "knife",
+    "example_sentence": "Pisau ini sangat tajam."
+  },
+  {
+    "word": "nasi goreng",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "炒饭",
+    "translation_en": "fried rice",
+    "example_sentence": "Nasi goreng adalah makanan khas Indonesia."
+  },
+  {
+    "word": "bakso",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "肉丸",
+    "translation_en": "meatball",
+    "example_sentence": "Bakso sangat populer di Indonesia."
+  },
+  {
+    "word": "sate",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "沙嗲/烤串",
+    "translation_en": "satay",
+    "example_sentence": "Sate ayam sangat enak."
+  },
+  {
+    "word": "rendang",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "仁当（干咖喱牛肉）",
+    "translation_en": "rendang",
+    "example_sentence": "Rendang berasal dari Padang."
+  },
+  {
+    "word": "tempe",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "天贝（发酵豆饼）",
+    "translation_en": "tempeh",
+    "example_sentence": "Tempe adalah makanan tradisional Indonesia."
+  },
+  {
+    "word": "pesawat",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "飞机",
+    "translation_en": "airplane",
+    "example_sentence": "Pesawat terbang tinggi di langit."
+  },
+  {
+    "word": "kapal",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "船",
+    "translation_en": "ship",
+    "example_sentence": "Kapal berlayar di laut."
+  },
+  {
+    "word": "sepeda",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "自行车",
+    "translation_en": "bicycle",
+    "example_sentence": "Saya bersepeda ke sekolah."
+  },
+  {
+    "word": "becak",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "三轮车",
+    "translation_en": "rickshaw",
+    "example_sentence": "Becak masih ada di Yogyakarta."
+  },
+  {
+    "word": "angkot",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "小巴",
+    "translation_en": "minibus",
+    "example_sentence": "Angkot adalah transportasi umum."
+  },
+  {
+    "word": "ojek",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "摩托车出租车",
+    "translation_en": "motorcycle taxi",
+    "example_sentence": "Saya naik ojek ke kantor."
+  },
+  {
+    "word": "kaya",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "富有的",
+    "translation_en": "rich / wealthy",
+    "example_sentence": "Dia kaya tapi tidak sombong."
+  },
+  {
+    "word": "miskin",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "贫穷的",
+    "translation_en": "poor",
+    "example_sentence": "Kita harus membantu orang miskin."
+  },
+  {
+    "word": "benar",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "正确的",
+    "translation_en": "correct / right",
+    "example_sentence": "Jawaban ini benar."
+  },
+  {
+    "word": "salah",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "错误的",
+    "translation_en": "wrong",
+    "example_sentence": "Jawaban ini salah."
+  },
+  {
+    "word": "bangga",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "骄傲的/自豪的",
+    "translation_en": "proud",
+    "example_sentence": "Saya bangga menjadi orang Indonesia."
+  },
+  {
+    "word": "lega",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "松了口气的",
+    "translation_en": "relieved",
+    "example_sentence": "Saya lega ujian sudah selesai."
+  },
+  {
+    "word": "gembira",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "快乐的",
+    "translation_en": "joyful / happy",
+    "example_sentence": "Anak-anak gembira bermain di taman."
+  },
+  {
+    "word": "kesal",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "烦恼的/恼火的",
+    "translation_en": "annoyed / frustrated",
+    "example_sentence": "Dia kesal karena kemacetan."
+  },
+  {
+    "word": "kecewa",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "失望的",
+    "translation_en": "disappointed",
+    "example_sentence": "Saya kecewa dengan hasilnya."
+  },
+  {
+    "word": "terkejut",
+    "pos": "adjective",
+    "cefr_level": "A2",
+    "translation_zh": "惊讶的",
+    "translation_en": "surprised / shocked",
+    "example_sentence": "Saya terkejut mendengar berita itu."
+  },
+  {
+    "word": "terima kasih",
+    "pos": "noun",
+    "cefr_level": "A2",
+    "translation_zh": "谢谢",
+    "translation_en": "thank you",
+    "example_sentence": "Terima kasih atas bantuannya."
+  },
+  {
+    "word": "maaf",
+    "pos": "adverb",
+    "cefr_level": "A2",
+    "translation_zh": "对不起/抱歉",
+    "translation_en": "sorry / excuse me",
+    "example_sentence": "Maaf, saya terlambat."
+  }
+]
