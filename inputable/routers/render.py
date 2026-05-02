@@ -9,22 +9,17 @@ from models.schemas import RenderResponse, Annotation, NewWord
 from models.db_models import LearningSession
 from services.image_gen import render_card, build_image_url
 from services.user_model import get_or_create_user
+from database import get_db
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
-def _get_db():
-    from main import get_db
-    return get_db
-
-
 @router.get("/api/render", response_model=RenderResponse)
 async def render(
     session_id: str,
-    db: AsyncSession = Depends(_get_db()),
+    db: AsyncSession = Depends(get_db),
 ):
-    # 1. Fetch session
     result = await db.execute(
         select(LearningSession).where(LearningSession.session_id == session_id)
     )
@@ -32,11 +27,9 @@ async def render(
     if session is None:
         raise HTTPException(status_code=404, detail={"error": "session not found"})
 
-    # 2. Get user CEFR
     user = await get_or_create_user(session.user_id, db)
     cefr = user.estimated_cefr
 
-    # 3. Parse annotations from stored generated_content
     raw_annotations = []
     if session.generated_content:
         raw_annotations = session.generated_content.get("annotations", [])
@@ -61,9 +54,8 @@ async def render(
     if session.generated_content:
         caption = session.generated_content.get("caption", "")
 
-    # 4. Call Image Gen service (with cache check inside render_card)
     try:
-        local_path = render_card(
+        local_path = await render_card(
             annotations=[ann.model_dump() for ann in annotations],
             caption=caption,
             cefr=cefr,
@@ -71,7 +63,6 @@ async def render(
             original_image_path=session.image_path,
         )
 
-        # 5. Update session with rendered image path
         session.rendered_image_path = local_path
         await db.commit()
 
@@ -79,5 +70,8 @@ async def render(
         return RenderResponse(rendered_image_url=image_url)
 
     except Exception as e:
-        logger.exception(f"Image generation failed for session {session_id}")
-        return RenderResponse(rendered_image_url=None, annotations=annotations)
+        logger.error(f"Image generation failed for session {session_id}: {e}")
+        raise HTTPException(
+            status_code=502,
+            detail={"error": "image generation failed", "detail": str(e)},
+        ) from e

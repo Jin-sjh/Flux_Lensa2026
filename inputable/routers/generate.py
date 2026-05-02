@@ -9,39 +9,30 @@ from models.db_models import LearningSession
 from services.sonnet_service import generate_annotations_with_fallback
 from services.image_utils import save_uploaded_image
 from services.user_model import get_or_create_user, get_learned_vocabulary
+from database import get_db
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
-def _get_db():
-    from main import get_db
-    return get_db
-
-
 @router.post("/api/generate", response_model=GenerateResponse)
 async def generate(
     request: GenerateRequest,
-    db: AsyncSession = Depends(_get_db()),
+    db: AsyncSession = Depends(get_db),
 ):
-    # 1. Resolve user (auto-create if new)
     user = await get_or_create_user(request.user_id, db)
     cefr = user.estimated_cefr
 
-    # 2. Save compressed image to disk
     try:
         image_path = save_uploaded_image(request.image, request.user_id)
     except Exception as e:
         logger.error(f"Failed to save image: {e}")
         raise HTTPException(status_code=400, detail=f"Invalid image data: {e}")
 
-    # 3. Load learned vocabulary for i+1 constraint
     learned_words = await get_learned_vocabulary(request.user_id, db)
 
-    # 4. Call Sonnet (async, with retry + fallback)
     result = await generate_annotations_with_fallback(request.image, cefr, learned_words)
 
-    # 5. Parse result into typed objects
     annotations = [
         Annotation(
             object=ann.get("object", ""),
@@ -66,14 +57,12 @@ async def generate(
         answer=task_raw.get("answer", ""),
     )
 
-    # 6. Collect all new words (flat, deduplicated list of word strings)
     all_new_words: list[str] = []
     for ann in annotations:
         for nw in ann.new_words:
             if nw.word and nw.word not in all_new_words:
                 all_new_words.append(nw.word)
 
-    # 7. Persist session to DB
     session_id = str(uuid.uuid4())
     try:
         session = LearningSession(

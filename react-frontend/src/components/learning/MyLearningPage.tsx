@@ -43,6 +43,9 @@ export default function MyLearningPage({
 
       <ImageUploader
         onImageSelect={onImageSelect}
+        onGenerate={onImageSelect}
+        showGenerateButton={true}
+        disabled={disabled}
         variant="default"
       />
 

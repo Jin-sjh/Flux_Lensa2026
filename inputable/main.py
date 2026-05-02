@@ -6,58 +6,63 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 from dotenv import load_dotenv
 
-# Load env before anything else so os.getenv() calls in services see the values
 load_dotenv()
 
-from models.db_models import Base
+from models.db_models import Base, User
 from services.vocab_cache import load_vocab_cache
+from services.llm_factory import LLMFactory
+from services.auth_service import hash_password
+from database import engine, AsyncSessionLocal, get_db
 
-# ── Logging ──────────────────────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ── Environment ───────────────────────────────────────────────────────────────
-# (load_dotenv already called above)
-
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./app.db")
 IMAGE_DIR = os.getenv("IMAGE_DIR", "images")
 ANKI_DIR = os.getenv("ANKI_DIR", "anki")
 BASE_URL = os.getenv("BASE_URL", "http://localhost:7860")
 
-# ── Database ──────────────────────────────────────────────────────────────────
-engine = create_async_engine(DATABASE_URL, echo=False)
-AsyncSessionLocal = async_sessionmaker(
-    engine, class_=AsyncSession, expire_on_commit=False
-)
 
-
-async def get_db():
-    async with AsyncSessionLocal() as session:
-        yield session
-
-
-# ── Lifespan ──────────────────────────────────────────────────────────────────
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Starting Lensa backend...")
 
-    if not os.getenv("ANTHROPIC_API_KEY"):
-        logger.warning("ANTHROPIC_API_KEY not set — Sonnet calls will fail")
-    if not os.getenv("OPENAI_API_KEY"):
-        logger.warning("OPENAI_API_KEY not set — Image generation will fail")
+    try:
+        LLMFactory.initialize()
+        logger.info("LLM Factory initialized successfully")
+        
+        if not LLMFactory.is_anthropic_available():
+            logger.warning("Anthropic client not available — Sonnet calls will fail")
+        if not LLMFactory.is_openai_available():
+            logger.warning("OpenAI client not available — Image generation will fail")
+    except Exception as e:
+        logger.error(f"Failed to initialize LLM Factory: {e}")
 
-    # Create DB tables
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     logger.info("Database tables created/verified")
 
-    # Load vocabulary into memory
+    async with AsyncSessionLocal() as session:
+        result = await session.execute(
+            select(User).where(User.email == "demo@lensa.example.com")
+        )
+        if not result.scalar_one_or_none():
+            demo_user = User(
+                email="demo@lensa.example.com",
+                name="Demo User",
+                password_hash=hash_password("123456"),
+                estimated_cefr="A1",
+                has_completed_test=False,
+            )
+            session.add(demo_user)
+            await session.commit()
+            logger.info("Default demo account created: demo@lensa.example.com / 123456")
+
     load_vocab_cache()
 
-    # Ensure required directories exist
     os.makedirs(IMAGE_DIR, exist_ok=True)
     os.makedirs(ANKI_DIR, exist_ok=True)
 
@@ -66,44 +71,58 @@ async def lifespan(app: FastAPI):
     await engine.dispose()
     logger.info("Lensa backend shut down")
 
-# ── App ───────────────────────────────────────────────────────────────────────
 app = FastAPI(title="Lensa Backend", version="1.0.0", lifespan=lifespan)
 
-# CORS — 允许前端访问
+cors_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173,http://127.0.0.1:4173",
+    ).split(",")
+    if origin.strip()
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Static file serving for generated images
 os.makedirs(IMAGE_DIR, exist_ok=True)
 app.mount("/images", StaticFiles(directory=IMAGE_DIR), name="images")
 
-# ── Routers ───────────────────────────────────────────────────────────────────
 from routers import generate, render, evaluate, export_anki, placement, auth
 
 app.include_router(generate.router)
 app.include_router(render.router)
 app.include_router(evaluate.router)
 app.include_router(export_anki.router)
-app.include_router(users.router)
 app.include_router(placement.router)
+app.include_router(auth.router)
 
 
-# ── Health ────────────────────────────────────────────────────────────────────
 @app.get("/health")
 async def health():
     return {"status": "ok", "version": "1.0.0"}
 
 
-# ── Global exception handler ──────────────────────────────────────────────────
 @app.exception_handler(Exception)
 async def generic_exception_handler(request: Request, exc: Exception):
     logger.error(f"Unhandled exception on {request.url}: {exc}", exc_info=True)
     return JSONResponse(
         status_code=500,
         content={"error": "internal server error", "detail": str(exc)},
+    )
+
+
+if __name__ == "__main__":
+    import uvicorn
+    
+    uvicorn.run(
+        "main:app",
+        host="127.0.0.1",
+        port=7860,
+        reload=True,
+        log_level="info"
     )

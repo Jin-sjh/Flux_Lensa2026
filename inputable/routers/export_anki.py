@@ -8,20 +8,16 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from models.db_models import User
 from services.anki_builder import build_deck
+from database import get_db
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
-def _get_db():
-    from main import get_db
-    return get_db
-
-
 @router.get("/api/export_anki")
 async def export_anki(
     user_id: str,
-    db: AsyncSession = Depends(_get_db()),
+    db: AsyncSession = Depends(get_db),
 ):
     # Verify user exists
     result = await db.execute(select(User).where(User.user_id == user_id))

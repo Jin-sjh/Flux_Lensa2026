@@ -20,9 +20,12 @@ async def db():
 @pytest.fixture
 def mock_sonnet(monkeypatch):
     """Mock Sonnet to return HARDCODED_DEFAULT without API call."""
+    async def mock_generate_annotations(*args, **kwargs):
+        return HARDCODED_DEFAULT
+    
     monkeypatch.setattr(
         "services.sonnet_service.generate_annotations",
-        lambda *args, **kwargs: HARDCODED_DEFAULT,
+        mock_generate_annotations,
     )
 
 
@@ -37,7 +40,7 @@ def mock_image_gen(monkeypatch, tmp_path):
         b"\xd8N\x00\x00\x00\x00IEND\xaeB`\x82"
     )
 
-    def fake_render(annotations, caption, cefr, session_id, original_image_path):
+    async def fake_render(annotations, caption, cefr, session_id, original_image_path):
         import os
         out = os.path.join("images", f"{session_id}.png")
         os.makedirs("images", exist_ok=True)

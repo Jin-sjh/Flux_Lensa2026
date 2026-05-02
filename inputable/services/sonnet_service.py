@@ -1,10 +1,11 @@
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
-import os
-
-from anthropic import AsyncAnthropic
+from models.schemas import Annotation, NewWord, OutputTask
+from services.llm_factory import LLMFactory
+from services.llm_base import LLMError
 
 logger = logging.getLogger(__name__)
 
@@ -72,7 +73,13 @@ async def generate_annotations(
     Returns parsed {annotations, caption, output_task}.
     Raises on failure — caller handles retry logic.
     """
-    client = AsyncAnthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    client = LLMFactory.get_anthropic_client()
+    if client is None:
+        logger.info("Anthropic client not available, falling back to OpenAI Vision")
+        client = LLMFactory.get_openai_client()
+        if client is None:
+            raise LLMError("No LLM client available")
+    
     words_list = learned_words[:60]
     style = _build_style_prompt(cefr)
     cap = CEFR_CAPS.get(cefr, 1)
@@ -104,36 +111,14 @@ async def generate_annotations(
 }}
 """
 
-    response = await client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=2048,
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "image",
-                        "source": {
-                            "type": "base64",
-                            "media_type": "image/jpeg",
-                            "data": image_base64,
-                        },
-                    },
-                    {"type": "text", "text": prompt_text},
-                ],
-            }
-        ],
+    response = await client.vision_completion(
+        image=image_base64,
+        prompt=prompt_text,
+        max_tokens=2048
     )
 
-    raw = response.content[0].text
-
-    # Strip markdown code fences if model wraps JSON in ```json ... ```
-    clean = raw.strip()
-    if clean.startswith("```"):
-        clean = clean.split("```", 2)[-1] if clean.count("```") >= 2 else clean
-        clean = clean.removeprefix("json").strip().rstrip("`").strip()
-
-    return json.loads(clean)
+    raw = response["content"]
+    return json.loads(raw)
 
 
 async def generate_annotations_with_fallback(
@@ -143,15 +128,11 @@ async def generate_annotations_with_fallback(
     for attempt in range(2):
         try:
             result = await generate_annotations(image_base64, cefr, learned_words)
-
-            # Hard-enforce i+1 cap: collect all new_words across annotations
             all_new_words = []
             for ann in result.get("annotations", []):
                 all_new_words.extend(ann.get("new_words", []))
 
             capped = enforce_i1_cap(all_new_words, cefr)
-
-            # Redistribute capped new_words back into annotations
             cap_remaining = len(capped)
             for ann in result.get("annotations", []):
                 ann_new = ann.get("new_words", [])

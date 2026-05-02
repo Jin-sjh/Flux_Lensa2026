@@ -11,20 +11,16 @@ from services.user_model import (
     compute_cefr,
     seed_known_words,
 )
+from database import get_db
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
-def _get_db():
-    from main import get_db
-    return get_db
-
-
 @router.post("/api/placement_test", response_model=PlacementTestResponse)
 async def placement_test(
     request: PlacementTestRequest,
-    db: AsyncSession = Depends(_get_db()),
+    db: AsyncSession = Depends(get_db),
 ):
     # Get or create user
     user = await get_or_create_user(request.user_id, db)

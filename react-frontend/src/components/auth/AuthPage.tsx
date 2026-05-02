@@ -4,7 +4,7 @@ import '../../styles/auth.css';
 
 type AuthMode = 'login' | 'register';
 
-const DEMO_EMAIL = 'demo@lensa.local';
+const DEMO_EMAIL = 'demo@lensa.example.com';
 const DEMO_PASSWORD = '123456';
 
 export default function AuthPage() {

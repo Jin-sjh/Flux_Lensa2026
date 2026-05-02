@@ -12,7 +12,7 @@ interface MockUser extends User {
 
 const DEFAULT_MOCK_USER: MockUser = {
   id: 'mock_default_user',
-  email: 'demo@lensa.local',
+  email: 'demo@lensa.example.com',
   name: 'Demo User',
   password: '123456',
   cefrLevel: null,

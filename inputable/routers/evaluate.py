@@ -11,20 +11,16 @@ from services.user_model import (
     apply_fsrs_update,
     maybe_upgrade_cefr,
 )
+from database import get_db
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
 
 
-def _get_db():
-    from main import get_db
-    return get_db
-
-
 @router.post("/api/evaluate", response_model=EvaluateResponse)
 async def evaluate(
     request: EvaluateRequest,
-    db: AsyncSession = Depends(_get_db()),
+    db: AsyncSession = Depends(get_db),
 ):
     # 1. Fetch session
     result = await db.execute(

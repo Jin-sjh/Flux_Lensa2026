@@ -237,15 +237,6 @@ export default function ImageUploader({
             {t.upload.openCamera}
           </button>
 
-          <button
-            type="button"
-            className="uploader-btn secondary"
-            onClick={openFilePicker}
-            disabled={disabled}
-          >
-            {t.upload.chooseFirst}
-          </button>
-
           {preview && (
             <button
               type="button"

@@ -3,9 +3,10 @@ from __future__ import annotations
 import base64
 import logging
 import os
+from pathlib import Path
 
-from PIL import Image
-from openai import OpenAI
+from services.llm_factory import LLMFactory
+from services.llm_base import LLMError
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,6 @@ def _image_dir() -> str:
 def _base_url() -> str:
     return os.getenv("BASE_URL", "http://localhost:7860")
 
-# Supported sizes for gpt-image-2 edit endpoint
 _SUPPORTED_SIZES = [
     "1024x1024",
     "1024x1536",
@@ -40,28 +40,7 @@ STYLE_MAP = {
 }
 
 
-def _get_best_size(image_path: str) -> str:
-    """Pick the closest supported API size based on original image aspect ratio."""
-    try:
-        with Image.open(image_path) as img:
-            w, h = img.size
-        ratio = w / h
-        best = _SUPPORTED_SIZES[0]
-        best_diff = float("inf")
-        for s in _SUPPORTED_SIZES:
-            sw, sh = s.split("x")
-            diff = abs(ratio - int(sw) / int(sh))
-            if diff < best_diff:
-                best_diff = diff
-                best = s
-        logger.info(f"Image {w}x{h} → API size {best}")
-        return best
-    except Exception as e:
-        logger.warning(f"Could not read image dimensions ({e}), defaulting to 1024x1024")
-        return "1024x1024"
-
-
-def render_card(
+async def render_card(
     annotations: list,
     caption: str,
     cefr: str,
@@ -79,21 +58,16 @@ def render_card(
     os.makedirs(_image_dir(), exist_ok=True)
     output_path = os.path.join(_image_dir(), f"{session_id}.png")
 
-    # Cache check — skip API call if already rendered
     if os.path.exists(output_path):
         logger.info(f"Image cache hit for session {session_id}")
         return output_path
 
-    if not os.path.exists(original_image_path):
-        raise FileNotFoundError(f"Original image not found: {original_image_path}")
-
-    client = OpenAI(
-        api_key=os.getenv("OPENAI_API_KEY"),
-        base_url=os.getenv("OPENAI_BASE_URL"),
-    )
+    client = LLMFactory.get_openai_client()
+    if client is None:
+        raise LLMError("OpenAI client not available")
+    
     style_desc = STYLE_MAP.get(cefr, STYLE_MAP["A1"])
 
-    # Build annotation text block for the prompt
     lines = [ann.get("label", "") for ann in annotations if ann.get("label")]
     annotation_block = "\n".join(lines)
     if caption:
@@ -106,28 +80,17 @@ def render_card(
         "文字排版美观，不遮挡画面主体，适合直接分享到社交媒体。"
     )
 
-    best_size = _get_best_size(original_image_path)
+    image_url = await client.image_edit(
+        image=Path(original_image_path),
+        prompt=prompt,
+        n=1,
+        size="1024x1024"
+    )
 
-    logger.info(f"Calling gpt-image-2 edit for session {session_id}, size={best_size}")
+    await client.download_image(image_url, Path(output_path))
 
-    with open(original_image_path, "rb") as img_file:
-        response = client.images.edit(
-            model="gpt-image-2",
-            image=img_file,
-            prompt=prompt,
-            n=1,
-            size=best_size,
-        )
-
-    b64_data = response.data[0].b64_json
-    if not b64_data:
-        raise RuntimeError("gpt-image-2 returned empty b64_json")
-
-    image_bytes = base64.b64decode(b64_data)
-    with open(output_path, "wb") as f:
-        f.write(image_bytes)
-
-    logger.info(f"Rendered card saved: {output_path} ({len(image_bytes) // 1024} KB)")
+    file_size = os.path.getsize(output_path) // 1024
+    logger.info(f"Rendered card saved: {output_path} ({file_size} KB)")
     return output_path
 
 

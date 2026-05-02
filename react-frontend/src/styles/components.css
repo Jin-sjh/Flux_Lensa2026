@@ -2563,10 +2563,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 8px 16px;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
   background: linear-gradient(135deg, rgba(45, 80, 22, 0.12), rgba(45, 80, 22, 0.08));
-  border: 2px solid rgba(45, 80, 22, 0.2);
+  border: 0.125rem solid rgba(45, 80, 22, 0.2);
   border-radius: var(--radius-full);
   color: var(--color-text-secondary);
   font-weight: 700;
@@ -2575,6 +2575,7 @@
   transition: all var(--transition-fast);
   white-space: nowrap;
   flex-shrink: 0;
+  min-width: auto;
 }
 
 .submit-btn.active {

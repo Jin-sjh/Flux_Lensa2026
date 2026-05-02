@@ -1,6 +1,7 @@
 import logging
 
 from fastapi import APIRouter, Depends, HTTPException
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -12,16 +13,33 @@ from models.schemas import (
     UpdateLevelRequest,
     UserResponse,
 )
-from services.auth_service import create_access_token, hash_password, verify_password
+from services.auth_service import create_access_token, hash_password, verify_password, decode_token
+from database import get_db
 
 logger = logging.getLogger(__name__)
 router = APIRouter()
+security = HTTPBearer()
 
 
-def _get_db():
-    from main import get_db
+async def get_current_user(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    db: AsyncSession = Depends(get_db),
+) -> User:
+    token = credentials.credentials
+    payload = decode_token(token)
+    if not payload:
+        raise HTTPException(status_code=401, detail="无效的认证令牌")
 
-    return get_db()
+    user_id = payload.get("sub")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="无效的认证令牌")
+
+    result = await db.execute(select(User).where(User.user_id == user_id))
+    user = result.scalar_one_or_none()
+    if not user:
+        raise HTTPException(status_code=401, detail="用户不存在")
+
+    return user
 
 
 def _user_to_response(user: User) -> UserResponse:
@@ -38,7 +56,7 @@ def _user_to_response(user: User) -> UserResponse:
 @router.post("/api/auth/login", response_model=AuthResponse)
 async def login(
     request: LoginRequest,
-    db: AsyncSession = Depends(_get_db()),
+    db: AsyncSession = Depends(get_db),
 ):
     result = await db.execute(
         select(User).where(User.email == request.email.lower().strip())
@@ -64,7 +82,7 @@ async def login(
 @router.post("/api/auth/register", response_model=AuthResponse)
 async def register(
     request: RegisterRequest,
-    db: AsyncSession = Depends(_get_db()),
+    db: AsyncSession = Depends(get_db),
 ):
     email = request.email.lower().strip()
 
@@ -98,8 +116,12 @@ async def register(
 @router.patch("/api/user/level", response_model=UserResponse)
 async def update_user_level(
     request: UpdateLevelRequest,
-    db: AsyncSession = Depends(_get_db()),
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
 ):
+    if current_user.user_id != request.userId:
+        raise HTTPException(status_code=403, detail="无权修改其他用户信息")
+
     result = await db.execute(select(User).where(User.user_id == request.userId))
     user = result.scalar_one_or_none()
 

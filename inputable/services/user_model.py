@@ -145,7 +145,25 @@ async def maybe_upgrade_cefr(user_id: str, db: AsyncSession) -> str | None:
 
 def compute_cefr(known_words: list[str]) -> str:
     """Compute CEFR level from placement test results.
-    Empty list returns 'A1' (skip-test path).
+    
+    这是后端的水平计算逻辑，用于以下场景：
+    1. placement_test API：用户跳过前端测试时，根据已知词汇判断水平
+    2. 备用计算：当需要基于词汇量重新评估用户水平时
+    
+    计算规则（基于 PLACEMENT_WORDS 词汇表）：
+    - A1>=3 且 A2>=2 且 B1>=1 → B1 (中级)
+    - A1>=3 且 A2>=2           → A2 (初级)
+    - 其他情况                  → A1 (入门)
+    
+    注意：前端 (testStore.ts) 有另一套基于测试分数的计算逻辑，
+    用于用户完成水平测试后的初步判断。
+    两套逻辑服务于不同场景，应保持独立。
+    
+    Args:
+        known_words: 用户已知的词汇列表，空列表返回 'A1' (跳过测试路径)
+    
+    Returns:
+        CEFR 水平字符串: 'A1', 'A2', 或 'B1'
     """
     known = set(known_words)
     a1_score = sum(1 for w in PLACEMENT_WORDS["A1"] if w in known)

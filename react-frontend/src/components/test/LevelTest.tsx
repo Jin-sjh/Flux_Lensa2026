@@ -27,6 +27,7 @@ export default function LevelTest({ onComplete }: LevelTestProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [testResult, setTestResult] = useState<TestResult | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setSelectedAnswer('');
@@ -56,6 +57,7 @@ export default function LevelTest({ onComplete }: LevelTestProps) {
 
   const handleCompleteTest = async () => {
     setIsSubmitting(true);
+    setError(null);
     try {
       const result = completeTest();
       setTestResult(result);
@@ -68,8 +70,9 @@ export default function LevelTest({ onComplete }: LevelTestProps) {
           hasCompletedTest: true,
         });
       }
-    } catch (error) {
-      console.error('Failed to complete test:', error);
+    } catch (err) {
+      console.error('Failed to complete test:', err);
+      setError('保存测试结果失败，请稍后重试。您的测试结果已计算完成，但未能同步到服务器。');
     } finally {
       setIsSubmitting(false);
     }
@@ -182,6 +185,13 @@ export default function LevelTest({ onComplete }: LevelTestProps) {
             </button>
           )}
         </div>
+
+        {error && (
+          <div className="test-error">
+            <p>{error}</p>
+            <button onClick={() => setError(null)}>关闭</button>
+          </div>
+        )}
       </div>
     </div>
   );
