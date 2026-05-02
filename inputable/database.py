@@ -4,7 +4,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from config import DATABASE_URL
+from config import DATABASE_URL, DATA_ROOT
+
+os.makedirs(DATA_ROOT, exist_ok=True)
 
 engine = create_async_engine(DATABASE_URL, echo=False)
 AsyncSessionLocal = async_sessionmaker(

@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from config import IMAGE_DIR, ANKI_DIR, HOST, PORT, CORS_ORIGINS, DEMO_USER_EMAIL, DEMO_USER_PASSWORD
+from config import IMAGE_DIR, ANKI_DIR, DEMO_DIR, DATA_ROOT, HOST, PORT, CORS_ORIGINS, DEMO_USER_EMAIL, DEMO_USER_PASSWORD
 from models.db_models import Base, User
 from services.vocab_cache import load_vocab_cache
 from services.llm_factory import LLMFactory
@@ -60,8 +60,11 @@ async def lifespan(app: FastAPI):
 
     load_vocab_cache()
 
+    os.makedirs(DATA_ROOT, exist_ok=True)
     os.makedirs(IMAGE_DIR, exist_ok=True)
     os.makedirs(ANKI_DIR, exist_ok=True)
+    os.makedirs(DEMO_DIR, exist_ok=True)
+    os.makedirs(os.path.join(DATA_ROOT, "data"), exist_ok=True)
 
     yield
 

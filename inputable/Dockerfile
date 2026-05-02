@@ -16,4 +16,4 @@ RUN mkdir -p images anki audio data
 EXPOSE 7860
 
 # Start server
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-7860}
