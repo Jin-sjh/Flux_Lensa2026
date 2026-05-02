@@ -39,9 +39,9 @@
   --color-border-light: #E8DFD0;
   --color-border-accent: rgba(212, 175, 55, 0.3);
 
-  --sidebar-width: 17.5rem;
-  --sidebar-collapsed-width: 5rem;
-  --stats-panel-width: 20rem;
+  --sidebar-width: 15rem;
+  --sidebar-collapsed-width: 4.5rem;
+  --stats-panel-width: 17rem;
   --header-height: 4rem;
   --bottom-nav-height: 4.5rem;
 

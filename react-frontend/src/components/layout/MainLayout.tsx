@@ -19,10 +19,18 @@ export default function MainLayout({ children, activeNav = 'home', onNavigate }:
   const { isMobile, isDesktop } = useResponsive();
   const handleNavigate = onNavigate ?? (() => {});
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
-    <div className="app-layout">
-      {isDesktop && <Sidebar activeItem={activeNav} onNavigate={handleNavigate} />}
+    <div className={`app-layout ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
+      {isDesktop && (
+        <Sidebar
+          activeItem={activeNav}
+          onNavigate={handleNavigate}
+          isCollapsed={isSidebarCollapsed}
+          onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        />
+      )}
       {isMobile && (
         <>
           <Header onMenuClick={() => setIsDrawerOpen(true)} />
@@ -35,9 +43,9 @@ export default function MainLayout({ children, activeNav = 'home', onNavigate }:
         </>
       )}
 
-      {!isMobile && <TopBar />}
+      {!isMobile && <TopBar isSidebarCollapsed={isSidebarCollapsed} />}
 
-      <main className={`main-content ${isDesktop ? 'with-sidebar' : ''} ${isMobile ? 'with-header' : ''}`}>
+      <main className={`main-content ${isDesktop ? 'with-sidebar' : ''} ${isMobile ? 'with-header' : ''} ${isSidebarCollapsed ? 'sidebar-collapsed' : ''}`}>
         {children}
       </main>
 

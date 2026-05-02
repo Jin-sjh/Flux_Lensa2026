@@ -10,7 +10,7 @@ interface MobileDrawerProps {
 
 const menuItems = [
   { id: 'home', icon: '🏠', label: '首页' },
-  { id: 'learning', icon: '📚', label: '我的学习' },
+  { id: 'learning', icon: '📚', label: '开始学习' },
   { id: 'practice', icon: '✅', label: '练习记录' },
   { id: 'vocabulary', icon: '📖', label: '词汇本' },
   { id: 'anki', icon: '📤', label: 'Anki 导出' },

@@ -92,7 +92,7 @@ export default function GalleryPage({ cards, onDelete, onToggleComplete, onNavig
           <div className="gallery-empty-icon">🎴</div>
           <h3 className="gallery-empty-title">{t.gallery.emptyTitle}</h3>
           <p className="gallery-empty-hint">{t.gallery.emptyHint}</p>
-          <button className="gallery-empty-btn" onClick={() => onNavigate('home')}>
+          <button className="gallery-empty-btn" onClick={() => onNavigate('learning')}>
             📷 {t.gallery.goCapture}
           </button>
         </div>

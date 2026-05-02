@@ -54,7 +54,15 @@ export function useLensaApp() {
     }
   }, [state.sessionId]);
 
+  const handleDeleteCard = useCallback((id: string) => {
+    dispatch({ type: 'REMOVE_GALLERY_CARD', payload: id });
+  }, []);
+
+  const handleToggleComplete = useCallback((id: string) => {
+    dispatch({ type: 'TOGGLE_GALLERY_CARD_COMPLETE', payload: id });
+  }, []);
+
   const ankiUrl = getAnkiDownloadUrl(state.userId);
 
-  return { state, dispatch, handleGenerate, handleSubmitAnswer, ankiUrl };
+  return { state, dispatch, handleGenerate, handleSubmitAnswer, ankiUrl, handleDeleteCard, handleToggleComplete };
 }

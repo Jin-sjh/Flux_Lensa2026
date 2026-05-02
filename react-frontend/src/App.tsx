@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useAuth } from './contexts/AuthContext';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import { TestProvider } from './contexts/TestContext';
@@ -5,19 +6,24 @@ import AuthPage from './components/auth/AuthPage';
 import LevelTest from './components/test/LevelTest';
 import MainLayout from './components/layout/MainLayout';
 import WelcomeSection from './components/dashboard/WelcomeSection';
-import CameraUpload from './components/dashboard/CameraUpload';
-import RecentLearning from './components/dashboard/RecentLearning';
 import QuickActions from './components/dashboard/QuickActions';
-import ResultCard from './components/ResultCard';
-import Practice from './components/Practice';
-import AnkiExport from './components/AnkiExport';
+import GalleryPage from './components/gallery/GalleryPage';
+import MyLearningPage from './components/learning/MyLearningPage';
+import PracticeHistoryPage from './components/practice/PracticeHistoryPage';
+import AnkiExportPage from './components/anki/AnkiExportPage';
+import SettingsPage from './components/settings/SettingsPage';
 import { useLensaApp } from './hooks/useLensaApp';
 import './styles/components.css';
 
 function AppContent() {
   const { isAuthenticated, isLoading, user } = useAuth();
   const { t } = useSettings();
-  const { state, handleGenerate, handleSubmitAnswer, ankiUrl } = useLensaApp();
+  const { state, handleGenerate, handleSubmitAnswer, ankiUrl, handleDeleteCard, handleToggleComplete } = useLensaApp();
+  const [activeNav, setActiveNav] = useState('home');
+
+  const handleNavigate = (item: string) => {
+    setActiveNav(item);
+  };
 
   if (isLoading) {
     return (
@@ -41,58 +47,64 @@ function AppContent() {
   }
 
   return (
-    <MainLayout>
-      <div className="dashboard-content">
-        <WelcomeSection />
-        
-        <CameraUpload 
-          onCapture={handleGenerate}
-          disabled={state.isGenerating || state.isRendering}
-        />
+    <MainLayout activeNav={activeNav} onNavigate={handleNavigate}>
+      {activeNav === 'home' && (
+        <div className="dashboard-content">
+          <WelcomeSection />
 
-        <ResultCard
-          imageUrl={state.resultImageUrl}
+          <QuickActions
+            onActionClick={(actionId) => {
+              if (actionId === 'practice') handleNavigate('practice');
+              else if (actionId === 'gallery') handleNavigate('gallery');
+              else if (actionId === 'anki') handleNavigate('anki');
+              else if (actionId === 'report') handleNavigate('practice');
+              else console.log('Action clicked:', actionId);
+            }}
+          />
+        </div>
+      )}
+
+      {activeNav === 'learning' && (
+        <MyLearningPage
+          onImageSelect={handleGenerate}
+          resultImageUrl={state.resultImageUrl}
           isRendering={state.isRendering}
-        />
-
-        {state.annotations.length > 0 && (
-          <div className="annotations-section">
-            <h3>📝 识别结果</h3>
-            <ul>
-              {state.annotations.map((ann, idx) => (
-                <li key={idx}>
-                  <strong>{ann.object}</strong> ({ann.label})
-                  <ul>
-                    {ann.new_words.map((w, i) => (
-                      <li key={i}>{w.word} — {w.translation_zh} / {w.translation_en}</li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        <Practice
+          annotations={state.annotations}
           task={state.task}
           feedback={state.feedback}
-          onSubmit={handleSubmitAnswer}
+          onSubmitAnswer={handleSubmitAnswer}
           disabled={state.isGenerating || state.isRendering}
         />
+      )}
 
-        <AnkiExport
+      {activeNav === 'practice' && (
+        <PracticeHistoryPage />
+      )}
+
+      {activeNav === 'anki' && (
+        <AnkiExportPage
           ankiUrl={ankiUrl}
           userId={state.userId}
         />
+      )}
 
-        <RecentLearning />
-
-        <QuickActions 
-          onActionClick={(actionId) => {
-            console.log('Action clicked:', actionId);
-          }}
+      {activeNav === 'gallery' && (
+        <GalleryPage
+          cards={state.galleryCards}
+          onDelete={handleDeleteCard}
+          onToggleComplete={handleToggleComplete}
+          onNavigate={handleNavigate}
         />
-      </div>
+      )}
+
+      {activeNav === 'settings' && (
+        <SettingsPage
+          cards={state.galleryCards}
+          userId={state.userId}
+          ankiUrl={ankiUrl}
+          onNavigate={handleNavigate}
+        />
+      )}
     </MainLayout>
   );
 }
