@@ -12,6 +12,7 @@ const menuItems = [
   { id: 'learning', icon: '◐', label: '我的学习' },
   { id: 'practice', icon: '✓', label: '练习记录' },
   { id: 'vocabulary', icon: 'Aa', label: '词汇本' },
+  { id: 'gallery', icon: '▦', label: '画廊' },
   { id: 'anki', icon: '▣', label: 'Anki 导出' },
   { id: 'settings', icon: '⚙', label: '设置' },
 ];
@@ -45,6 +46,7 @@ export default function Sidebar({ activeItem = 'home', onNavigate }: SidebarProp
       <nav className="sidebar-nav">
         {menuItems.map((item) => (
           <button
+            type="button"
             key={item.id}
             className={`sidebar-nav-item ${activeItem === item.id ? 'active' : ''}`}
             onClick={() => onNavigate?.(item.id)}
@@ -66,7 +68,9 @@ export default function Sidebar({ activeItem = 'home', onNavigate }: SidebarProp
             {levelInfo.level}
           </div>
           <div className="level-subtitle">{levelInfo.subtitle}</div>
-          <button className="level-detail-btn">查看详情 →</button>
+          <button type="button" className="level-detail-btn" onClick={() => onNavigate?.('settings')}>
+            查看详情 →
+          </button>
 
           <div className="sidebar-decoration">
             <svg viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">

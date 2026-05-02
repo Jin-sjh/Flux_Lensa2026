@@ -54,7 +54,7 @@ function compressImage(file: File): Promise<string> {
 export async function generateAnnotations(
   file: File,
   userId: string
-): Promise<{ sessionId: string; annotations: Annotation[]; status: string; task: string }> {
+): Promise<{ sessionId: string; annotations: Annotation[]; status: string; task: string; caption: string }> {
   if (USE_MOCK) {
     return mockApi.generateAnnotations(file, userId);
   }
@@ -72,6 +72,7 @@ export async function generateAnnotations(
     annotations: data.annotations || [],
     status: '✨ 标注完成，正在生成学习卡片...',
     task: data.output_task || '暂无练习',
+    caption: data.caption || '',
   };
 }
 

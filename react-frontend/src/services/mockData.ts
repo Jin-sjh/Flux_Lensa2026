@@ -1,4 +1,5 @@
 import type { Annotation, GenerateResponse, RenderResponse, EvaluateResponse } from './api';
+import type { GalleryCard } from '../types/gallery';
 
 export interface MockScenario {
   id: string;
@@ -205,3 +206,66 @@ export function generateMockEvaluateResponse(
 export function getRandomScenario(): MockScenario {
   return mockScenarios[Math.floor(Math.random() * mockScenarios.length)];
 }
+
+export const mockGalleryCards: GalleryCard[] = [
+  {
+    id: 'mock-card-1',
+    imageUrl: 'https://images.unsplash.com/photo-1555041469-a276029a8a3d?w=800',
+    annotations: [{ object: 'meja', label: '桌子', new_words: ['meja', 'dari', 'kayu'] }],
+    caption: '这是一张木制桌子',
+    task: 'Ini adalah ____ (桌子)',
+    sessionId: 'mock-session-table',
+    createdAt: new Date(Date.now() - 3600000).toISOString(),
+    isCompleted: true,
+  },
+  {
+    id: 'mock-card-2',
+    imageUrl: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800',
+    annotations: [{ object: 'kopi', label: '咖啡', new_words: ['kopi', 'panas', 'minum'] }],
+    caption: '这是一杯热咖啡',
+    task: 'Saya minum ____ (咖啡)',
+    sessionId: 'mock-session-coffee',
+    createdAt: new Date(Date.now() - 7200000).toISOString(),
+    isCompleted: true,
+  },
+  {
+    id: 'mock-card-3',
+    imageUrl: 'https://images.unsplash.com/photo-1493934558415-9d19f0b2b4d2?w=800',
+    annotations: [{ object: 'buku', label: '书', new_words: ['buku', 'bahasa', 'Indonesia'] }],
+    caption: '这是一本印尼语学习书',
+    task: 'Saya membaca ____ (书)',
+    sessionId: 'mock-session-book',
+    createdAt: new Date(Date.now() - 86400000).toISOString(),
+    isCompleted: false,
+  },
+  {
+    id: 'mock-card-4',
+    imageUrl: 'https://images.unsplash.com/photo-1516466723877-e4ec1d736c8a?w=800',
+    annotations: [{ object: 'apel', label: '苹果', new_words: ['apel', 'merah', 'buah'] }],
+    caption: '这是一个红色的苹果',
+    task: 'Saya makan ____ (苹果)',
+    sessionId: 'mock-session-apple',
+    createdAt: new Date(Date.now() - 172800000).toISOString(),
+    isCompleted: true,
+  },
+  {
+    id: 'mock-card-5',
+    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800',
+    annotations: [{ object: 'motor', label: '摩托车', new_words: ['motor', 'jalan', 'roda'] }],
+    caption: '这是一辆摩托车',
+    task: 'Dia naik ____ (摩托车)',
+    sessionId: 'mock-session-motorcycle',
+    createdAt: new Date(Date.now() - 259200000).toISOString(),
+    isCompleted: false,
+  },
+  {
+    id: 'mock-card-6',
+    imageUrl: 'https://images.unsplash.com/photo-1555041469-a276029a8a3d?w=800',
+    annotations: [{ object: 'rumah', label: '房子', new_words: ['rumah', 'tinggal', 'bagus'] }],
+    caption: '这是一栋漂亮的房子',
+    task: 'Saya ____ (住) di rumah',
+    sessionId: 'mock-session-house',
+    createdAt: new Date(Date.now() - 345600000).toISOString(),
+    isCompleted: true,
+  },
+];

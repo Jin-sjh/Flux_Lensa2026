@@ -57,6 +57,7 @@ export default function MobileDrawer({
         <nav className="drawer-nav">
           {menuItems.map((item) => (
             <button
+              type="button"
               key={item.id}
               className={`drawer-nav-item ${activeItem === item.id ? 'active' : ''}`}
               onClick={() => handleNavigate(item.id)}
