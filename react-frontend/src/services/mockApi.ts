@@ -1,4 +1,4 @@
-import type { Annotation } from './api';
+import type { Annotation, EvaluateResponse, OutputTask } from './api';
 import {
   mockScenarios,
   getRandomScenario,
@@ -24,53 +24,47 @@ function randomDelay(min: number, max: number): Promise<void> {
 
 class MockApiService {
   private currentScenario: MockScenario | null = null;
+
   async generateAnnotations(
     _file: File,
     _userId: string
-  ): Promise<{ sessionId: string; annotations: Annotation[]; status: string; task: string }> {
+  ): Promise<{ sessionId: string; annotations: Annotation[]; caption: string; task: OutputTask }> {
     await randomDelay(MOCK_DELAY_MIN, MOCK_DELAY_MAX);
-    
+
     this.currentScenario = getRandomScenario();
     const response = generateMockGenerateResponse(this.currentScenario);
-    
+
     return {
       sessionId: response.session_id,
       annotations: response.annotations,
-      status: '✨ 标注完成，正在生成学习卡片...',
-      task: response.output_task,
+      caption: response.caption,
+      task: response.output_task,  // 现在是 OutputTask 对象
     };
   }
 
   async renderImage(
     _sessionId: string
-  ): Promise<{ imageUrl: string; status: string }> {
+  ): Promise<{ imageUrl: string | null }> {
     await randomDelay(RENDER_DELAY_MIN, RENDER_DELAY_MAX);
-    
+
     const response = generateMockRenderResponse();
-    
+
     return {
       imageUrl: response.rendered_image_url,
-      status: '🎉 学习卡片生成完成！',
     };
   }
 
   async evaluateAnswer(
     _sessionId: string,
     userAnswer: string
-  ): Promise<string> {
+  ): Promise<EvaluateResponse> {
     await randomDelay(MOCK_DELAY_MIN, MOCK_DELAY_MIN);
-    
+
     if (!this.currentScenario) {
       throw new Error('No active session');
     }
-    
-    const response = generateMockEvaluateResponse(this.currentScenario, userAnswer);
-    
-    if (response.is_correct) {
-      return `✅ Benar! ${response.feedback}`;
-    } else {
-      return `🔄 Coba lagi: ${response.feedback}`;
-    }
+
+    return generateMockEvaluateResponse(this.currentScenario, userAnswer);
   }
 
   getAnkiDownloadUrl(_userId: string): string {
