@@ -1,10 +1,7 @@
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://127.0.0.1:8000';
 const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
-//  ↑ 去掉了 || import.meta.env.DEV，本地开发也走真实后端
 
 import { mockApi } from './mockApi';
-
-// ============ 修正后的类型定义 ============
 
 export interface NewWord {
   word: string;
@@ -15,7 +12,7 @@ export interface NewWord {
 export interface Annotation {
   object: string;
   label: string;
-  new_words: NewWord[];   // ← 修正：对象数组，不是字符串数组
+  new_words: NewWord[];
 }
 
 export interface OutputTask {
@@ -28,7 +25,7 @@ export interface GenerateResponse {
   session_id: string;
   annotations: Annotation[];
   caption: string;
-  output_task: OutputTask;  // ← 修正：对象，不是字符串
+  output_task: OutputTask;
 }
 
 export interface RenderResponse {
@@ -39,8 +36,8 @@ export interface RenderResponse {
 export interface EvaluateResponse {
   is_correct: boolean;
   feedback: string;
-  words_updated: string[];       // ← 新增
-  cefr_upgraded: string | null;  // ← 新增
+  words_updated: string[];
+  cefr_upgraded: string | null;
 }
 
 export interface UserResponse {
@@ -48,8 +45,6 @@ export interface UserResponse {
   estimated_cefr: string;
   learned_word_count: number;
 }
-
-// ============ API 调用函数 ============
 
 const MAX_IMAGE_SIZE = 1280;
 const JPEG_QUALITY = 0.85;
@@ -94,7 +89,7 @@ export async function generateAnnotations(
     sessionId: data.session_id,
     annotations: data.annotations,
     caption: data.caption,
-    task: data.output_task,  // ← 现在是 OutputTask 对象
+    task: data.output_task,
   };
 }
 

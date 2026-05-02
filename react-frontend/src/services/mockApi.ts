@@ -38,7 +38,7 @@ class MockApiService {
       sessionId: response.session_id,
       annotations: response.annotations,
       caption: response.caption,
-      task: response.output_task,  // 现在是 OutputTask 对象
+      task: response.output_task,
     };
   }
 

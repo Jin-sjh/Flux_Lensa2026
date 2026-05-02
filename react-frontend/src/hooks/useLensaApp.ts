@@ -1,6 +1,7 @@
 import { useReducer, useCallback } from 'react';
 import { lensaReducer, initialState } from '../hooks/useLensa';
 import { generateAnnotations, renderImage, evaluateAnswer, getAnkiDownloadUrl } from '../services/api';
+import type { GalleryCard } from '../types/gallery';
 
 export function useLensaApp() {
   const [state, dispatch] = useReducer(lensaReducer, initialState);
@@ -14,6 +15,20 @@ export function useLensaApp() {
       try {
         const renderResult = await renderImage(result.sessionId);
         dispatch({ type: 'RENDER_SUCCESS', payload: renderResult.imageUrl });
+
+        if (renderResult.imageUrl) {
+          const galleryCard: GalleryCard = {
+            id: `card-${Date.now()}-${Math.random().toString(36).substring(7)}`,
+            imageUrl: renderResult.imageUrl,
+            annotations: result.annotations,
+            caption: result.caption,
+            task: result.task,
+            sessionId: result.sessionId,
+            createdAt: new Date().toISOString(),
+            isCompleted: false,
+          };
+          dispatch({ type: 'ADD_GALLERY_CARD', payload: galleryCard });
+        }
       } catch (err: any) {
         dispatch({ type: 'RENDER_ERROR', payload: err.message || '渲染失败' });
       }
@@ -33,16 +48,21 @@ export function useLensaApp() {
     }
     try {
       const result = await evaluateAnswer(state.sessionId, answer);
-      const feedbackText = result.is_correct
-        ? `✅ Benar! ${result.feedback}`
-        : `🔄 Coba lagi: ${result.feedback}`;
-      dispatch({ type: 'SET_FEEDBACK', payload: feedbackText });
+      dispatch({ type: 'SET_FEEDBACK', payload: result.feedback });
     } catch (err: any) {
       dispatch({ type: 'SET_FEEDBACK', payload: `⚠️ 评估失败：${err.message}` });
     }
   }, [state.sessionId]);
 
+  const handleDeleteCard = useCallback((id: string) => {
+    dispatch({ type: 'REMOVE_GALLERY_CARD', payload: id });
+  }, []);
+
+  const handleToggleComplete = useCallback((id: string) => {
+    dispatch({ type: 'TOGGLE_GALLERY_CARD_COMPLETE', payload: id });
+  }, []);
+
   const ankiUrl = getAnkiDownloadUrl(state.userId);
 
-  return { state, dispatch, handleGenerate, handleSubmitAnswer, ankiUrl };  // ← 这行是关键
+  return { state, dispatch, handleGenerate, handleSubmitAnswer, ankiUrl, handleDeleteCard, handleToggleComplete };
 }

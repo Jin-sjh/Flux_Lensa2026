@@ -1,7 +1,7 @@
 import type { LoginCredentials, RegisterCredentials, AuthResponse, User } from '../types/auth';
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://placeholder.ngrok.io';
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true' || import.meta.env.DEV;
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://127.0.0.1:8000';
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
 
 const MOCK_USERS_KEY = 'lensa_mock_users';
 const MOCK_DELAY = 500;

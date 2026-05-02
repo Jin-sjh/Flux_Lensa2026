@@ -6,8 +6,8 @@ interface BottomNavProps {
 const tabs = [
   { id: 'home', icon: '⌂', label: '首页' },
   { id: 'practice', icon: '✓', label: '练习' },
+  { id: 'gallery', icon: '▦', label: '画廊' },
   { id: 'vocabulary', icon: 'Aa', label: '词汇' },
-  { id: 'anki', icon: '▣', label: 'Anki' },
   { id: 'profile', icon: '◎', label: '我的' },
 ];
 

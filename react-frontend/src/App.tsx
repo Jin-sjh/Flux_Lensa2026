@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useAuth } from './contexts/AuthContext';
 import { SettingsProvider, useSettings } from './contexts/SettingsContext';
 import { TestProvider } from './contexts/TestContext';
@@ -5,18 +6,25 @@ import AuthPage from './components/auth/AuthPage';
 import LevelTest from './components/test/LevelTest';
 import MainLayout from './components/layout/MainLayout';
 import WelcomeSection from './components/dashboard/WelcomeSection';
-import CameraUpload from './components/dashboard/CameraUpload';
-import RecentLearning from './components/dashboard/RecentLearning';
 import QuickActions from './components/dashboard/QuickActions';
+import GalleryPage from './components/gallery/GalleryPage';
+import MyLearningPage from './components/learning/MyLearningPage';
+import PracticeHistoryPage from './components/practice/PracticeHistoryPage';
+import AnkiExportPage from './components/anki/AnkiExportPage';
+import SettingsPage from './components/settings/SettingsPage';
 import { useLensaApp } from './hooks/useLensaApp';
 import './styles/components.css';
 import Practice from './components/Practice';
 
 function AppContent() {
-  
   const { isAuthenticated, isLoading, user } = useAuth();
   const { t } = useSettings();
-  const { state, dispatch, handleGenerate, handleSubmitAnswer } = useLensaApp();
+  const { state, handleGenerate, handleSubmitAnswer, ankiUrl, handleDeleteCard, handleToggleComplete } = useLensaApp();
+  const [activeNav, setActiveNav] = useState('home');
+
+  const handleNavigate = (item: string) => {
+    setActiveNav(item);
+  };
 
   if (isLoading) {
     return (
@@ -39,7 +47,6 @@ function AppContent() {
     );
   }
 
-  // ← 新增：生成成功后显示练习页面
   if (state.phase === 'practice') {
     return (
       <MainLayout>
@@ -60,29 +67,63 @@ function AppContent() {
   }
 
   return (
-    <MainLayout>
-      <div className="dashboard-content">
-        <WelcomeSection />
-        <CameraUpload
-          onCapture={handleGenerate}
-          disabled={state.isGenerating}  // ← 生成中禁用按钮
+    <MainLayout activeNav={activeNav} onNavigate={handleNavigate}>
+      {activeNav === 'home' && (
+        <div className="dashboard-content">
+          <WelcomeSection />
+          <QuickActions
+            onActionClick={(actionId) => {
+              if (actionId === 'practice') handleNavigate('practice');
+              else if (actionId === 'gallery') handleNavigate('gallery');
+              else if (actionId === 'anki') handleNavigate('anki');
+              else if (actionId === 'report') handleNavigate('practice');
+              else console.log('Action clicked:', actionId);
+            }}
+          />
+        </div>
+      )}
+
+      {activeNav === 'learning' && (
+        <MyLearningPage
+          onImageSelect={handleGenerate}
+          resultImageUrl={state.resultImageUrl}
+          isRendering={state.isRendering}
+          annotations={state.annotations}
+          task={state.task}
+          feedback={state.feedback}
+          onSubmitAnswer={handleSubmitAnswer}
+          disabled={state.isGenerating || state.isRendering}
         />
-        {state.isGenerating && <p className="status-text">{state.status}</p>}
-        <RecentLearning />
-        <QuickActions 
-          onActionClick={(actionId) => {
-            console.log('Action clicked:', actionId);
-            if (actionId === 'practice') {
-              // 触发一个空的练习状态，跳转到练习页
-              dispatch({ type: 'GENERATE_SUCCESS', payload: {
-                sessionId: 'practice-mode',
-                annotations: [],
-                caption: '',
-              task: { type: 'fill_blank', prompt: '请先上传图片生成练习题', answer: '' },}});
-    }
-  }}
-/>
-      </div>
+      )}
+
+      {activeNav === 'practice' && (
+        <PracticeHistoryPage />
+      )}
+
+      {activeNav === 'anki' && (
+        <AnkiExportPage
+          ankiUrl={ankiUrl}
+          userId={state.userId}
+        />
+      )}
+
+      {activeNav === 'gallery' && (
+        <GalleryPage
+          cards={state.galleryCards}
+          onDelete={handleDeleteCard}
+          onToggleComplete={handleToggleComplete}
+          onNavigate={handleNavigate}
+        />
+      )}
+
+      {activeNav === 'settings' && (
+        <SettingsPage
+          cards={state.galleryCards}
+          userId={state.userId}
+          ankiUrl={ankiUrl}
+          onNavigate={handleNavigate}
+        />
+      )}
     </MainLayout>
   );
 }

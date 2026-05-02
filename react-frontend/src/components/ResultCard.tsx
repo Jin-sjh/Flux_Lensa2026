@@ -1,5 +1,5 @@
 interface ResultCardProps {
-  imageUrl: string;
+  imageUrl: string | null;
   isRendering: boolean;
 }
 

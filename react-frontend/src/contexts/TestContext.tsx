@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from 'react';
 import type { ReactNode } from 'react';
 import { testQuestions } from '../data/testQuestions';
-import type { TestState, TestAnswer, TestResult } from '../types/auth';
+import type { TestState, TestAnswer, TestResult, TestQuestion } from '../types/auth';
 
 const INITIAL_TEST_QUESTION_COUNT = 10;
 
@@ -11,16 +11,6 @@ type TestAction =
   | { type: 'NEXT_QUESTION' }
   | { type: 'COMPLETE_TEST'; payload: number }
   | { type: 'RESET_TEST' };
-
-interface TestQuestion {
-  id: string;
-  question: string;
-  questionType: 'vocabulary' | 'grammar' | 'listening';
-  options: string[];
-  correctAnswer: string;
-  difficulty: 'A1' | 'A2' | 'B1';
-  explanation?: string;
-}
 
 const initialState: TestState = {
   currentQuestionIndex: 0,

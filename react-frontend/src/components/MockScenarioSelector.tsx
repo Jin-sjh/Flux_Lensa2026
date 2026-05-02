@@ -21,7 +21,7 @@ export function MockScenarioSelector({ onScenarioSelect }: MockScenarioSelectorP
     
     const correctAnswer = selectedScenario.annotations[0].object;
     mockApi.evaluateAnswer('test-session', correctAnswer).then(result => {
-      setTestResult(result);
+      setTestResult(result.feedback);
     });
   };
 
@@ -84,7 +84,7 @@ export function MockScenarioSelector({ onScenarioSelect }: MockScenarioSelectorP
               <ul style={{ margin: '4px 0', paddingLeft: '20px' }}>
                 {selectedScenario.annotations.map((ann, idx) => (
                   <li key={idx}>
-                    {ann.object} ({ann.label}) - 新词汇: {ann.new_words.join(', ')}
+                    {ann.object} ({ann.label}) - 新词汇: {ann.new_words.map(w => w.word).join(', ')}
                   </li>
                 ))}
               </ul>
