@@ -172,7 +172,7 @@ class OpenAIClient(BaseLLMClient):
                 else:
                     image_data = image
                 
-                response = self.client.chat.completions.create(
+                response = await self.client.chat.completions.create(
                     model=model,
                     max_tokens=max_tokens,
                     messages=[
