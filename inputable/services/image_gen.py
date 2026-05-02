@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-import base64
 import logging
 import os
 from pathlib import Path
 
+from PIL import Image
 from services.llm_factory import LLMFactory
 from services.llm_base import LLMError
+from services.demo_service import is_demo_mode, demo_render
 
 logger = logging.getLogger(__name__)
 
@@ -40,6 +41,27 @@ STYLE_MAP = {
 }
 
 
+def _get_best_size(image_path: str) -> str:
+    """Pick the closest supported API size based on original image aspect ratio."""
+    try:
+        with Image.open(image_path) as img:
+            w, h = img.size
+        ratio = w / h
+        best = _SUPPORTED_SIZES[0]
+        best_diff = float("inf")
+        for s in _SUPPORTED_SIZES:
+            sw, sh = s.split("x")
+            diff = abs(ratio - int(sw) / int(sh))
+            if diff < best_diff:
+                best_diff = diff
+                best = s
+        logger.info(f"Image {w}x{h} (ratio={ratio:.2f}) → API size {best}")
+        return best
+    except Exception as e:
+        logger.warning(f"Could not read image dimensions ({e}), defaulting to 1024x1024")
+        return "1024x1024"
+
+
 async def render_card(
     annotations: list,
     caption: str,
@@ -61,6 +83,9 @@ async def render_card(
     if os.path.exists(output_path):
         logger.info(f"Image cache hit for session {session_id}")
         return output_path
+
+    if is_demo_mode():
+        return await demo_render(session_id)
 
     client = LLMFactory.get_openai_client()
     if client is None:
@@ -84,7 +109,7 @@ async def render_card(
         image=Path(original_image_path),
         prompt=prompt,
         n=1,
-        size="1024x1024"
+        size=_get_best_size(original_image_path)
     )
 
     await client.download_image(image_url, Path(output_path))

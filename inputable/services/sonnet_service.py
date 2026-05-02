@@ -6,6 +6,7 @@ import logging
 from models.schemas import Annotation, NewWord, OutputTask
 from services.llm_factory import LLMFactory
 from services.llm_base import LLMError
+from services.demo_service import is_demo_mode, demo_generate
 
 logger = logging.getLogger(__name__)
 
@@ -125,6 +126,9 @@ async def generate_annotations_with_fallback(
     image_base64: str, cefr: str, learned_words: list[str]
 ) -> dict:
     """Calls generate_annotations with one retry. Returns HARDCODED_DEFAULT on double failure."""
+    if is_demo_mode():
+        return await demo_generate()
+
     for attempt in range(2):
         try:
             result = await generate_annotations(image_base64, cefr, learned_words)
