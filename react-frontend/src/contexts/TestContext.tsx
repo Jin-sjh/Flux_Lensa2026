@@ -1,6 +1,9 @@
 import { createContext, useContext, useReducer } from 'react';
 import type { ReactNode } from 'react';
+import { testQuestions } from '../data/testQuestions';
 import type { TestState, TestAnswer, TestResult } from '../types/auth';
+
+const INITIAL_TEST_QUESTION_COUNT = 10;
 
 type TestAction =
   | { type: 'START_TEST'; payload: number }
@@ -18,8 +21,6 @@ interface TestQuestion {
   difficulty: 'A1' | 'A2' | 'B1';
   explanation?: string;
 }
-
-import { testQuestions } from '../data/testQuestions';
 
 const initialState: TestState = {
   currentQuestionIndex: 0,
@@ -72,7 +73,7 @@ const TestContext = createContext<TestContextType | undefined>(undefined);
 export function TestProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(testReducer, initialState);
 
-  const questions = testQuestions;
+  const questions = testQuestions.slice(0, INITIAL_TEST_QUESTION_COUNT);
   const currentQuestion = questions[state.currentQuestionIndex] || null;
   const progress = ((state.currentQuestionIndex + 1) / questions.length) * 100;
 
@@ -104,20 +105,20 @@ export function TestProvider({ children }: { children: ReactNode }) {
     const recommendations: string[] = [];
 
     if (result.vocabularyScore < 60) {
-      recommendations.push('建议多进行词汇学习，可以通过拍照识别日常物品来扩展词汇量');
+      recommendations.push('建议多进行词汇学习，可以通过拍照识别日常物品来扩展词汇量。');
     }
     if (result.grammarScore < 60) {
-      recommendations.push('建议加强语法练习，关注印尼语的基本句型和语法规则');
+      recommendations.push('建议加强语法练习，重点关注印尼语的基本句型和常用连接词。');
     }
     if (result.cefrLevel === 'A1') {
-      recommendations.push('建议从基础词汇开始，每天学习 5-10 个新单词');
-      recommendations.push('可以尝试使用 Anki 卡片进行间隔重复学习');
+      recommendations.push('建议从基础问候、数字、食物和家庭词汇开始，每天学习 5-10 个新词。');
+      recommendations.push('可以结合图片和例句做间隔复习，先把日常高频表达记牢。');
     } else if (result.cefrLevel === 'A2') {
-      recommendations.push('可以开始尝试简单的印尼语对话练习');
-      recommendations.push('建议阅读简单的印尼语文章或故事');
+      recommendations.push('可以开始尝试简单的印尼语对话练习，例如点餐、问路和自我介绍。');
+      recommendations.push('建议阅读短篇文章或生活场景对话，积累常见动词和表达方式。');
     } else {
-      recommendations.push('可以尝试更复杂的印尼语对话和阅读材料');
-      recommendations.push('建议关注印尼语的高级语法和表达方式');
+      recommendations.push('可以尝试更复杂的印尼语对话和阅读材料，训练长句理解能力。');
+      recommendations.push('建议关注进阶语法、语气表达和真实语境中的固定搭配。');
     }
 
     return recommendations;

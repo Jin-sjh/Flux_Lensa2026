@@ -77,6 +77,13 @@ export default function AuthPage() {
     setConfirmPassword('');
   };
 
+  const fillDemoAccount = () => {
+    setEmail(DEMO_EMAIL);
+    setPassword(DEMO_PASSWORD);
+    setLocalError('');
+    clearError();
+  };
+
   const displayError = localError || error;
 
   return (
@@ -195,9 +202,9 @@ export default function AuthPage() {
         </p>
 
         {isLogin && (
-          <p className="auth-demo-account">
+          <button type="button" className="auth-demo-account" onClick={fillDemoAccount}>
             默认账号：{DEMO_EMAIL} / {DEMO_PASSWORD}
-          </p>
+          </button>
         )}
       </section>
     </main>

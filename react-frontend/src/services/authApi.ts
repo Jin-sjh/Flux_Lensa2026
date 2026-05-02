@@ -5,6 +5,11 @@ const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true' || import.meta.env.DEV
 
 const MOCK_USERS_KEY = 'lensa_mock_users';
 const MOCK_DELAY = 500;
+
+interface MockUser extends User {
+  password: string;
+}
+
 const DEFAULT_MOCK_USER: MockUser = {
   id: 'mock_default_user',
   email: 'demo@lensa.local',
@@ -15,8 +20,8 @@ const DEFAULT_MOCK_USER: MockUser = {
   createdAt: '2026-05-01T00:00:00.000Z',
 };
 
-interface MockUser extends User {
-  password: string;
+function normalizeEmail(email: string): string {
+  return email.trim().toLowerCase();
 }
 
 function getMockUsers(): MockUser[] {
@@ -29,7 +34,7 @@ function getMockUsers(): MockUser[] {
     users = [];
   }
 
-  if (!users.some(user => user.email === DEFAULT_MOCK_USER.email)) {
+  if (!users.some(user => normalizeEmail(user.email) === normalizeEmail(DEFAULT_MOCK_USER.email))) {
     const seededUsers = [DEFAULT_MOCK_USER, ...users];
     saveMockUsers(seededUsers);
     return seededUsers;
@@ -53,9 +58,9 @@ function generateUserId(): string {
 async function mockLogin(credentials: LoginCredentials): Promise<AuthResponse> {
   await new Promise(resolve => setTimeout(resolve, MOCK_DELAY));
 
-  const email = credentials.email.trim().toLowerCase();
+  const email = normalizeEmail(credentials.email);
   const users = getMockUsers();
-  const user = users.find(u => u.email.toLowerCase() === email);
+  const user = users.find(u => normalizeEmail(u.email) === email);
 
   if (!user) {
     throw new Error('用户不存在');
@@ -78,15 +83,16 @@ async function mockRegister(credentials: RegisterCredentials): Promise<AuthRespo
   await new Promise(resolve => setTimeout(resolve, MOCK_DELAY));
 
   const users = getMockUsers();
+  const email = normalizeEmail(credentials.email);
 
-  if (users.some(u => u.email === credentials.email)) {
+  if (users.some(u => normalizeEmail(u.email) === email)) {
     throw new Error('该邮箱已被注册');
   }
 
   const newUser: MockUser = {
     id: generateUserId(),
-    email: credentials.email,
-    name: credentials.name,
+    email,
+    name: credentials.name.trim(),
     password: credentials.password,
     cefrLevel: null,
     hasCompletedTest: false,

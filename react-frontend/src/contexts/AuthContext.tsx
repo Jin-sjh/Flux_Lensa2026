@@ -88,8 +88,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { login: loginApi } = await import('../services/authApi');
       const response = await loginApi(credentials);
       dispatch({ type: 'AUTH_SUCCESS', payload: response });
-    } catch (error: any) {
-      dispatch({ type: 'AUTH_ERROR', payload: error.message || '登录失败' });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : '登录失败';
+      dispatch({ type: 'AUTH_ERROR', payload: message });
       throw error;
     }
   };
@@ -100,8 +101,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const { register: registerApi } = await import('../services/authApi');
       const response = await registerApi(credentials);
       dispatch({ type: 'AUTH_SUCCESS', payload: response });
-    } catch (error: any) {
-      dispatch({ type: 'AUTH_ERROR', payload: error.message || '注册失败' });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : '注册失败';
+      dispatch({ type: 'AUTH_ERROR', payload: message });
       throw error;
     }
   };

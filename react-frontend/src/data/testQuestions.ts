@@ -16,7 +16,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['早上好', '晚上好', '下午好', '再见'],
     correctAnswer: '早上好',
     difficulty: 'A1',
-    explanation: 'Selamat pagi 是印尼语中"早上好"的意思，用于早晨问候。',
+    explanation: 'Selamat pagi 是印尼语中“早上好”的意思，通常用于清晨到上午的问候。',
   },
   {
     id: '2',
@@ -25,7 +25,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['对不起', '谢谢', '再见', '你好'],
     correctAnswer: '谢谢',
     difficulty: 'A1',
-    explanation: 'Terima kasih 是印尼语中"谢谢"的意思，是最常用的礼貌用语。',
+    explanation: 'Terima kasih 是印尼语中“谢谢”的意思，是最常用的礼貌表达之一。',
   },
   {
     id: '3',
@@ -34,7 +34,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['空气', '水', '火', '土地'],
     correctAnswer: '水',
     difficulty: 'A1',
-    explanation: 'Air 在印尼语中意思是"水"。',
+    explanation: 'Air 在印尼语中表示“水”，不要和英语里的 air 混淆。',
   },
   {
     id: '4',
@@ -43,7 +43,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['喝水', '睡觉', '吃', '走路'],
     correctAnswer: '吃',
     difficulty: 'A1',
-    explanation: 'Makan 是印尼语中"吃"的意思。',
+    explanation: 'Makan 是印尼语里“吃”的意思，常见于日常饮食场景。',
   },
   {
     id: '5',
@@ -52,7 +52,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['学校', '医院', '房子', '商店'],
     correctAnswer: '房子',
     difficulty: 'A1',
-    explanation: 'Rumah 在印尼语中意思是"房子"或"家"。',
+    explanation: 'Rumah 在印尼语中表示“房子”或“家”。',
   },
   {
     id: '6',
@@ -61,7 +61,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['adalah', 'dan', 'atau', 'tetapi'],
     correctAnswer: 'adalah',
     difficulty: 'A1',
-    explanation: '在印尼语中，adalah 是系动词，用于连接主语和名词性谓语。',
+    explanation: 'adalah 可用于连接主语和名词性谓语，表示“是”。',
   },
   {
     id: '7',
@@ -70,7 +70,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['笔', '书', '桌子', '椅子'],
     correctAnswer: '书',
     difficulty: 'A1',
-    explanation: 'Buku 在印尼语中意思是"书"。',
+    explanation: 'Buku 在印尼语中表示“书”。',
   },
   {
     id: '8',
@@ -79,7 +79,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['pergi', 'makan', 'tidur', 'minum'],
     correctAnswer: 'pergi',
     difficulty: 'A2',
-    explanation: 'Pergi 意思是"去"，是表示移动的动词。',
+    explanation: 'pergi 表示“去”，是表达移动行为的常用动词。',
   },
   {
     id: '9',
@@ -88,7 +88,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['文化', '教育', '经济', '政治'],
     correctAnswer: '教育',
     difficulty: 'A2',
-    explanation: 'Pendidikan 在印尼语中意思是"教育"。',
+    explanation: 'Pendidikan 在印尼语中表示“教育”。',
   },
   {
     id: '10',
@@ -97,7 +97,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['belajar', 'mengajar', 'membaca', 'menulis'],
     correctAnswer: 'belajar',
     difficulty: 'A2',
-    explanation: 'Belajar 意思是"学习"，mengajar 是"教"，membaca 是"读"，menulis 是"写"。',
+    explanation: 'belajar 表示“学习”；mengajar 是“教”，membaca 是“读”，menulis 是“写”。',
   },
   {
     id: '11',
@@ -106,7 +106,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['朋友', '家庭', '同事', '邻居'],
     correctAnswer: '家庭',
     difficulty: 'A1',
-    explanation: 'Keluarga 在印尼语中意思是"家庭"。',
+    explanation: 'Keluarga 在印尼语中表示“家庭”。',
   },
   {
     id: '12',
@@ -115,7 +115,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['adalah', 'memiliki', 'dengan', 'untuk'],
     correctAnswer: 'adalah',
     difficulty: 'A1',
-    explanation: 'Adalah 用于介绍或说明某物是什么。',
+    explanation: 'adalah 可用于介绍或说明某物是什么。',
   },
   {
     id: '13',
@@ -124,7 +124,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['爱好', '工作', '学习', '运动'],
     correctAnswer: '工作',
     difficulty: 'A2',
-    explanation: 'Pekerjaan 在印尼语中意思是"工作"或"职业"。',
+    explanation: 'Pekerjaan 在印尼语中表示“工作”或“职业”。',
   },
   {
     id: '14',
@@ -133,7 +133,7 @@ export const testQuestions: TestQuestion[] = [
     options: ['makan', 'minum', 'masak', 'beli'],
     correctAnswer: 'makan',
     difficulty: 'A2',
-    explanation: 'Makan 是"吃"的意思，nasi goreng 是印尼炒饭。',
+    explanation: 'makan 表示“吃”，nasi goreng 是印尼炒饭。',
   },
   {
     id: '15',
@@ -142,6 +142,6 @@ export const testQuestions: TestQuestion[] = [
     options: ['财富', '健康', '幸福', '成功'],
     correctAnswer: '健康',
     difficulty: 'B1',
-    explanation: 'Kesehatan 在印尼语中意思是"健康"。',
+    explanation: 'Kesehatan 在印尼语中表示“健康”。',
   },
 ];

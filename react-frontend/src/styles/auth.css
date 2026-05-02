@@ -211,10 +211,23 @@
 
 .auth-demo-account {
   margin: var(--space-md) 0 0;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: rgba(var(--color-primary-rgb), 0.05);
   color: var(--color-text-secondary);
   font-size: var(--text-xs);
   font-weight: 700;
   text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.auth-demo-account:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.08);
 }
 
 @media (max-width: 480px) {

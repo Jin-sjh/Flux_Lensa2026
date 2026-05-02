@@ -85,96 +85,103 @@ export default function LevelTest({ onComplete }: LevelTestProps) {
   }
 
   if (!currentQuestion) {
-    return <div className="test-loading">加载中...</div>;
+    return <div className="test-loading">正在加载测试...</div>;
   }
 
   const currentAnswer = answers[currentQuestionIndex];
   const isAnswered = currentAnswer !== undefined;
   const isCorrect = currentAnswer?.isCorrect;
+  const typeLabel = currentQuestion.questionType === 'vocabulary' ? '词汇' : '语法';
 
   return (
     <div className="test-container">
-      <div className="test-header">
-        <h1 className="test-title">印尼语水平测试</h1>
-        <p className="test-subtitle">请完成以下测试，以便我们为您推荐合适的学习内容</p>
-      </div>
-
-      <div className="test-progress">
-        <div className="progress-bar">
-          <div className="progress-fill" style={{ width: `${progress}%` }} />
-        </div>
-        <span className="progress-text">
-          {currentQuestionIndex + 1} / {questions.length}
-        </span>
-      </div>
-
-      <div className="test-question-card">
-        <div className="question-header">
-          <span className={`question-type ${currentQuestion.questionType}`}>
-            {currentQuestion.questionType === 'vocabulary' ? '词汇' : '语法'}
-          </span>
-          <span className={`question-difficulty ${currentQuestion.difficulty}`}>
-            {currentQuestion.difficulty}
-          </span>
+      <div className="test-shell">
+        <div className="test-header">
+          <span className="test-eyebrow">Level Check</span>
+          <h1 className="test-title">印尼语水平测试</h1>
+          <p className="test-subtitle">
+            完成这组小测后，我们会根据你的 CEFR 水平推荐更合适的学习内容。
+          </p>
         </div>
 
-        <h2 className="question-text">{currentQuestion.question}</h2>
-
-        <div className="options-list">
-          {currentQuestion.options.map((option, index) => {
-            let optionClass = 'option-item';
-            if (isAnswered) {
-              if (option === currentQuestion.correctAnswer) {
-                optionClass += ' correct';
-              } else if (option === selectedAnswer && option !== currentQuestion.correctAnswer) {
-                optionClass += ' incorrect';
-              }
-            } else if (option === selectedAnswer) {
-              optionClass += ' selected';
-            }
-
-            return (
-              <button
-                key={index}
-                className={optionClass}
-                onClick={() => handleSelectAnswer(option)}
-                disabled={isAnswered}
-              >
-                <span className="option-letter">{String.fromCharCode(65 + index)}</span>
-                <span className="option-text">{option}</span>
-              </button>
-            );
-          })}
-        </div>
-
-        {showExplanation && currentQuestion.explanation && (
-          <div className={`explanation ${isCorrect ? 'correct' : 'incorrect'}`}>
-            <p className="explanation-title">
-              {isCorrect ? '✅ 回答正确！' : '❌ 回答错误'}
-            </p>
-            <p className="explanation-text">{currentQuestion.explanation}</p>
+        <div className="test-progress">
+          <div className="progress-meta">
+            <span>当前进度</span>
+            <strong>{currentQuestionIndex + 1} / {questions.length}</strong>
           </div>
-        )}
-      </div>
+          <div className="progress-bar">
+            <div className="progress-fill" style={{ width: `${progress}%` }} />
+          </div>
+        </div>
 
-      <div className="test-actions">
-        {!isAnswered ? (
-          <button
-            className="submit-btn"
-            onClick={handleSubmitAnswer}
-            disabled={!selectedAnswer || isSubmitting}
-          >
-            提交答案
-          </button>
-        ) : (
-          <button
-            className="next-btn"
-            onClick={handleNextQuestion}
-            disabled={isSubmitting}
-          >
-            {currentQuestionIndex < questions.length - 1 ? '下一题' : '完成测试'}
-          </button>
-        )}
+        <div className="test-question-card">
+          <div className="question-header">
+            <span className={`question-type ${currentQuestion.questionType}`}>
+              {typeLabel}
+            </span>
+            <span className={`question-difficulty ${currentQuestion.difficulty}`}>
+              {currentQuestion.difficulty}
+            </span>
+          </div>
+
+          <h2 className="question-text">{currentQuestion.question}</h2>
+
+          <div className="options-list">
+            {currentQuestion.options.map((option, index) => {
+              let optionClass = 'option-item';
+              if (isAnswered) {
+                if (option === currentQuestion.correctAnswer) {
+                  optionClass += ' correct';
+                } else if (option === selectedAnswer && option !== currentQuestion.correctAnswer) {
+                  optionClass += ' incorrect';
+                }
+              } else if (option === selectedAnswer) {
+                optionClass += ' selected';
+              }
+
+              return (
+                <button
+                  key={option}
+                  className={optionClass}
+                  onClick={() => handleSelectAnswer(option)}
+                  disabled={isAnswered}
+                >
+                  <span className="option-letter">{String.fromCharCode(65 + index)}</span>
+                  <span className="option-text">{option}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {showExplanation && currentQuestion.explanation && (
+            <div className={`explanation ${isCorrect ? 'correct' : 'incorrect'}`}>
+              <p className="explanation-title">
+                {isCorrect ? '回答正确' : '回答错误'}
+              </p>
+              <p className="explanation-text">{currentQuestion.explanation}</p>
+            </div>
+          )}
+        </div>
+
+        <div className="test-actions">
+          {!isAnswered ? (
+            <button
+              className="submit-btn"
+              onClick={handleSubmitAnswer}
+              disabled={!selectedAnswer || isSubmitting}
+            >
+              提交答案
+            </button>
+          ) : (
+            <button
+              className="next-btn"
+              onClick={handleNextQuestion}
+              disabled={isSubmitting}
+            >
+              {currentQuestionIndex < questions.length - 1 ? '下一题' : '完成测试'}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );
