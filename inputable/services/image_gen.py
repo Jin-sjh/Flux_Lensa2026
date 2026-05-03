@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 
 from PIL import Image
-from config import IMAGE_DIR, BASE_URL
+from config import IMAGE_DIR
 from services.llm_factory import LLMFactory
 from services.llm_base import LLMError
 from services.demo_service import is_demo_mode, demo_render
@@ -104,4 +104,4 @@ async def render_card(
 
 
 def build_image_url(session_id: str) -> str:
-    return f"{BASE_URL}/images/{session_id}.png"
+    return f"/images/{session_id}.png"

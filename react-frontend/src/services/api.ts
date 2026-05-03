@@ -73,19 +73,33 @@ function compressImage(file: File): Promise<string> {
 function normalizeImageUrl(url: string | null): string {
   if (!url) throw new Error('后端没有返回生成图片地址');
 
+  if (url.startsWith('data:')) {
+    return url;
+  }
+
   if (url.startsWith('/')) {
-    return `${API_ORIGIN}${url}`;
+    const fullUrl = `${API_ORIGIN}${url}`;
+    console.log('[Image URL] 相对路径转绝对路径:', { original: url, fullUrl, apiOrigin: API_ORIGIN });
+    return fullUrl;
   }
 
-  const parsed = new URL(url);
-  if (['localhost', '127.0.0.1'].includes(parsed.hostname)) {
-    const api = new URL(API_ORIGIN);
-    if (api.origin !== parsed.origin) {
-      return `${api.origin}${parsed.pathname}${parsed.search}${parsed.hash}`;
+  try {
+    const parsed = new URL(url);
+
+    if (['localhost', '127.0.0.1'].includes(parsed.hostname)) {
+      const api = new URL(API_ORIGIN);
+      if (api.origin !== parsed.origin) {
+        const correctedUrl = `${api.origin}${parsed.pathname}${parsed.search}${parsed.hash}`;
+        console.log('[Image URL] 修正localhost地址:', { original: url, correctedUrl });
+        return correctedUrl;
+      }
     }
-  }
 
-  return url;
+    return url;
+  } catch (e) {
+    console.warn('[Image URL] 无效的URL格式，尝试作为相对路径处理:', url);
+    return `${API_ORIGIN}/${url}`;
+  }
 }
 
 export async function generateAnnotations(
